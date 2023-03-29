@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<View>
+
+  <Panel Name="MapPanel" Anchor="$CenterX,$CenterY" Bounds="-98,-242,472,292" Style="Windows_GamePanel" InnerMargin="6,6,6,6" TransitionIn="Expand">
+	  <Image Picture="Bind MapRender" Alignment="Stretch"/>
+	  <Image Sprite="Bind MapActor" Alignment="Bottom" Bounds="0,0,128,128"/>
+	  <Gauge Minimum="0" Maximum="Bind MaxHealthBar" Frame="ui_healthBar" Background="ui_healthBarBackground" Alignment="Center" Visible="Bind ShowHealthBar" Bounds="0,-40,420,45" InnerMargin="8,8,8,8">
+		  <GaugeBar Bar="ui_healthBarInside" Value="Bind CurrentHealthBar">
+		  </GaugeBar>
+	  </Gauge>
+  </Panel>
+
+	<Panel Name="MiniMapPanel" Anchor="$CenterX,$CenterY" Bounds="-360,-142,220,300" Style="Windows_GamePanel" InnerMargin="6,6,6,6" TransitionIn="Expand">
+		<Image Name="MiniMap" Picture="Bind MiniMapRender" Alignment="Stretch"/>
+		<Label Text="Bind MapName" Alignment="Vertical" Font="Bind ConversationFont" Color="#E0BFA2FF" Bounds="0,5,3000,30"/>
+	</Panel>
+
+	<Panel Name="DialoguePanel" Anchor="$CenterX,$CenterY" Bounds="-98,104,472,140" Style="Windows_GamePanelOpaque" InnerMargin="16,18,16,18" TransitionIn="Expand">
+
+	</Panel>
+  
+</View>
