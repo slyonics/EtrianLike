@@ -343,6 +343,8 @@ namespace EtrianLike.Main
 
     public enum GameMap
     {
+        Foundry,
+        Office,
         Overworld,
         School,
         SchoolOrigin,

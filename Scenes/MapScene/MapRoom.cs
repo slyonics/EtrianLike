@@ -340,8 +340,7 @@ namespace EtrianLike.Scenes.MapScene
             }
             else
             {
-                if (GameProfile.GetSaveData<bool>("AliensAttack"))
-                {
+
                     int stepsRemaining = GameProfile.GetSaveData<int>("RandomBattle");
                     stepsRemaining--;
                     GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
@@ -351,21 +350,12 @@ namespace EtrianLike.Scenes.MapScene
                         stepsRemaining = Rng.RandomInt(8, 14);
                         GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
 
-                        int alienPower = 1;
-                        if (parentScene.roomX >= 5 || parentScene.MapFileName == "Class4" || parentScene.MapFileName == "Class5" || parentScene.MapFileName == "Class6" || parentScene.MapFileName == "Class7") alienPower = Rng.WeightedEntry<int>(new Dictionary<int, double>() { { 1, 3 }, { 2, 7 }, { 3, 2 } });
+                        BattleScene.BattleScene battleScene = new BattleScene.BattleScene("ScorpionNest");
+                        CrossPlatformGame.StackScene(battleScene);
 
-                        string[] script = new string[] { "Encounter Alien" + alienPower };
-
-                        EventController eventController = new EventController(parentScene, script, mapRooms[parentScene.roomX, parentScene.roomY]);
-                        parentScene.AddController(eventController);
                         parentScene.ResetPathfinding();
                     }
-                }
-                else
-                {
-                    BattleScene.BattleScene battleScene = new BattleScene.BattleScene("ScorpionNest");
-                    CrossPlatformGame.StackScene(battleScene);
-                }
+                
             }
         }
 

@@ -100,7 +100,7 @@ namespace EtrianLike.Main
 
             if (fullscreen)
             {
-                /*
+
                 DisplayModeCollection displayModes = GraphicsDevice.Adapter.SupportedDisplayModes;
                 IEnumerable<DisplayMode> bestModes = displayModes.Where(x => x.Width >= TARGET_SCREEN_WIDTH && x.Width <= MAXIMUM_SCREEN_WIDTH &&
                                                                              x.Height >= TARGET_SCREEN_HEIGHT && x.Height <= MAXIMUM_SCREEN_HEIGHT);
@@ -109,12 +109,8 @@ namespace EtrianLike.Main
                 scaledScreenWidth = targetMode.Width;
                 scaledScreenHeight = targetMode.Height;
                 int scale = targetMode.Height / TARGET_SCREEN_HEIGHT;
-                screenScale = scale;
-                */
-
                 screenScale = 2;
-                scaledScreenWidth = TARGET_SCREEN_WIDTH * screenScale;
-                scaledScreenHeight = TARGET_SCREEN_HEIGHT * screenScale;
+
             }
             else
             {
@@ -133,8 +129,8 @@ namespace EtrianLike.Main
             graphicsDeviceManager.PreferredBackBufferHeight = scaledScreenHeight;
             graphicsDeviceManager.ApplyChanges();
 
-            gameRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, TARGET_SCREEN_WIDTH, TARGET_SCREEN_HEIGHT);
-            compositeRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, TARGET_SCREEN_WIDTH, TARGET_SCREEN_HEIGHT, false, SurfaceFormat.Color, DepthFormat.Depth16, 0, RenderTargetUsage.PreserveContents);
+            gameRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight);
+            compositeRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color, DepthFormat.Depth16, 0, RenderTargetUsage.PreserveContents);
 
             mapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 460 * screenScale, 280 * screenScale, false, SurfaceFormat.Color, DepthFormat.Depth16, 8, RenderTargetUsage.DiscardContents);
             minimapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 208, 288);
@@ -274,8 +270,8 @@ namespace EtrianLike.Main
 
         public Shader TransitionShader { set => transitionShader = value; }
 
-        public static int ScreenWidth { get => TARGET_SCREEN_WIDTH; }
-        public static int ScreenHeight { get => TARGET_SCREEN_HEIGHT; }
+        public static int ScreenWidth { get => scaledScreenWidth / screenScale; }
+        public static int ScreenHeight { get => scaledScreenHeight / screenScale; }
         public static int Scale { get => screenScale; }
         public static CrossPlatformGame GameInstance { get => crossPlatformGame; }
         public static bool ClearedCompositeRender { get; set; }

@@ -45,6 +45,7 @@ namespace EtrianLike.Scenes.SplashScene
         {
             GameProfile.NewState();
 
+            GameProfile.SetSaveData<int>("RandomBattle", 6);
 
             /*
             GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.Jenna));
@@ -76,7 +77,7 @@ namespace EtrianLike.Scenes.SplashScene
 
             // CrossPlatformGame.Transition(typeof(IntroScene.IntroScene));
 
-            CrossPlatformGame.Transition(typeof(MapScene.MapScene), "SchoolOrigin");
+            CrossPlatformGame.Transition(typeof(MapScene.MapScene), "School");
         }
 
         public bool Terminated { get => false; }
