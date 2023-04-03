@@ -30,7 +30,16 @@
 				"Text": "Players learns about book banning, maybe gets a promonition of bad mojo from the library or witnesses a supernatural event."
 			},
 			{
-				"Text": "Rest of the day is fast-forwarded and the player either comes back here to investigate or gets to prepare from a status menu."
+				"Text": "Rest of the day is fast-forwarded and the player is directed to leave through the main entrance.",
+				"Script": [ "SetFlag DayOneDone True" ]
+			}
+		]
+	},
+	{
+		"Name": "EndFirstDay",
+		"DialogueRecords": [
+			{
+				"Text": "End of the first day, player returns to school at night to investigate library."
 			}
 		]
 	},

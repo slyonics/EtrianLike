@@ -282,25 +282,10 @@ namespace EtrianLike.Scenes.MapScene
                 }
             }
 
-            /*if (MapName == "School Foyer")
+            if (MapName == "School (Night)" || MapName == "Dark Library")
             {
-                if (GameProfile.GetSaveData<bool>("AliensAttack") == false)
-                {
-                    mapRooms[2, 1].SetAsWaypoint();
-                }
-                else if (GameProfile.GetSaveData<bool>("AliensAttack") == true && GameProfile.GetSaveData<bool>("SaveAbby") == false)
-                {
-                    mapRooms[4, 1].SetAsWaypoint();
-                }
-                else if (GameProfile.GetSaveData<bool>("AliensAttack") == true && GameProfile.GetSaveData<bool>("SaveAbby") == true && GameProfile.GetSaveData<bool>("SaveFriends") == false)
-                {
-                    mapRooms[6, 2].SetAsWaypoint();
-                }
-                else
-                {
-                    mapRooms[4, 9].SetAsWaypoint();
-                }
-            }*/
+
+            }
         }
 
         void Lighting(TiledObject tiledObject)
@@ -346,18 +331,14 @@ namespace EtrianLike.Scenes.MapScene
         {
             base.BeginScene();
 
-            Audio.PlayMusic(GameMusic.SMP_DUN);
+            if (MapName == "School Foyer") Audio.PlayMusic(GameMusic.SchoolDay);
+            else if (MapName == "School (Night)") Audio.PlayMusic(GameMusic.SMP_DUN);
+            if (MapName == "Dark Library") Audio.PlayMusic(GameMusic.SMP_TNS);
         }
 
         public void SetWaypoint(int pointX, int pointY)
         {
-            for (int x = 0; x < MapWidth; x++)
-            {
-                for (int y = 0; y < MapHeight; y++)
-                {
-                    mapRooms[x, y]?.ResetMinimapIcon();
-                }
-            }
+            ResetWaypoints();
 
             mapRooms[pointX, pointY].SetAsWaypoint();
         }
@@ -655,6 +636,17 @@ namespace EtrianLike.Scenes.MapScene
             List<MapRoom> path = ReconstructPath(cameFrom, cameFrom[current]);
             path.Add(current);
             return path;
+        }
+
+        public void ResetWaypoints()
+        {
+            for (int x = 0; x < MapWidth; x++)
+            {
+                for (int y = 0; y < MapHeight; y++)
+                {
+                    mapRooms[x, y]?.ResetMinimapIcon();
+                }
+            }
         }
 
         public MapViewModel MapViewModel { get => mapViewModel; }

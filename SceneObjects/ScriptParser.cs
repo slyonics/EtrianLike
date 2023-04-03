@@ -160,6 +160,10 @@ namespace EtrianLike.SceneObjects
                 else if (parameter == "False") return "True";
                 else throw new Exception();
             }
+            else if (parameter.StartsWith("$Flag."))
+            {
+                return GameProfile.GetSaveData<bool>(parameter.Split('.')[1]).ToString();
+            }
             else if (parameter[0] != '$') return parameter;
             else
             {

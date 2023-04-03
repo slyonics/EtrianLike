@@ -85,8 +85,10 @@ namespace EtrianLike.Main
     {
         Battle,
         NewDestinations,
+        SchoolDay,
         Selection,
         SMP_DUN,
+        SMP_TNS,
         Title,
 
         None = -1
@@ -347,6 +349,8 @@ namespace EtrianLike.Main
 
     public enum GameMap
     {
+        DarkLibrary,
+        DarkSchool,
         Foundry,
         Office,
         Overworld,

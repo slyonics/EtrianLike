@@ -75,6 +75,8 @@ namespace EtrianLike.Scenes.MapScene
 
         private void ChangeMap(string[] tokens)
         {
+            mapScene.ResetWaypoints();
+
             Type sceneType = Type.GetType(tokens[1]);
             if (tokens.Length == 6) CrossPlatformGame.Transition(sceneType, tokens[2], int.Parse(tokens[3]), int.Parse(tokens[4]), (MapScene.Direction)Enum.Parse(typeof(MapScene.Direction), tokens[5]));
             else if (tokens.Length == 3) CrossPlatformGame.Transition(typeof(MapScene), tokens[1], tokens[2]);

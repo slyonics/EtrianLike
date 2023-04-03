@@ -338,9 +338,9 @@ namespace EtrianLike.Scenes.MapScene
                 parentScene.AddController(eventController);
                 parentScene.ResetPathfinding();
             }
-            else
+            else if (parentScene.MapName == "Dark Library")
             {
-                /*
+                
                     int stepsRemaining = GameProfile.GetSaveData<int>("RandomBattle");
                     stepsRemaining--;
                     GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
@@ -355,7 +355,7 @@ namespace EtrianLike.Scenes.MapScene
 
                         parentScene.ResetPathfinding();
                     }
-                */
+                
             }
         }
 
