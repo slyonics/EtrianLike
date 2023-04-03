@@ -282,7 +282,7 @@ namespace EtrianLike.Scenes.MapScene
                 }
             }
 
-            if (MapName == "School Foyer")
+            /*if (MapName == "School Foyer")
             {
                 if (GameProfile.GetSaveData<bool>("AliensAttack") == false)
                 {
@@ -300,7 +300,7 @@ namespace EtrianLike.Scenes.MapScene
                 {
                     mapRooms[4, 9].SetAsWaypoint();
                 }
-            }
+            }*/
         }
 
         void Lighting(TiledObject tiledObject)
@@ -344,14 +344,22 @@ namespace EtrianLike.Scenes.MapScene
 
         public override void BeginScene()
         {
-            sceneStarted = true;
+            base.BeginScene();
 
             Audio.PlayMusic(GameMusic.SMP_DUN);
         }
 
-        public void SetWaypoint(int x, int y)
+        public void SetWaypoint(int pointX, int pointY)
         {
-            mapRooms[x, y].SetAsWaypoint();
+            for (int x = 0; x < MapWidth; x++)
+            {
+                for (int y = 0; y < MapHeight; y++)
+                {
+                    mapRooms[x, y]?.ResetMinimapIcon();
+                }
+            }
+
+            mapRooms[pointX, pointY].SetAsWaypoint();
         }
 
         public override void Update(GameTime gameTime)
@@ -521,17 +529,38 @@ namespace EtrianLike.Scenes.MapScene
             Panel miniMapPanel = mapViewModel.GetWidget<Panel>("MiniMapPanel");
             if (!miniMapPanel.Transitioning && miniMapPanel.Visible)
             {
-                Vector2 offset = new Vector2((CrossPlatformGame.GameInstance.minimapRender.Width - (mapRooms.GetLength(0) * 16)) / 2, (CrossPlatformGame.GameInstance.minimapRender.Height - (mapRooms.GetLength(1) * 16)) / 2);
-                for (int x = 0; x < mapRooms.GetLength(0); x++)
+                int startX = Math.Max(0, roomX - 3);
+                int endX = startX + 7;
+                if (endX > mapRooms.GetLength(0) - 1)
                 {
-                    for (int y = 0; y < mapRooms.GetLength(1); y++)
+                    endX = mapRooms.GetLength(0) - 1;
+                    startX = Math.Max(0, endX - 6);
+                }
+
+                int startY = Math.Max(0, roomY - 3);
+                int endY = startY + 7;
+                if (endY > mapRooms.GetLength(1) - 1)
+                {
+                    endY = mapRooms.GetLength(1) - 1;
+                    startY = Math.Max(0, endY - 6);
+                }
+
+                Vector2 offset = new Vector2(0, 0);
+                for (int x = startX; x <= endX; x++)
+                {
+                    for (int y = startY; y <= endY; y++)
                     {
                         MapRoom mapRoom = mapRooms[x, y];
                         mapRoom?.DrawMinimap(spriteBatch, offset);
+
+                        offset.Y += 16;
                     }
+
+                    offset.Y = 0;
+                    offset.X += 16;
                 }
 
-                spriteBatch.Draw(minimapSprite, new Vector2(roomX * 16, roomY * 16) + offset, minimapSource[(int)direction], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+                spriteBatch.Draw(minimapSprite, new Vector2((roomX - startX) * 16, (roomY - startY) * 16), minimapSource[(int)direction], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
 
             }
         }

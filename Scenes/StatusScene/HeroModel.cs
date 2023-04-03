@@ -34,6 +34,8 @@ namespace EtrianLike.Scenes.StatusScene
             NakedMana.Value = Mana.Value;
 
             Sprite.Value = (GameSprite)Enum.Parse(typeof(GameSprite), "Actors_" + heroRecord.Sprite);
+            ProfileSprite.Value = (GameSprite)Enum.Parse(typeof(GameSprite), "Portraits_" + heroRecord.ProfileSprite);
+            PortraitSprite.Value = (GameSprite)Enum.Parse(typeof(GameSprite), "Portraits_" + heroRecord.PortraitSprite);
             if (heroRecord.FlightHeight > 0)
             {
                 FlightHeight.Value = heroRecord.FlightHeight;
@@ -125,6 +127,8 @@ namespace EtrianLike.Scenes.StatusScene
         }
 
         public ModelProperty<GameSprite> Sprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Actors_Base);
+        public ModelProperty<GameSprite> ProfileSprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Portraits_JaneFace);
+        public ModelProperty<GameSprite> PortraitSprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Portraits_Jane);
         public ModelProperty<GameSprite> ShadowSprite { get; set; } = new ModelProperty<GameSprite>();
         public ModelProperty<int> FlightHeight { get; set; } = new ModelProperty<int>(0);
 

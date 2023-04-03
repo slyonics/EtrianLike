@@ -89,10 +89,26 @@ namespace EtrianLike.Scenes.MapScene
 
         private void Conversation(string[] tokens)
         {
-            ConversationScene.ConversationScene conversationScene = new ConversationScene.ConversationScene(tokens[1]);
-            var unblock = scriptParser.BlockScript();
-            conversationScene.OnTerminated += new TerminationFollowup(unblock);
-            CrossPlatformGame.StackScene(conversationScene);
+            if (tokens.Length == 2)
+            {
+
+
+                ConversationScene.ConversationScene conversationScene = new ConversationScene.ConversationScene(tokens[1]);
+                conversationScene.OnTerminated += new TerminationFollowup(scriptParser.BlockScript());
+                CrossPlatformGame.StackScene(conversationScene);
+
+            }
+            else
+            {
+                var convoRecord = new ConversationScene.ConversationRecord()
+                {
+                    DialogueRecords = new ConversationScene.DialogueRecord[] { new ConversationScene.DialogueRecord() { Text = String.Join(' ', tokens.Skip(1)) } }
+                };
+
+                var convoScene = new ConversationScene.ConversationScene(convoRecord);
+                convoScene.OnTerminated += new TerminationFollowup(scriptParser.BlockScript());
+                CrossPlatformGame.StackScene(convoScene);
+            }
         }
 
         private void Encounter(string[] tokens)
@@ -113,7 +129,7 @@ namespace EtrianLike.Scenes.MapScene
         {
             BattleScene.BattleScene battleScene = new BattleScene.BattleScene(tokens[1]);
             battleScene.OnTerminated += new TerminationFollowup(scriptParser.BlockScript());
-            CrossPlatformGame.StackScene(battleScene);
+            CrossPlatformGame.StackScene(battleScene, true);
         }
     }
 }

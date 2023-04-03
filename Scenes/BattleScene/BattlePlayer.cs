@@ -14,33 +14,17 @@ namespace EtrianLike.Scenes.BattleScene
 {
     public class BattlePlayer : Battler
     {
-        public const int HERO_WIDTH = 24;
-        public const int HERO_HEIGHT = 32;
+        public const int HERO_WIDTH = 100;
+        public const int HERO_HEIGHT = 100;
 
         protected enum HeroAnimation
         {
-            Ready,
-            Victory,
-            Guarding,
-            Attack,
-            Chanting,
-            Spell,
-            Hit,
-            Hurting,
-            Dead
+            Ready
         }
 
         public static readonly Dictionary<string, Animation> HERO_ANIMATIONS = new Dictionary<string, Animation>()
         {
-            { HeroAnimation.Ready.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 4, 400) },
-            { HeroAnimation.Victory.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 4, 200) },
-            { HeroAnimation.Guarding.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 1000) },
-            { HeroAnimation.Attack.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 4, 80) },
-            { HeroAnimation.Chanting.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 1000) },
-            { HeroAnimation.Spell.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 3, 80) },
-            { HeroAnimation.Hit.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 600) },
-            { HeroAnimation.Hurting.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 2, 100) },
-            { HeroAnimation.Dead.ToString(), new Animation(1, 3, HERO_WIDTH, HERO_HEIGHT, 1, 1000) }
+            { HeroAnimation.Ready.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) }
         };
 
         private Dictionary<string, int> exercise = new Dictionary<string, int>();
@@ -70,7 +54,7 @@ namespace EtrianLike.Scenes.BattleScene
         {
             base.LoadAttributes(xmlNode);
             stats = HeroModel;
-            AnimatedSprite = new AnimatedSprite(AssetCache.SPRITES[HeroModel.Sprite.Value], HERO_ANIMATIONS);
+            AnimatedSprite = new AnimatedSprite(AssetCache.SPRITES[HeroModel.ProfileSprite.Value], HERO_ANIMATIONS);
             bounds = AnimatedSprite.SpriteBounds();
             battleScene.AddBattler(this);
 

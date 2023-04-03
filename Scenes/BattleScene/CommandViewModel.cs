@@ -352,5 +352,8 @@ namespace EtrianLike.Scenes.BattleScene
         public ModelProperty<string> Description3 { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> Description4 { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> Description5 { get; set; } = new ModelProperty<string>("");
+
+
+        public Rectangle PortraitBounds { get; set; } = new Rectangle(CrossPlatformGame.ScreenWidth - 255, 20, 255, 500); 
     }
 }

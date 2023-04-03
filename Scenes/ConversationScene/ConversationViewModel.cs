@@ -175,9 +175,9 @@ namespace EtrianLike.Scenes.ConversationScene
 
         public event Action OnDialogueScrolled;
 
-        public ModelProperty<Rectangle> Window { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-93, 113, 458, 120));
+        public ModelProperty<Rectangle> Window { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-345, 160, 690, 100));
         public ModelProperty<bool> ReadyToProceed { get; set; } = new ModelProperty<bool>(false);
-        public ModelProperty<GameFont> ConversationFont { get; set; } = GameProfile.PlayerProfile.Font;
+        public ModelProperty<GameFont> ConversationFont { get; set; } = new ModelProperty<GameFont>(GameFont.Dialogue);
         public ModelProperty<string> Dialogue { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> Speaker { get; set; } = new ModelProperty<string>("");
     }

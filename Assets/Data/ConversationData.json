@@ -1,17 +1,36 @@
 [
 	{
-		"Name": "PADirections",
+		"Name": "GameIntro",
 		"DialogueRecords": [
 			{
-				"Text": "A voice on the PA announces the start of class in five minutes. Look for your classroom in the northwest corner."
+				"Text": "Game Introduction. Establish setting and instruct player to find their first class with directions in #F3C14CFF colored text."
 			}
 		]
 	},
 	{
-		"Name": "TestConvo",
+		"Name": "FirstPeriod",
 		"DialogueRecords": [
 			{
-				"Text": "Automatic #F3C14CFF conversation test."
+				"Text": "Introduce Angélia. Direct player to find their second period classroom."
+			}
+		]
+	},
+	{
+		"Name": "SecondPeriod",
+		"DialogueRecords": [
+			{
+				"Text": "Introduce Wren. Direct player to find the library."
+			}
+		]
+	},
+	{
+		"Name": "LibraryIntro",
+		"DialogueRecords": [
+			{
+				"Text": "Players learns about book banning, maybe gets a promonition of bad mojo from the library or witnesses a supernatural event."
+			},
+			{
+				"Text": "Rest of the day is fast-forwarded and the player either comes back here to investigate or gets to prepare from a status menu."
 			}
 		]
 	},
@@ -24,20 +43,10 @@
 		]
 	},
 	{
-		"Name": "IntroInventor",
-		"Bounds": "-120,-70,240,42",
+		"Name": "Rumors",
 		"DialogueRecords": [
 			{
-				"Speaker": "$Party.0",
-				"Text": "Inventor, I've figured out what makes me different from the other robots."
-			},
-			{
-				"Speaker": "Inventor",
-				"Text": "This means you've learned how to use magic. Now you're ready to search for your missing components."
-			},
-			{
-				"Speaker": "Inventor",
-				"Text": "Bring me parts from the scrapyard #F3C14CFF northeast #FFFFFFFF of here and I'll construct drones to protect you along the way."
+				"Text": "Overheard rumors or encounters with classmates help to build the setting and foreshadow upcoming events."
 			}
 		]
 	},

@@ -46,7 +46,7 @@ namespace EtrianLike.Scenes.StatusScene
                 }
                 else
                 {
-                    HeroModel heroModel = new HeroModel(HeroType.Inventor);
+                    HeroModel heroModel = new HeroModel(HeroType.Cyra);
                     heroModel.Name.Value = "- Empty Save -";
                     AnimatedSprite animatedSprite = new AnimatedSprite(AssetCache.SPRITES[GameSprite.Actors_Blank], StatusViewModel.HERO_ANIMATIONS);
                     AvailableSaves.Add(new TitleScene.SaveModel()

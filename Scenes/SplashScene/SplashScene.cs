@@ -65,19 +65,17 @@ namespace EtrianLike.Scenes.SplashScene
             GameProfile.SetSaveData<bool>("NoviceWarriorRecruitable", true);
             GameProfile.SetSaveData<bool>("NoviceMageRecruitable", true);
 
-            var hero = new HeroModel(HeroType.TechHero);
-            hero.Name.Value = "Android";
-            GameProfile.PlayerProfile.Party.Add(hero);
-            GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.ArcWelderDrone));
-            GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.NoviceWarrior));
+            GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.Cyra));
+            GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.Angélia));
+            GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.Wren));
 
-            GameProfile.SetSaveData<HeroModel>("PartyLeader", hero);
+            GameProfile.SetSaveData<HeroModel>("PartyLeader", GameProfile.PlayerProfile.Party.First().Value);
             GameProfile.SetSaveData<string>("WindowStyle", GameProfile.PlayerProfile.WindowStyle.Value);
             GameProfile.SetSaveData<GameFont>("Font", GameProfile.PlayerProfile.Font.Value);
 
             // CrossPlatformGame.Transition(typeof(IntroScene.IntroScene));
 
-            CrossPlatformGame.Transition(typeof(MapScene.MapScene), "School");
+            CrossPlatformGame.Transition(typeof(MapScene.MapScene), "SchoolHall");
         }
 
         public bool Terminated { get => false; }

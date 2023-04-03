@@ -63,6 +63,8 @@ namespace EtrianLike.SceneObjects
 
         public virtual void Update(GameTime gameTime)
         {
+            if (Suspended) return;
+
             int i = 0;
 
             for (i = 0; i < Enum.GetNames(typeof(PriorityLevel)).Length; i++)
@@ -227,5 +229,6 @@ namespace EtrianLike.SceneObjects
         public List<Entity> EntityList { get => entityList; }
         public Vector2 GetMousePoint { get => new Vector2(Input.MousePosition.X + Camera.View.X, Input.MousePosition.Y + Camera.View.Y); }
         public bool SceneEnded { get => sceneEnded; }
+        public bool Suspended { get; set; }
     }
 }

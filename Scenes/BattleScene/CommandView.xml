@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <View>
 
-	<Panel Name="BattlePanel" Anchor="$CenterX,$CenterY" Bounds="-20,30,170,80">
+	<Panel Name="BattlePanel" Anchor="$CenterX,$CenterY" Bounds="-345,160,690,100">
 		<Panel Bounds="0,0,170,20" InnerMargin="8,4,8,8">
 			<Button Name="Equipment" Radio="True" Style="TechFrame" PushedStyle="TechFrameSelected" Bounds="-8,-4,62,20" Alignment="Left" InnerMargin="8,8,8,8" Action="SelectEquipment">
 				<Label Text="Equipment" Bounds="2,-8,40,20"/>
@@ -29,6 +29,10 @@
 			<Label Text="Bind Description4" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
 			<Label Text="Bind Description5" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
 		</Panel>
+	</Panel>
+
+	<Panel Name="PortraitPanel" Bounds="Ref PortraitBounds">
+		<Image Alignment="Stretch" GameSprite="Bind ActivePlayer.HeroModel.PortraitSprite"/>
 	</Panel>
 	
 </View>

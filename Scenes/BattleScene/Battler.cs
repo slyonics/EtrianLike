@@ -164,8 +164,10 @@ namespace EtrianLike.Scenes.BattleScene
 
         public virtual void Repair(int healing)
         {
+            /*
             if (stats.Class.Value != ClassType.Android && stats.Class.Value != ClassType.Drone) return;
             Heal(healing);
+            */
         }
 
         public virtual void Heal(int healing)

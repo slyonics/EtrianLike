@@ -8,15 +8,9 @@ namespace EtrianLike.Scenes.StatusScene
 {
     public enum HeroType
     {
-        Inventor,
-        TechHero,
-        RepairDrone,
-        DeflectorDrone,
-        BlowtorchDrone,
-        ArcWelderDrone,
-        TechnoMage,
-        NoviceWarrior,
-        NoviceMage
+        Cyra,
+        Angélia,
+        Wren
     }
 
     public enum ElementType
@@ -33,6 +27,8 @@ namespace EtrianLike.Scenes.StatusScene
         public HeroType Name { get; set; }
         public ClassType Class { get; set; }
         public string Sprite { get; set; }
+        public string ProfileSprite { get; set; }
+        public string PortraitSprite { get; set; }
         public double HealthGrowth { get; set; }
         public double StrengthGrowth { get; set; }
         public double DefenseGrowth { get; set; }

@@ -24,13 +24,14 @@ namespace EtrianLike.Main
             public int fontSize;
             public int fontHeight;
             public int heightOffset;
+            public bool extended;
         }
 
         private const float TEXT_DEPTH = 0.1f;
 
         public static readonly Dictionary<GameFont, GameFontData> FONT_DATA = new Dictionary<GameFont, GameFontData>()
         {
-            { GameFont.Dialogue, new GameFontData() { fontFile = "Futuradot-H10", fontSize = 10, fontHeight = 8 } },
+            { GameFont.Dialogue, new GameFontData() { fontFile = "Silver", fontSize = 40, fontHeight = 25, extended = true } },
             { GameFont.Tooltip, new GameFontData() { fontFile = "Futuradot-H10", fontSize = 10, fontHeight = 10 } },
             { GameFont.Interface, new GameFontData() { fontFile = "favourdot-h9-bold", fontSize = 9, fontHeight = 10 } },
             { GameFont.DotFont, new GameFontData() { fontFile = "pounding-my-head", fontSize = 11, fontHeight = 10 } },
@@ -51,8 +52,17 @@ namespace EtrianLike.Main
 
             foreach (KeyValuePair<GameFont, GameFontData> fontEntry in FONT_DATA)
             {
-                TtfFontBakerResult bakedFont = TtfFontBaker.Bake(rawFonts[fontEntry.Value.fontFile], fontEntry.Value.fontSize, 1024, 1024, new[] { CharacterRange.BasicLatin });
-                GAME_FONTS.Add(fontEntry.Key, bakedFont.CreateSpriteFont(graphicsDevice));
+                if (fontEntry.Value.extended)
+                {
+                    TtfFontBakerResult bakedFont = TtfFontBaker.Bake(rawFonts[fontEntry.Value.fontFile], fontEntry.Value.fontSize, 1024, 1024, new[] { new CharacterRange(' ', '\u00ff') });
+                    GAME_FONTS.Add(fontEntry.Key, bakedFont.CreateSpriteFont(graphicsDevice));
+                }
+                else
+                {
+                    TtfFontBakerResult bakedFont = TtfFontBaker.Bake(rawFonts[fontEntry.Value.fontFile], fontEntry.Value.fontSize, 1024, 1024, new[] { CharacterRange.BasicLatin });
+                    GAME_FONTS.Add(fontEntry.Key, bakedFont.CreateSpriteFont(graphicsDevice));
+                }
+                
             }
         }
 

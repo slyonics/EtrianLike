@@ -21,6 +21,16 @@ namespace EtrianLike.SceneObjects.Widgets
         private Texture2D picture;
         private Texture2D Picture { get => picture; set { picture = value; } }
 
+        private GameSprite GameSprite
+        {
+            
+
+            set
+            {
+                picture = AssetCache.SPRITES[value];
+            }
+        }
+
         public float SpriteScale { get; set; } = 1.0f;
 
         public Image(Widget iParent, float widgetDepth)

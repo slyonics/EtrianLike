@@ -8,6 +8,9 @@ namespace EtrianLike.Scenes.StatusScene
 {
     public enum ClassType
     {
+        Cinderella,
+        Tezen,
+        Donkeyskin,
         Android,
         Drone,
         Human,

@@ -79,7 +79,6 @@ namespace EtrianLike.Scenes.BattleScene
                     foreach (BattlePlayer battlePlayer in battleScene.PlayerList)
                     {
                         if (battlePlayer.Dead && !Command.TargetDead) continue;
-                        if (Command.TargetMechanical && battlePlayer.HeroModel.Class.Value != ClassType.Android && battlePlayer.HeroModel.Class.Value != ClassType.Drone) continue;
 
                         Rectangle bounds = battlePlayer.SpriteBounds;
                         Targets.Add(new TargetButton() { Name = "", NameVisible = false, Bounds = bounds, target = battlePlayer });

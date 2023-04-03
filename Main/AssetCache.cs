@@ -59,7 +59,7 @@ namespace EtrianLike.Main
         private static void LoadData()
         {
             List<Tuple<byte[], byte[]>> dataAssets = LoadAssetData("Data.jam");
-            DATA = dataAssets.ToDictionary(x => Encoding.ASCII.GetString(x.Item1), x => Encoding.ASCII.GetString(x.Item2));
+            DATA = dataAssets.ToDictionary(x => Encoding.Unicode.GetString(x.Item1), x => Encoding.Unicode.GetString(x.Item2));
         }
 
         public static List<T> LoadRecords<T>(string dataFileName)

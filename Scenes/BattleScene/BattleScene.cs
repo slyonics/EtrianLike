@@ -22,8 +22,6 @@ namespace EtrianLike.Scenes.BattleScene
 
         private EncounterRecord encounterRecord;
 
-        public RenderTarget2D backgroundRender;
-
         private BattleViewModel battleViewModel;
 
         private List<Battler> initiativeList = new List<Battler>();
@@ -53,19 +51,12 @@ namespace EtrianLike.Scenes.BattleScene
             battleViewModel = AddView(new BattleViewModel(this, ENCOUNTERS.First(x => x.Name == encounterName)));
 
 
-            BuildBackground(AssetCache.SPRITES[(GameSprite)Enum.Parse(typeof(GameSprite), "Background_" + encounterRecord.Background)], battleViewModel.EnemyWindow.Value.Width);
-            battleViewModel.BackgroundRender.Value = backgroundRender;
 
             List<Battler> battlerList = new List<Battler>();
             battlerList.AddRange(PlayerList);
             battlerList.AddRange(EnemyList);
             foreach (Battler battler in battlerList) battler.Initiative = (int)(battler.BiggestStat * Rng.RandomDouble(0.75, 1.25));
             foreach (Battler battler in battlerList.OrderByDescending(x => x.Initiative)) EnqueueInitiative(battler);
-        }
-
-        ~BattleScene()
-        {
-            backgroundRender.Dispose();
         }
 
         public override void BeginScene()
@@ -96,19 +87,6 @@ namespace EtrianLike.Scenes.BattleScene
             BattleEnemy.Initialize();
         }
 
-        private void BuildBackground(Texture2D backgroundImage, int width)
-        {
-            backgroundRender = new RenderTarget2D(CrossPlatformGame.GameInstance.GraphicsDevice, width, 112);
-            CrossPlatformGame.GameInstance.GraphicsDevice.SetRenderTarget(backgroundRender);
-            CrossPlatformGame.GameInstance.GraphicsDevice.Clear(Color.Transparent);
-            SpriteBatch spriteBatch = new SpriteBatch(CrossPlatformGame.GameInstance.GraphicsDevice);
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, null);
-            spriteBatch.Draw(backgroundImage, Vector2.Zero, BACKGROUND_SOURCE[0], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.99f);
-            for (int i = 1; i < width / 16; i++) spriteBatch.Draw(backgroundImage, new Vector2(i * 16, 0), BACKGROUND_SOURCE[1], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.99f);
-            spriteBatch.Draw(backgroundImage, new Vector2(width, 0) - new Vector2(16, 0), BACKGROUND_SOURCE[2], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.99f);
-            spriteBatch.End();
-        }
-
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -130,7 +108,7 @@ namespace EtrianLike.Scenes.BattleScene
                             new ConversationScene.DialogueRecord() { Text = encounterRecord.Intro }
                         }
                 };
-                var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-20, 30, 170, 80));
+                var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100));
                 CrossPlatformGame.StackScene(convoScene);
             }
 
@@ -159,7 +137,7 @@ namespace EtrianLike.Scenes.BattleScene
                         DialogueRecords = dialogueRecords.ToArray()
                     };
 
-                    var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-20, 30, 170, 80));
+                    var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100));
                     convoScene.OnTerminated += new TerminationFollowup(battleViewModel.Close);
                     CrossPlatformGame.StackScene(convoScene);
                 }
@@ -208,7 +186,7 @@ namespace EtrianLike.Scenes.BattleScene
                             new ConversationScene.DialogueRecord() { Text = narration, Script = new string[] { "StopMusic", "Sound gameover", "Wait 3500", "ChangeMap HomeLab 5 7 Up"} }
                         }
                     };
-                    var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-20, 30, 170, 80), 3500);
+                    var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100), 3500);
                     CrossPlatformGame.StackScene(convoScene);
                 }
                 else ActivateNextBattler();

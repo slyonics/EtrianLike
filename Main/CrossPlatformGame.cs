@@ -132,8 +132,8 @@ namespace EtrianLike.Main
             gameRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight);
             compositeRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color, DepthFormat.Depth16, 0, RenderTargetUsage.PreserveContents);
 
-            mapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 460 * screenScale, 280 * screenScale, false, SurfaceFormat.Color, DepthFormat.Depth16, 8, RenderTargetUsage.DiscardContents);
-            minimapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 208, 288);
+            mapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 690 * screenScale, 420 * screenScale, false, SurfaceFormat.Color, DepthFormat.Depth16, 8, RenderTargetUsage.DiscardContents);
+            minimapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 112, 112);
         }
 
         private void CrossPlatformGame_Exiting(object sender, EventArgs e)
@@ -242,12 +242,16 @@ namespace EtrianLike.Main
             newScene.BeginScene();
         }
 
-        public static void StackScene(Scene newScene)
+        public static void StackScene(Scene newScene, bool suspended = false)
         {
             lock (sceneStack)
             {
                 sceneStack.Add(CurrentScene);
             }
+
+            CurrentScene.Suspended = suspended;
+            var oldScene = CurrentScene;
+            newScene.OnTerminated += new TerminationFollowup(() => oldScene.Suspended = false);
 
             CurrentScene = newScene;
             newScene.BeginScene();

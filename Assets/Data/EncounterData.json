@@ -1,36 +1,14 @@
 [
 	{
-		"Name": "DoubleSentinel",
-		"Enemies": [
-			"Sentinel",
-			"Sentinel"
-		],
-		"Challenge": 2,
-		"Script": [],
-		"Intro": "Two sentinels appear and move into attack formation!"
-	},
-	{
-		"Name": "Rattlesnake",
-		"Background": "Desert",
-		"Width": 96,
-		"Enemies": [
-			"Rattlesnake"
-		],
-		"Challenge": 1,
-		"Script": [],
-		"Intro": "A rattlesnake is alarmed by your presence and lunges at you!!"
-	},
-	{
 		"Name": "ScorpionNest",
 		"Background": "Desert",
 		"Enemies": [
-			"Scorpion",
 			"Scorpion",
 			"Scorpion",
 			"Scorpion"
 		],
 		"Challenge": 2,
 		"Script": [],
-		"Intro": "A nest of angry scorpions swarm around you!"
+		"Intro": "A test battle commences!!"
 	}
 ]

@@ -270,7 +270,7 @@ namespace EtrianLike.Scenes.MapScene
 
         public void DrawMinimap(SpriteBatch spriteBatch, Vector2 offset)
         {
-            spriteBatch.Draw(minimapSprite, new Vector2(RoomX * 16, RoomY * 16) + offset, minimapSource[waypointTile], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+            spriteBatch.Draw(minimapSprite, offset, minimapSource[waypointTile], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
         }
 
         public void ResetMinimapIcon()
@@ -340,7 +340,7 @@ namespace EtrianLike.Scenes.MapScene
             }
             else
             {
-
+                /*
                     int stepsRemaining = GameProfile.GetSaveData<int>("RandomBattle");
                     stepsRemaining--;
                     GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
@@ -351,11 +351,11 @@ namespace EtrianLike.Scenes.MapScene
                         GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
 
                         BattleScene.BattleScene battleScene = new BattleScene.BattleScene("ScorpionNest");
-                        CrossPlatformGame.StackScene(battleScene);
+                        CrossPlatformGame.StackScene(battleScene, true);
 
                         parentScene.ResetPathfinding();
                     }
-                
+                */
             }
         }
 
@@ -363,6 +363,7 @@ namespace EtrianLike.Scenes.MapScene
         {
             waypointTile = 3;
         }
+
 
         public List<MapRoom> Neighbors { get; private set; } = new List<MapRoom>();
 

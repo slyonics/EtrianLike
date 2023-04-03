@@ -1,35 +1,32 @@
 [
 	{
-		"ClassType": "Human",
+		"ClassType": "Cinderella",
 		"InitialEquipment": [],
 		"InitialAbilities": [],
 		"Actions": [
-			"Delay",
-			"Defend",
-			"Flee",
-			"Punch"
+			"Fight",
+			"Magic",
+			"Flee"
 		]
 	},
 	{
-		"ClassType": "Android",
+		"ClassType": "Tezen",
 		"InitialEquipment": [],
 		"InitialAbilities": [],
 		"Actions": [
-			"Delay",
-			"Defend",
-			"Flee",
-			"Punch"
+			"Fight",
+			"Magic",
+			"Flee"
 		]
 	},
 	{
-		"ClassType": "Drone",
+		"ClassType": "Donkeyskin",
 		"InitialEquipment": [],
 		"InitialAbilities": [],
 		"Actions": [
-			"Delay",
-			"Defend",
-			"Flee",
-			"Tackle"
+			"Fight",
+			"Magic",
+			"Flee"
 		]
 	}
 ]
