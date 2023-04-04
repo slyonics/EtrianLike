@@ -332,8 +332,8 @@ namespace EtrianLike.Scenes.MapScene
             base.BeginScene();
 
             if (MapName == "School Foyer") Audio.PlayMusic(GameMusic.SchoolDay);
-            else if (MapName == "School (Night)") Audio.PlayMusic(GameMusic.SMP_DUN);
-            if (MapName == "Dark Library") Audio.PlayMusic(GameMusic.SMP_TNS);
+            else if (MapName == "School (Night)") Audio.PlayMusic(GameMusic.SchoolNight);
+            if (MapName == "Dark Library") Audio.PlayMusic(GameMusic.SchoolNight);
         }
 
         public void SetWaypoint(int pointX, int pointY)
@@ -507,29 +507,29 @@ namespace EtrianLike.Scenes.MapScene
 
         private void DrawMiniMap(SpriteBatch spriteBatch)
         {
-            Panel miniMapPanel = mapViewModel.GetWidget<Panel>("MiniMapPanel");
-            if (!miniMapPanel.Transitioning && miniMapPanel.Visible)
+            //Panel miniMapPanel = mapViewModel.GetWidget<Panel>("MiniMapPanel");
+            //if (!miniMapPanel.Transitioning && miniMapPanel.Visible)
             {
-                int startX = Math.Max(0, roomX - 3);
-                int endX = startX + 7;
+                MinimapStartX = Math.Max(0, roomX - 3);
+                int endX = MinimapStartX + 7;
                 if (endX > mapRooms.GetLength(0) - 1)
                 {
                     endX = mapRooms.GetLength(0) - 1;
-                    startX = Math.Max(0, endX - 6);
+                    MinimapStartX = Math.Max(0, endX - 6);
                 }
 
-                int startY = Math.Max(0, roomY - 3);
-                int endY = startY + 7;
+                MinimapStartY = Math.Max(0, roomY - 3);
+                int endY = MinimapStartY + 7;
                 if (endY > mapRooms.GetLength(1) - 1)
                 {
                     endY = mapRooms.GetLength(1) - 1;
-                    startY = Math.Max(0, endY - 6);
+                    MinimapStartY = Math.Max(0, endY - 6);
                 }
 
                 Vector2 offset = new Vector2(0, 0);
-                for (int x = startX; x <= endX; x++)
+                for (int x = MinimapStartX; x <= endX; x++)
                 {
-                    for (int y = startY; y <= endY; y++)
+                    for (int y = MinimapStartY; y <= endY; y++)
                     {
                         MapRoom mapRoom = mapRooms[x, y];
                         mapRoom?.DrawMinimap(spriteBatch, offset);
@@ -541,7 +541,7 @@ namespace EtrianLike.Scenes.MapScene
                     offset.X += 16;
                 }
 
-                spriteBatch.Draw(minimapSprite, new Vector2((roomX - startX) * 16, (roomY - startY) * 16), minimapSource[(int)direction], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+                spriteBatch.Draw(minimapSprite, new Vector2((roomX - MinimapStartX) * 16, (roomY - MinimapStartY) * 16), minimapSource[(int)direction], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
 
             }
         }
@@ -556,9 +556,9 @@ namespace EtrianLike.Scenes.MapScene
             if (PriorityLevel != PriorityLevel.GameLevel || controllerList.Any(x => x.Any(y => y is EventController))) return;
 
             Panel miniMapPanel = mapViewModel.GetWidget<Panel>("MiniMapPanel");
-            clickPosition -= new Vector2((miniMapPanel.InnerBounds.Width - mapRooms.GetLength(0) * 16) / 2, (miniMapPanel.InnerBounds.Height - mapRooms.GetLength(1) * 16) / 2);
-            int newRoomX = (int)clickPosition.X / 16;
-            int newRoomY = (int)clickPosition.Y / 16;
+            //clickPosition -= new Vector2((miniMapPanel.InnerBounds.Width - 7 * 16) / 2, (miniMapPanel.InnerBounds.Height - 7 * 16) / 2);
+            int newRoomX = (int)clickPosition.X / 16 + MinimapStartX;
+            int newRoomY = (int)clickPosition.Y / 16 + MinimapStartY;
 
             if (newRoomX >= 0 && newRoomY >= 0 && newRoomX < mapRooms.GetLength(0) && newRoomY < mapRooms.GetLength(1))
             {
@@ -653,6 +653,9 @@ namespace EtrianLike.Scenes.MapScene
 
         public int MapWidth { get; set; }
         public int MapHeight { get; set; }
+
+        public int MinimapStartX { get; set; } = 0;
+        public int MinimapStartY { get; set; } = 0;
 
         public string MapFileName { get; set; }
 
