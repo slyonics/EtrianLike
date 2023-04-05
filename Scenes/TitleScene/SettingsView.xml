@@ -3,10 +3,10 @@
 
 
 
-  <Panel Style="Bind PlayerProfile.WindowStyle" Anchor="$CenterX,$CenterY" Bounds="-160,-120,320,240" InnerMargin="8,8,8,8" TransitionIn="Expand" TransitionOut="Shrink">
+  <Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-160,-120,320,240" InnerMargin="8,8,8,8" TransitionIn="Expand" TransitionOut="Shrink">
 
     <Label Text="Display Mode" Font="Dialogue" Alignment="Vertical" Color="#D6C18BFF"/>
-    <Button Style="Bind PlayerProfile.WindowStyle" Bounds="0, 8, 100, 18" Alignment="Vertical" Action="ToggleFullscreen" InnerMargin="0,0,0,0" PushedStyle="Bind PlayerProfile.SelectedStyle">
+    <Button Style="SubBlack" Bounds="0, 8, 100, 18" Alignment="Vertical" Action="ToggleFullscreen" InnerMargin="0,0,0,0" PushedStyle="Bind PlayerProfile.SelectedStyle">
       <Label Text="Bind DisplayMode" Alignment="Center" Color="#C9BDBDFF" Font="Dialogue"/>
     </Button>
 
@@ -33,10 +33,10 @@
     </Panel>
 
     <Panel Bounds="0,0,120,18" Alignment="ReverseVertical">
-      <Button Style="Bind PlayerProfile.WindowStyle" Bounds="0, 0, 50, 18" Alignment="Cascading" Action="Back" InnerMargin="0,0,0,0" PushedStyle="Bind PlayerProfile.SelectedStyle">
+      <Button Style="SubBlack" Bounds="0, 0, 50, 18" Alignment="Cascading" Action="Back" InnerMargin="0,0,0,0" PushedStyle="Bind PlayerProfile.SelectedStyle">
         <Label Text="Back" Alignment="Center" Color="#C9BDBDFF" Font="Dialogue"/>
       </Button>
-      <Button Style="Bind PlayerProfile.WindowStyle" Bounds="20, 0, 50, 18" Alignment="Cascading" Action="Apply" InnerMargin="0,0,0,0" PushedStyle="Bind PlayerProfile.SelectedStyle">
+      <Button Style="SubBlack" Bounds="20, 0, 50, 18" Alignment="Cascading" Action="Apply" InnerMargin="0,0,0,0" PushedStyle="Bind PlayerProfile.SelectedStyle">
         <Label Text="Apply" Alignment="Center" Color="#C9BDBDFF" Font="Dialogue"/>
       </Button>
     </Panel>

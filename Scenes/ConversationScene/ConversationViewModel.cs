@@ -21,6 +21,8 @@ namespace EtrianLike.Scenes.ConversationScene
         public bool AutoProceed { get; set; }
         public int AutoProceedLength { get; set; } = -1;
 
+        public bool disableEnd = false;
+
         public ConversationViewModel(ConversationScene iScene, ConversationRecord iConversationRecord)
             : base(iScene, PriorityLevel.GameLevel)
         {
@@ -134,7 +136,7 @@ namespace EtrianLike.Scenes.ConversationScene
                     ConversationController conversationController = conversationScene.AddController(new ConversationController(conversationScene, conversationRecord.EndScript));
                     conversationController.OnTerminated += EndConversation;
                 }
-                else EndConversation();
+                else if (!disableEnd) EndConversation();
 
                 return;
             }
@@ -171,14 +173,18 @@ namespace EtrianLike.Scenes.ConversationScene
 
             Speaker.Value = string.IsNullOrEmpty(currentDialogue.Speaker) ? "" : currentDialogue.Speaker;
             Dialogue.Value = currentDialogue.Text;
+
+            disableEnd = false;
         }
 
         public event Action OnDialogueScrolled;
 
-        public ModelProperty<Rectangle> Window { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-345, 160, 690, 100));
+        public ModelProperty<Rectangle> Window { get; set; } = new ModelProperty<Rectangle>(CONVO_BOUNDS);
         public ModelProperty<bool> ReadyToProceed { get; set; } = new ModelProperty<bool>(false);
         public ModelProperty<GameFont> ConversationFont { get; set; } = new ModelProperty<GameFont>(GameFont.Dialogue);
         public ModelProperty<string> Dialogue { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> Speaker { get; set; } = new ModelProperty<string>("");
+
+        public static readonly Rectangle CONVO_BOUNDS = new Rectangle(-345, 150, 690, 120);
     }
 }

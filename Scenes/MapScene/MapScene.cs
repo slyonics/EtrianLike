@@ -22,6 +22,7 @@ namespace EtrianLike.Scenes.MapScene
         }
 
         public string MapName { get; private set; }
+        public string LocationName { get; private set; }
         public float AmbientLight { get; private set; }
 
         private MapViewModel mapViewModel;
@@ -111,11 +112,10 @@ namespace EtrianLike.Scenes.MapScene
             GameProfile.SetSaveData<int>("LastRoomX", roomX);
             GameProfile.SetSaveData<int>("LastRoomY", roomY);
             GameProfile.SetSaveData<Direction>("LastDirection", direction);
+            GameProfile.SetSaveData<string>("PlayerLocation", LocationName);
 
             GameProfile.SaveState();
         }
-
-
 
         private void LoadMap(string mapName, string spawnName = "Default")
         {
@@ -145,6 +145,12 @@ namespace EtrianLike.Scenes.MapScene
             if (ambientProperty != null)
             {
                 AmbientLight = float.Parse(ambientProperty.value);
+            }
+
+            TiledProperty locationNameProperty = tiledMap.Properties.FirstOrDefault(x => x.name == "LocationName");
+            if (ambientProperty != null)
+            {
+                LocationName = locationNameProperty.value;
             }
 
             MapWidth = tiledMap.Width;
@@ -286,6 +292,12 @@ namespace EtrianLike.Scenes.MapScene
             {
 
             }
+
+            GameProfile.SetSaveData<string>("LastMap", MapFileName);
+            GameProfile.SetSaveData<int>("LastRoomX", roomX);
+            GameProfile.SetSaveData<int>("LastRoomY", roomY);
+            GameProfile.SetSaveData<Direction>("LastDirection", direction);
+            GameProfile.SetSaveData<string>("PlayerLocation", LocationName);
         }
 
         void Lighting(TiledObject tiledObject)
@@ -384,8 +396,6 @@ namespace EtrianLike.Scenes.MapScene
 
         public void MoveForward()
         {
-            SaveData();
-
             TransitionController transitionController;
 
             switch (direction)

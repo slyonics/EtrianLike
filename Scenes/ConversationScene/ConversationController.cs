@@ -46,6 +46,8 @@ namespace EtrianLike.Scenes.ConversationScene
                 case "Animate": Animate(tokens); break;
                 case "SelectionPrompt": SelectionPrompt(tokens); break;
                 case "ChangeConversation": ChangeConversation(tokens); break;
+                case "EndConversation": conversationScene.ConversationViewModel.disableEnd = false; conversationScene.ConversationViewModel.Proceed(); break;
+                case "DisableEnd": conversationScene.ConversationViewModel.disableEnd = true; break;
 
                 //case "ChangeMap": MapScene.EventController.ChangeMap(tokens, null); break;
 

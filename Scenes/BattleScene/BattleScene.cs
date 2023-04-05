@@ -108,7 +108,7 @@ namespace EtrianLike.Scenes.BattleScene
                             new ConversationScene.DialogueRecord() { Text = encounterRecord.Intro }
                         }
                 };
-                var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100));
+                var convoScene = new ConversationScene.ConversationScene(convoRecord, ConversationScene.ConversationViewModel.CONVO_BOUNDS);
                 CrossPlatformGame.StackScene(convoScene);
             }
 
@@ -137,7 +137,7 @@ namespace EtrianLike.Scenes.BattleScene
                         DialogueRecords = dialogueRecords.ToArray()
                     };
 
-                    var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100));
+                    var convoScene = new ConversationScene.ConversationScene(convoRecord, ConversationScene.ConversationViewModel.CONVO_BOUNDS);
                     convoScene.OnTerminated += new TerminationFollowup(battleViewModel.Close);
                     CrossPlatformGame.StackScene(convoScene);
                 }
@@ -186,7 +186,7 @@ namespace EtrianLike.Scenes.BattleScene
                             new ConversationScene.DialogueRecord() { Text = narration, Script = new string[] { "StopMusic", "Sound gameover", "Wait 3500", "ChangeMap HomeLab 5 7 Up"} }
                         }
                     };
-                    var convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100), 3500);
+                    var convoScene = new ConversationScene.ConversationScene(convoRecord, ConversationScene.ConversationViewModel.CONVO_BOUNDS, 3500);
                     CrossPlatformGame.StackScene(convoScene);
                 }
                 else ActivateNextBattler();

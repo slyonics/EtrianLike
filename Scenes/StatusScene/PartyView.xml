@@ -4,7 +4,7 @@
 		<DataGrid Name="PartyList" Items="Bind PartyMembers" Scrolling="False" Bounds="0,0,282,63" Alignment="Cascading" InnerMargin="4,3,0,4">
 			<Button Radio="True" Style="Blank" PushedStyle="LabelGlow" Alignment="Vertical" Bounds="0,0,274,16">
 				<Image Sprite="Bind DataGrid.PlayerSprite" Alignment="Left" Bounds="9,23,30,16"/>
-				<Label Text="Bind DataGrid.HeroModel.Name" Font="Bind PlayerProfile.Font" Alignment="Left" TextAlignment="Left" Bounds="-15,1,64,16"/>
+				<Label Text="Bind DataGrid.HeroModel.Name" Font="Dialogue" Alignment="Left" TextAlignment="Left" Bounds="-15,1,64,16"/>
 				<Panel Bounds="-61,-2,233,16" Alignment="Left">
 					<Image Icon="Heart" Alignment="Cascading" Bounds="60,6,10,10"/>
 					<Label Text="Bind DataGrid.HeroModel.Health" Font="Dialogue" Alignment="Cascading" TextAlignment="Left" Bounds="0,5,40,10"/>

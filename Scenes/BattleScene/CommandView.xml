@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <View>
 
-	<Panel Name="BattlePanel" Anchor="$CenterX,$CenterY" Bounds="-345,160,690,100">
+	<Panel Name="BattlePanel" Anchor="$CenterX,$CenterY" Bounds="-345,150,690,120">
 		<Panel Bounds="0,0,170,20" InnerMargin="8,4,8,8">
 			<Button Name="Equipment" Radio="True" Style="TechFrame" PushedStyle="TechFrameSelected" Bounds="-8,-4,62,20" Alignment="Left" InnerMargin="8,8,8,8" Action="SelectEquipment">
 				<Label Text="Equipment" Bounds="2,-8,40,20"/>

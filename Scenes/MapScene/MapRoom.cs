@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TiledCS;
 
 namespace EtrianLike.Scenes.MapScene
 {
@@ -332,6 +333,7 @@ namespace EtrianLike.Scenes.MapScene
 
         public void EnterRoom()
         {
+
             if (Script != null)
             {
                 EventController eventController = new EventController(parentScene, Script, this);
@@ -357,7 +359,11 @@ namespace EtrianLike.Scenes.MapScene
                     }
                 
             }
+
+
         }
+
+        
 
         public void SetAsWaypoint()
         {

@@ -16,7 +16,7 @@ namespace EtrianLike.Scenes.ConversationScene
 
         private int selection = -1;
 
-        public SelectionViewModel(Scene iScene, List<string> options)
+        public SelectionViewModel(Scene iScene, List<string> options, bool showMoney = false)
             : base(iScene, PriorityLevel.MenuLevel)
         {
             conversationScene = iScene as ConversationScene;
@@ -25,16 +25,24 @@ namespace EtrianLike.Scenes.ConversationScene
             foreach (string option in options)
             {
                 AvailableOptions.Add(option);
-                int optionLength = Text.GetStringLength(GameProfile.PlayerProfile.Font.Value, option);
+                int optionLength = Text.GetStringLength(GameFont.Dialogue, option);
                 if (optionLength > longestOption) longestOption = optionLength;
             }
             int width = longestOption + 14;
-            ButtonSize.Value = new Rectangle(0, 0, longestOption + 6, Text.GetStringHeight(GameProfile.PlayerProfile.Font.Value));
+            ButtonSize.Value = new Rectangle(0, 0, longestOption + 6, Text.GetStringHeight(GameFont.Dialogue));
             LabelSize.Value = new Rectangle(0, -2, longestOption + 6, ButtonSize.Value.Height);
-            WindowSize.Value = new Rectangle(120 - width, 70, width, ButtonSize.Value.Height * options.Count() + 8);
+            WindowSize.Value = new Rectangle(340 - width, 150 - (ButtonSize.Value.Height * options.Count() + 8), width, ButtonSize.Value.Height * options.Count() + 8);
 
+            ShowMoney.Value = showMoney;
 
             LoadView(GameView.ConversationScene_SelectionView);
+
+            if (!Input.MOUSE_MODE)
+            {
+                selection = 0;
+                (GetWidget<DataGrid>("OptionsList").ChildList[selection] as Button).RadioSelect();
+                SelectOption(AvailableOptions.ElementAt(selection));
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -96,5 +104,7 @@ namespace EtrianLike.Scenes.ConversationScene
         public ModelProperty<Rectangle> WindowSize { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-120, 20, 240, 60));
         public ModelProperty<Rectangle> ButtonSize { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-120, 20, 240, 60));
         public ModelProperty<Rectangle> LabelSize { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-120, 20, 240, 60));
+
+        public ModelProperty<bool> ShowMoney { get; set; } = new ModelProperty<bool>(true);
     }
 }

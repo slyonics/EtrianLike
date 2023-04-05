@@ -195,7 +195,7 @@ namespace EtrianLike.Scenes.BattleScene
                 }
             }
 
-            convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100));
+            convoScene = new ConversationScene.ConversationScene(convoRecord, ConversationScene.ConversationViewModel.CONVO_BOUNDS);
             scriptParser.BlockScript();
             convoScene.OnTerminated += battleScene.BattleViewModel.Close;
             CrossPlatformGame.StackScene(convoScene);
@@ -217,7 +217,7 @@ namespace EtrianLike.Scenes.BattleScene
         {
             if (tokens.Length == 2)
             {
-                convoScene = new ConversationScene.ConversationScene(tokens[1], new Rectangle(-345, 160, 690, 100), true);
+                convoScene = new ConversationScene.ConversationScene(tokens[1], ConversationScene.ConversationViewModel.CONVO_BOUNDS, true);
                 var unblock = scriptParser.BlockScript();
                 convoScene.ConversationViewModel.OnDialogueScrolled += new Action(unblock);
                 CrossPlatformGame.StackScene(convoScene);
@@ -237,7 +237,7 @@ namespace EtrianLike.Scenes.BattleScene
                 DialogueRecords = new ConversationScene.DialogueRecord[] { new ConversationScene.DialogueRecord() { Text = text } }
             };
 
-            convoScene = new ConversationScene.ConversationScene(convoRecord, new Rectangle(-345, 160, 690, 100), true);
+            convoScene = new ConversationScene.ConversationScene(convoRecord, ConversationScene.ConversationViewModel.CONVO_BOUNDS, true);
             var unblock = scriptParser.BlockScript();
             convoScene.ConversationViewModel.OnDialogueScrolled += new Action(unblock);
             CrossPlatformGame.StackScene(convoScene);

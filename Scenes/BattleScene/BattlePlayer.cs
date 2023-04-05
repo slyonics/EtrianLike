@@ -19,12 +19,18 @@ namespace EtrianLike.Scenes.BattleScene
 
         protected enum HeroAnimation
         {
-            Ready
+            Ready,
+            Attack,
+            Hit,
+            Dead
         }
 
         public static readonly Dictionary<string, Animation> HERO_ANIMATIONS = new Dictionary<string, Animation>()
         {
-            { HeroAnimation.Ready.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) }
+            { HeroAnimation.Ready.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) },
+            { HeroAnimation.Attack.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) },
+            { HeroAnimation.Hit.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) },
+            { HeroAnimation.Dead.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) }
         };
 
         private Dictionary<string, int> exercise = new Dictionary<string, int>();

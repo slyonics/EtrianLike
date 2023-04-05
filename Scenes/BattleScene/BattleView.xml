@@ -5,7 +5,7 @@
 		<DataGrid Items="Bind PlayerProfile.Party" Scrolling="False" Alignment="Stretch">
 			<Panel Alignment="Vertical" Bounds="0,0,102,120">
 				<Scenes.BattleScene.BattlePlayer HeroModel="Bind DataGrid" Alignment="Center"/>
-				<Label Text="Bind DataGrid.Name" Font="Bind PlayerProfile.Font" Color="Bind DataGrid.NameColor" Alignment="Cascading" TextAlignment="Left" Bounds="10,-6,0,20"/>
+				<Label Text="Bind DataGrid.Name" Font="Dialogue" Color="Bind DataGrid.NameColor" Alignment="Cascading" TextAlignment="Left" Bounds="10,-6,0,20"/>
 				<Label Text="Bind DataGrid.Health" Font="Dialogue" Color="Bind DataGrid.HealthColor" Alignment="Left" TextAlignment="Right" Bounds="90,-9,0,20"/>
 				<Label Text="/" Font="Dialogue" Color="Bind DataGrid.HealthColor" Alignment="Left" TextAlignment="Left" Bounds="0,-6,5,20"/>
 				<Label Text="Bind DataGrid.MaxHealth" Font="Dialogue" Color="Bind DataGrid.HealthColor" Alignment="Left" TextAlignment="Left" Bounds="-1,-3,0,20"/>
@@ -19,7 +19,7 @@
 		</DataGrid>
 	</Panel>
 
-	<Panel Name="BattlePanel" Style="Windows_GamePanel" Anchor="$CenterX,$CenterY" Bounds="-345,160,690,100" InnerMargin="16,18,16,18" TransitionIn="Expand" TransitionOut="Shrink">
+	<Panel Name="BattlePanel" Style="MainBlack" Anchor="$CenterX,$CenterY" Bounds="-345,150,690,120" InnerMargin="16,18,16,18" TransitionIn="Expand" TransitionOut="Shrink">
 
 	</Panel>
 	

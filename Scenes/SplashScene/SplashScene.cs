@@ -60,18 +60,11 @@ namespace EtrianLike.Scenes.SplashScene
             // CrossPlatformGame.Transition(typeof(MapScene.MapScene), "SchoolOrigin");
 
 
-
-            GameProfile.SetSaveData<bool>("NewTechGame", true);
-            GameProfile.SetSaveData<bool>("NoviceWarriorRecruitable", true);
-            GameProfile.SetSaveData<bool>("NoviceMageRecruitable", true);
-
             GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.Cyra));
             GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.Angélia));
             GameProfile.PlayerProfile.Party.Add(new HeroModel(HeroType.Wren));
 
             GameProfile.SetSaveData<HeroModel>("PartyLeader", GameProfile.PlayerProfile.Party.First().Value);
-            GameProfile.SetSaveData<string>("WindowStyle", GameProfile.PlayerProfile.WindowStyle.Value);
-            GameProfile.SetSaveData<GameFont>("Font", GameProfile.PlayerProfile.Font.Value);
 
             // CrossPlatformGame.Transition(typeof(IntroScene.IntroScene));
 

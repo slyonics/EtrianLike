@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace EtrianLike.Main
 {
@@ -100,26 +101,36 @@ namespace EtrianLike.Main
 
             if (fullscreen)
             {
+                {
+                    DisplayModeCollection displayModes = GraphicsDevice.Adapter.SupportedDisplayModes;
+                    IEnumerable<DisplayMode> bestModes = displayModes.Where(x => x.Width >= TARGET_SCREEN_WIDTH && x.Width <= MAXIMUM_SCREEN_WIDTH &&
+                                                                                 x.Height >= TARGET_SCREEN_HEIGHT && x.Height <= MAXIMUM_SCREEN_HEIGHT);
 
-                DisplayModeCollection displayModes = GraphicsDevice.Adapter.SupportedDisplayModes;
-                IEnumerable<DisplayMode> bestModes = displayModes.Where(x => x.Width >= TARGET_SCREEN_WIDTH && x.Width <= MAXIMUM_SCREEN_WIDTH &&
-                                                                             x.Height >= TARGET_SCREEN_HEIGHT && x.Height <= MAXIMUM_SCREEN_HEIGHT);
-
-                DisplayMode targetMode = bestModes.OrderByDescending(x => x.Width).FirstOrDefault();
-                scaledScreenWidth = targetMode.Width;
-                scaledScreenHeight = targetMode.Height;
-                int scale = targetMode.Height / TARGET_SCREEN_HEIGHT;
-                screenScale = 2;
-
+                    DisplayMode targetMode = bestModes.OrderByDescending(x => x.Width).FirstOrDefault();
+                    scaledScreenWidth = targetMode.Width;
+                    scaledScreenHeight = targetMode.Height;
+                    int scale = targetMode.Height / TARGET_SCREEN_HEIGHT;
+                    screenScale = scale;
+                }
             }
             else
             {
-                int availableHeight = originalHeight - WINDOWED_MARGIN;
-                int scale = availableHeight / TARGET_SCREEN_HEIGHT;
+                if (targetResolution == "Best Fit")
+                {
+                    int availableHeight = originalHeight - WINDOWED_MARGIN;
+                    int scale = availableHeight / TARGET_SCREEN_HEIGHT;
 
-                screenScale = scale;
-                scaledScreenWidth = TARGET_SCREEN_WIDTH * scale;
-                scaledScreenHeight = TARGET_SCREEN_HEIGHT * scale;
+                    screenScale = scale;
+                    scaledScreenWidth = TARGET_SCREEN_WIDTH * scale;
+                    scaledScreenHeight = TARGET_SCREEN_HEIGHT * scale;
+                }
+                else
+                {
+                    screenScale = 1;
+                    scaledScreenWidth = TARGET_SCREEN_WIDTH;
+                    scaledScreenHeight = TARGET_SCREEN_HEIGHT;
+
+                }
             }
 
             IsMouseVisible = true; // !fullscreen;

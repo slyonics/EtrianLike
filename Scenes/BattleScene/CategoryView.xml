@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<View>
+
+	<Panel Name="BattlePanel" Anchor="$CenterX,$CenterY" Bounds="-285,160,390,120">
+			<Button Name="Fight" Radio="True" Style="RoundBlack" PushedStyle="RoundPink" Bounds="0,-4,75,67" Alignment="Vertical" InnerMargin="8,8,8,8" Action="Fight">
+				<Image Icon="Knife" Alignment="Center"/>
+			</Button>
+			<Button Name="Skills" Radio="True" Style="RoundBlack" PushedStyle="RoundPink" Bounds="0,-4,75,67" Alignment="Vertical" InnerMargin="8,8,8,8" Action="Skills">
+				<Image Icon="Rod" Alignment="Center"/>
+			</Button>
+			<Button Name="Item" Radio="True" Style="RoundBlack" PushedStyle="RoundPink" Bounds="0,-4,75,67" Alignment="Vertical" InnerMargin="8,8,8,8" Action="Item">
+				<Image Icon="Potion" Alignment="Center"/>
+			</Button>
+	</Panel>
+	
+	
+
+	<Panel Name="PortraitPanel" Bounds="Ref PortraitBounds">
+		<Image Alignment="Stretch" GameSprite="Bind ActivePlayer.HeroModel.PortraitSprite"/>
+	</Panel>
+	
+</View>

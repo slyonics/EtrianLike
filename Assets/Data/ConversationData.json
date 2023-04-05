@@ -11,7 +11,10 @@
 		"Name": "FirstPeriod",
 		"DialogueRecords": [
 			{
-				"Text": "Introduce Angélia. Direct player to find their second period classroom."
+				"Text": "Introduce Angélia. Direct player to find their second period classroom.",
+				"Script": [
+					"AddPortrait portrait Jane $rightPortraitX 84 1"
+				]
 			}
 		]
 	},

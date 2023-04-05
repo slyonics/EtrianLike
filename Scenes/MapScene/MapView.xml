@@ -4,8 +4,8 @@
 	<Image Name="MiniMap" Bounds="Bind MiniMapBounds" Picture="Bind MiniMapRender" Depth="0.1"/>
 
 	<Panel Name="MapPanel" Anchor="$CenterX,$CenterY" Bounds="-345,-260,690,420">
-	  <Image Picture="Bind MapRender" Alignment="Stretch"/>
-  </Panel>
+		<Image Picture="Bind MapRender" Alignment="Stretch"/>
+	</Panel>
 
   
 </View>

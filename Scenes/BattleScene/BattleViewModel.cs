@@ -15,7 +15,7 @@ namespace EtrianLike.Scenes.BattleScene
         BattleScene battleScene;
         int enemyWidth;
         int enemyHeight;
-        CommandViewModel commandViewModel;
+        ViewModel categoryViewModel;
         public BattleEnemy LastEnemyTarget { get; set; }
         public BattlePlayer LastPlayerTarget { get; set; }
 
@@ -72,14 +72,14 @@ namespace EtrianLike.Scenes.BattleScene
         public void StartPlayerTurn(BattlePlayer battlePlayer)
         {
             PlayerTurn.Value = true;
-            commandViewModel = new CommandViewModel(battleScene, battlePlayer);
-            battleScene.AddView(commandViewModel);
+            categoryViewModel = new CategoryViewModel(battleScene, battlePlayer);
+            battleScene.AddView(categoryViewModel);
         }
 
         public void EndPlayerTurn(BattlePlayer battlePlayer)
         {
             PlayerTurn.Value = false;
-            commandViewModel.Terminate();
+            categoryViewModel.Terminate();
         }
 
         public override void Close()

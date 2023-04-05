@@ -12,11 +12,10 @@
 		"AgilityGrowth": 0.4,
 		"ManaGrowth": 0.2,
 		"InitialEquipment": [
-			"Longsword"
+			"Glass Staff"
 		],
 		"InitialAbilities": [
-			"Flame",
-			"Heal"
+			"Shard Salvo"
 		],
 		"Actions": [],
 		"BattlerModel": {
@@ -41,11 +40,10 @@
 		"AgilityGrowth": 0.1,
 		"ManaGrowth": 0.6,
 		"InitialEquipment": [
-			"Longsword"
+			"Coral Machete"
 		],
 		"InitialAbilities": [
-			"Flame",
-			"Heal"
+			"Tezen's Song"
 		],
 		"Actions": [],
 		"BattlerModel": {
@@ -70,8 +68,7 @@
 		"AgilityGrowth": 0.2,
 		"ManaGrowth": 0.2,
 		"InitialEquipment": [
-			"Shotgun",
-			"Repair Kit"
+			"Brass Knuckles"
 		],
 		"InitialAbilities": [],
 		"Actions": [],

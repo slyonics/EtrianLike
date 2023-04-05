@@ -13,14 +13,10 @@ namespace EtrianLike.Scenes.TitleScene
 {
     public class SaveModel
     {
-        public ModelProperty<StatusScene.HeroModel> PartyLeader { get; set; }
-
+        public ModelProperty<string> Header { get; set; }
         public ModelProperty<string> PlayerLocation { get; set; }
-        public ModelProperty<string> WindowStyle { get; set; }
-        public ModelProperty<string> WindowSelectedStyle { get; set; }
-        public ModelProperty<GameFont> Font { get; set; }
         public ModelProperty<int> SaveSlot { get; set; }
-        public ModelProperty<AnimatedSprite> AnimatedSprite { get; set; }
+        public ModelProperty<string> Date { get; set; }
     }
 
     public class TitleViewModel : ViewModel
@@ -41,27 +37,27 @@ namespace EtrianLike.Scenes.TitleScene
             : base(iScene, PriorityLevel.GameLevel)
         {
             GameProfile.NewState();
+
+            /*
             GameProfile.PlayerProfile.WindowStyle.Value = "TechWindow";
             GameProfile.PlayerProfile.FrameStyle.Value = "TechFrame";
             GameProfile.PlayerProfile.SelectedStyle.Value = "TechSelected";
             GameProfile.PlayerProfile.FrameSelectedStyle.Value = "TechFrameSelected";
             GameProfile.PlayerProfile.LabelStyle.Value = "TechLabel";
             GameProfile.PlayerProfile.Font.Value = GameFont.DotFont;
+            */
 
             var saves = GameProfile.GetAllSaveData();
             foreach (var saveEntry in saves)
             {
                 var save = saveEntry.Value;
-                /*AnimatedSprite animatedSprite = new AnimatedSprite(AssetCache.SPRITES[((StatusScene.HeroModel)save["PartyLeader"]).Sprite.Value], HERO_ANIMATIONS);
                 AvailableSaves.Add(new SaveModel()
                 {
+                    Header = new ModelProperty<string>(((HeroModel)save["PartyLeader"]).Name + " L5"),
                     PlayerLocation = new ModelProperty<string>((string)save["PlayerLocation"]),
-                    WindowStyle = new ModelProperty<string>((string)save["WindowStyle"]),
-                    WindowSelectedStyle = new ModelProperty<string>(((string)save["WindowStyle"]).Replace("Window", "Selected")),
-                    Font = new ModelProperty<GameFont>((GameFont)save["Font"]),
                     SaveSlot = new ModelProperty<int>(saveEntry.Key),
-                    AnimatedSprite = new ModelProperty<AnimatedSprite>(animatedSprite)
-                });*/
+                    Date = new ModelProperty<string>(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString())
+                });
             }
 
             LoadView(GameView.TitleScene_TitleView);
@@ -139,10 +135,12 @@ namespace EtrianLike.Scenes.TitleScene
 
             GameProfile.LoadState("Save" + saveSlot.ToString() + ".sav");
 
-            string mapName = GameProfile.GetSaveData<string>("LastMapName");
-            Vector2 mapPosition = new Vector2(GameProfile.GetSaveData<int>("LastPositionX"), GameProfile.GetSaveData<int>("LastPositionY"));
+            string mapName = GameProfile.GetSaveData<string>("LastMap");
+            int roomX = GameProfile.GetSaveData<int>("LastRoomX");
+            int roomY = GameProfile.GetSaveData<int>("LastRoomY");
+            MapScene.MapScene.Direction direction = GameProfile.GetSaveData<MapScene.MapScene.Direction>("LastDirection");
 
-            // CrossPlatformGame.Transition(typeof(MapScene.MapScene), mapName, mapPosition);
+            CrossPlatformGame.Transition(typeof(MapScene.MapScene), mapName, roomX, roomY, direction);
         }
 
         public void SettingsMenu()

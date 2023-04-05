@@ -35,13 +35,10 @@ namespace EtrianLike.Scenes.StatusScene
                     AnimatedSprite animatedSprite = new AnimatedSprite(AssetCache.SPRITES[((HeroModel)save["PartyLeader"]).Sprite.Value], StatusViewModel.HERO_ANIMATIONS);
                     AvailableSaves.Add(new TitleScene.SaveModel()
                     {
-                        PartyLeader = new ModelProperty<HeroModel>((HeroModel)save["PartyLeader"]),
+                        Header = new ModelProperty<string>(GameProfile.PlayerProfile.Party[0].Name.Value),
                         PlayerLocation = new ModelProperty<string>((string)save["PlayerLocation"]),
-                        WindowStyle = new ModelProperty<string>((string)save["WindowStyle"]),
-                        WindowSelectedStyle = new ModelProperty<string>(((string)save["WindowStyle"]).Replace("Window", "Selected")),
-                        Font = new ModelProperty<GameFont>((GameFont)save["Font"]),
                         SaveSlot = new ModelProperty<int>(i),
-                        AnimatedSprite = new ModelProperty<AnimatedSprite>(animatedSprite)
+                        Date = new ModelProperty<string>(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()),
                     });
                 }
                 else
@@ -51,13 +48,10 @@ namespace EtrianLike.Scenes.StatusScene
                     AnimatedSprite animatedSprite = new AnimatedSprite(AssetCache.SPRITES[GameSprite.Actors_Blank], StatusViewModel.HERO_ANIMATIONS);
                     AvailableSaves.Add(new TitleScene.SaveModel()
                     {
-                        PartyLeader = new ModelProperty<HeroModel>(heroModel),
+                        Header = new ModelProperty<string>(heroModel.Name.Value),
                         PlayerLocation = new ModelProperty<string>(""),
-                        WindowStyle = new ModelProperty<string>(GameProfile.PlayerProfile.WindowStyle.Value),
-                        WindowSelectedStyle = new ModelProperty<string>(GameProfile.PlayerProfile.SelectedStyle.Value),
-                        Font = new ModelProperty<GameFont>(GameProfile.PlayerProfile.Font.Value),
                         SaveSlot = new ModelProperty<int>(i),
-                        AnimatedSprite = new ModelProperty<AnimatedSprite>(animatedSprite)
+                        Date = new ModelProperty<string>(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()),
                     });
                 }
             }
@@ -140,19 +134,46 @@ namespace EtrianLike.Scenes.StatusScene
             else saveSlot = (int)parameter;
             GameProfile.SaveSlot = saveSlot;
 
-            //((MapScene.MapScene)CrossPlatformGame.SceneStack.First(x => x is MapScene.MapScene)).SaveMapPosition();
-            GameProfile.SetSaveData<HeroModel>("PartyLeader", GameProfile.PlayerProfile.Party.First().Value);
-            GameProfile.SaveState();
+            if (AvailableSaves[saveSlot].Header.Value == "- Empty Save -")
+            {
+                ((MapScene.MapScene)CrossPlatformGame.SceneStack.First(x => x is MapScene.MapScene)).SaveData();
+                GameProfile.SaveState();
 
-            var save = GameProfile.SaveData;
-            AnimatedSprite animatedSprite = new AnimatedSprite(AssetCache.SPRITES[((HeroModel)save["PartyLeader"]).Sprite.Value], StatusViewModel.HERO_ANIMATIONS);
+                var save = GameProfile.SaveData;
 
-            AvailableSaves[saveSlot].PartyLeader.Value.Name.Value = ((HeroModel)save["PartyLeader"]).Name.Value;
-            AvailableSaves[saveSlot].PlayerLocation.Value = (string)save["PlayerLocation"];
-            AvailableSaves[saveSlot].WindowStyle.Value = (string)save["WindowStyle"];
-            AvailableSaves[saveSlot].WindowSelectedStyle.Value = ((string)save["WindowStyle"]).Replace("Window", "Selected");
-            AvailableSaves[saveSlot].Font.Value = (GameFont)save["Font"];
-            AvailableSaves[saveSlot].AnimatedSprite.Value = animatedSprite;
+                AvailableSaves[saveSlot].PlayerLocation.Value = (string)save["PlayerLocation"];
+                AvailableSaves[saveSlot].Date.Value = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
+            }
+            else
+            {
+                var dialogueRecords = new List<ConversationScene.DialogueRecord>();
+
+                dialogueRecords.Add(new ConversationScene.DialogueRecord()
+                {
+                    Text = "Overwrite existing save?",
+                    Script = new string[] { "DisableEnd", "WaitForText", "SelectionPrompt", "No", "Yes", "End", "Switch $selection", "Case No", "EndConversation", "Break", "Case Yes", "EndConversation", "Break", "End" }
+                });
+
+                var convoRecord = new ConversationScene.ConversationRecord()
+                {
+                    DialogueRecords = dialogueRecords.ToArray()
+                };
+                var convoScene = new ConversationScene.ConversationScene(convoRecord);
+                CrossPlatformGame.StackScene(convoScene, true);
+                convoScene.OnTerminated += new TerminationFollowup(() =>
+                {
+                    if (GameProfile.GetSaveData<string>("LastSelection") == "Yes")
+                    {
+                        ((MapScene.MapScene)CrossPlatformGame.SceneStack.First(x => x is MapScene.MapScene)).SaveData();
+                        GameProfile.SaveState();
+
+                        var save = GameProfile.SaveData;
+
+                        AvailableSaves[saveSlot].PlayerLocation.Value = (string)save["PlayerLocation"];
+                        AvailableSaves[saveSlot].Date.Value = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
+                    }
+                });
+            }
         }
 
         public void ResetSlot()
