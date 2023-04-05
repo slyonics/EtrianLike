@@ -566,7 +566,7 @@ namespace EtrianLike.Scenes.MapScene
             if (PriorityLevel != PriorityLevel.GameLevel || controllerList.Any(x => x.Any(y => y is EventController))) return;
 
             Panel miniMapPanel = mapViewModel.GetWidget<Panel>("MiniMapPanel");
-            //clickPosition -= new Vector2((miniMapPanel.InnerBounds.Width - 7 * 16) / 2, (miniMapPanel.InnerBounds.Height - 7 * 16) / 2);
+            clickPosition -= new Vector2((miniMapPanel.InnerBounds.Width - 7 * 16) / 2, (miniMapPanel.InnerBounds.Height - 7 * 16) / 2);
             int newRoomX = (int)clickPosition.X / 16 + MinimapStartX;
             int newRoomY = (int)clickPosition.Y / 16 + MinimapStartY;
 

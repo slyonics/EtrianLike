@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <View>
-	<Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-80,-80,160,162">
-		<DataGrid Name="Saves" Items="Bind AvailableSaves" Scrolling="False" Alignment="Vertical" Bounds="0,8,120,120">
-			<Button Radio="True" Style="SubBlack" PushedStyle="SubPink" Alignment="Vertical" Bounds="0,0,120,30" Action="Save" ActionParameter="Ref DataGrid.SaveSlot">
+	<Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-160,-160,320,342" InnerMargin="0,20,0,0">
+		<DataGrid Name="Saves" Items="Bind AvailableSaves" Scrolling="False" Alignment="Vertical" Bounds="0,8,240,240">
+			<Button Radio="True" Style="SubBlack" PushedStyle="SubPink" Alignment="Vertical" Bounds="0,0,240,60" Action="Save" ActionParameter="Ref DataGrid.SaveSlot">
 				<Label Text="Bind DataGrid.PlayerLocation" Font="Dialogue" Alignment="Cascading" TextAlignment="Left" Bounds="22,13,110,10"/>
 			</Button>
 		</DataGrid>
-		<Button Name="Exit" Radio="True" Style="SubBlack" PushedStyle="TechSelected" Bounds="0,4,100,20" Alignment="Vertical" Action="Exit" InnerMargin="8,1,8,4">
+		<Button Name="Exit" Radio="True" Style="SubBlack" PushedStyle="TechSelected" Bounds="0,10,200,40" Alignment="Vertical" Action="Exit" InnerMargin="8,1,8,4">
 			<Label Text="Exit to Title" Alignment="Center" Color="#E0BFA2FF" Font="Dialogue"/>
 		</Button>
 	</Panel>

@@ -97,6 +97,6 @@ namespace EtrianLike.Scenes.MapScene
         public ModelProperty<RenderTarget2D> MapRender { get; set; } = new ModelProperty<RenderTarget2D>(null);
         public ModelProperty<RenderTarget2D> MiniMapRender { get; set; } = new ModelProperty<RenderTarget2D>(null);
 
-        public ModelProperty<Rectangle> MiniMapBounds { get; set; } = new ModelProperty<Rectangle>(new Rectangle(CrossPlatformGame.ScreenWidth - 124, 12, 112, 112));
+        public ModelProperty<Rectangle> MiniMapBounds { get; set; } = new ModelProperty<Rectangle>(new Rectangle(CrossPlatformGame.ScreenWidth - 132, 12, 120, 120));
     }
 }
