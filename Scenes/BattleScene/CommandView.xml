@@ -2,17 +2,7 @@
 <View>
 
 	<Panel Name="BattlePanel" Anchor="$CenterX,$CenterY" Bounds="-345,150,690,120">
-		<Panel Bounds="0,0,170,20" InnerMargin="8,4,8,8">
-			<Button Name="Equipment" Radio="True" Style="TechFrame" PushedStyle="TechFrameSelected" Bounds="-8,-4,62,20" Alignment="Left" InnerMargin="8,8,8,8" Action="SelectEquipment">
-				<Label Text="Equipment" Bounds="2,-8,40,20"/>
-			</Button>
-			<Button Name="Abilities" Radio="True" Style="TechFrame" PushedStyle="TechFrameSelected" Bounds="-8,-4,62,20" Alignment="Left" InnerMargin="8,8,8,8" Action="SelectAbilities">
-				<Label Text="Abilities" Bounds="10,-8,29,20"/>
-			</Button>
-			<Button Name="Actions" Radio="True" Style="TechFrame" PushedStyle="TechFrameSelected" Bounds="-8,-4,62,20" Alignment="Left" InnerMargin="8,8,8,8" Action="SelectActions">
-				<Label Text="Actions" Bounds="10,-8,26,20"/>
-			</Button>
-		</Panel>
+
 		<Panel Style="TechWindow" Bounds="0,12,86,68" InnerMargin="8,9,8,3">
 			<DataGrid Name="CommandList" Items="Bind AvailableCommands" Alignment="Stretch" Scrolling="False">
 				<Button Radio="True" Style="Blank" PushedStyle="LabelGlow" Bounds="0,-1,78,10" Alignment="Vertical" Action="SelectCommand" ActionParameter="Ref DataGrid" Enabled="Ref DataGrid.Usable">

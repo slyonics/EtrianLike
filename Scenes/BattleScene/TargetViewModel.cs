@@ -57,7 +57,7 @@ namespace EtrianLike.Scenes.BattleScene
                             Name = name,
                             NameVisible = true,
                             Bounds = new Rectangle(battleEnemy.SpriteBounds.X, battleEnemy.SpriteBounds.Y - battleEnemy.ShadowOffset / 2, battleEnemy.SpriteBounds.Width, battleEnemy.SpriteBounds.Height),
-                            LabelBounds = new Rectangle(0, -battleEnemy.SpriteBounds.Height / 2 - 4 - (nameLines * 8), -1, 10),
+                            LabelBounds = new Rectangle(0, -battleEnemy.SpriteBounds.Height / 2 - 4 - (nameLines * 8), -1, 20),
                             target = battleEnemy
                         });
                     }
@@ -67,7 +67,7 @@ namespace EtrianLike.Scenes.BattleScene
                     {
                         Targets.ModelList = new List<ModelProperty<TargetButton>>();
                         Rectangle bounds = new Rectangle(battleScene.EnemyList[0].SpriteBounds.X, battleScene.EnemyList[0].SpriteBounds.Y - battleScene.EnemyList[0].ShadowOffset / 2, battleScene.EnemyList[0].SpriteBounds.Width, battleScene.EnemyList[0].SpriteBounds.Height);
-                        Rectangle labelBounds = new Rectangle(0, -battleScene.EnemyList[0].SpriteBounds.Height / 2 - 8, -1, 10);
+                        Rectangle labelBounds = new Rectangle(0, -battleScene.EnemyList[0].SpriteBounds.Height / 2 - 8, -1, 20);
                         for (int i = 1; i < battleScene.EnemyList.Count; i++) bounds = Rectangle.Union(bounds, battleScene.EnemyList[i].SpriteBounds);
                         Targets.Add(new TargetButton() { Name = "All Enemies", NameVisible = true, Bounds = bounds, LabelBounds = labelBounds });
 

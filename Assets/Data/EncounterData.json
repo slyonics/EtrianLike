@@ -3,9 +3,8 @@
 		"Name": "ScorpionNest",
 		"Background": "Desert",
 		"Enemies": [
-			"Scorpion",
-			"Scorpion",
-			"Scorpion"
+			"Specter",
+			"Specter"
 		],
 		"Challenge": 2,
 		"Script": [],

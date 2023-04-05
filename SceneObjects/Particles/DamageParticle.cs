@@ -12,8 +12,8 @@ namespace EtrianLike.SceneObjects.Particles
 {
     public class DamageParticle : Particle
     {
-        private const int DIGIT_WIDTH = 8;
-        private const int DIGIT_HEIGHT = 11;
+        private const int DIGIT_WIDTH = 24;
+        private const int DIGIT_HEIGHT = 33;
         private const int DECAY_DURATION = 500;
         private const int NEXT_DIGIT_INTERVAL = 80;
 
@@ -43,7 +43,9 @@ namespace EtrianLike.SceneObjects.Particles
 
             velocityZ = DIGIT_HEIGHT * 10;
             landingFollowup += StartDecay;
-            nextDigitTimer = NEXT_DIGIT_INTERVAL;
+            nextDigitTimer = NEXT_DIGIT_INTERVAL; 
+            
+            gravity *= 3;
         }
 
         public DamageParticle(Scene iScene, Vector2 iPosition, string digits, Color iColor)
@@ -62,6 +64,8 @@ namespace EtrianLike.SceneObjects.Particles
             nextDigitTimer = NEXT_DIGIT_INTERVAL;
 
             color = iColor;
+
+            gravity *= 3;
         }
 
         public override void Update(GameTime gameTime)

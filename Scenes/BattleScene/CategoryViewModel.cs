@@ -237,20 +237,27 @@ namespace EtrianLike.Scenes.BattleScene
 
         public void Fight()
         {
+            Description.Value = "Attack an enemy with your equipped weapon.";
 
-
+            childViewModel?.Terminate();
             childViewModel = new TargetViewModel(battleScene, ActivePlayer, ActivePlayer.HeroModel.Equipment.First().Value);
             battleScene.AddView(childViewModel);
         }
 
         public void Skills()
         {
+            Description.Value = "Spend MP to use a special ability.";
 
+            childViewModel?.Terminate();
+            childViewModel = null;
         }
 
         public void Item()
         {
+            Description.Value = "Use a consumable item.";
 
+            childViewModel?.Terminate();
+            childViewModel = null;
         }
 
         public void Flee()
@@ -276,7 +283,7 @@ namespace EtrianLike.Scenes.BattleScene
             AvailableCommands.ModelList = commands;
             ActivePlayer.HeroModel.LastCategory.Value = category = 0;
 
-            Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
+            //Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
         }
 
         public void SelectAbilities()
@@ -293,7 +300,7 @@ namespace EtrianLike.Scenes.BattleScene
             AvailableCommands.ModelList = commands;
             ActivePlayer.HeroModel.LastCategory.Value = category = 1;
 
-            Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
+            //Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
         }
 
         public void SelectActions()
@@ -308,7 +315,7 @@ namespace EtrianLike.Scenes.BattleScene
             AvailableCommands.ModelList = ActivePlayer.HeroModel.Actions.ModelList;
             ActivePlayer.HeroModel.LastCategory.Value = category = 2;
 
-            Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
+            //Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
         }
 
         public void SelectCommand(object parameter)
@@ -333,23 +340,19 @@ namespace EtrianLike.Scenes.BattleScene
 
             ActivePlayer.HeroModel.LastSlot.Value = slot = AvailableCommands.ToList().FindIndex(x => x.Value == record);
 
-
+            /*
             Description1.Value = record.Description.ElementAtOrDefault(0);
             Description2.Value = record.Description.ElementAtOrDefault(1);
             Description3.Value = record.Description.ElementAtOrDefault(2);
             Description4.Value = record.Description.ElementAtOrDefault(3);
-            Description5.Value = record.Description.ElementAtOrDefault(4);
+            Description5.Value = record.Description.ElementAtOrDefault(4);*/
         }
 
 
         public BattlePlayer ActivePlayer { get; set; }
         public ModelCollection<CommandRecord> AvailableCommands { get; set; } = new ModelCollection<CommandRecord>();
 
-        public ModelProperty<string> Description1 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description2 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description3 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description4 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description5 { get; set; } = new ModelProperty<string>("");
+        public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
 
 
         public Rectangle PortraitBounds { get; set; } = new Rectangle(CrossPlatformGame.ScreenWidth - 255, 20, 255, 500); 

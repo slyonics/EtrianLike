@@ -5,11 +5,9 @@
 		<Image Name="MiniMap" Alignment="Stretch" Picture="Bind MiniMapRender"/>
 	</Panel>
 
-	<Panel Name="MapPanel" Style="MapFrame" Anchor="$CenterX,$CenterY" InnerMargin="20,20,20,20" Bounds="-365,-250,730,460">
+	<Panel Name="MapPanel" Style="MapFrame" Anchor="$CenterX,$CenterY" InnerMargin="24,24,24,24" Bounds="-369,-250,738,468">
 		<Image Picture="Bind MapRender" Alignment="Stretch"/>
-	</Panel>
-
-	<Panel Name="MiniMapPanel" Style="ThinPanel" Bounds="Bind MiniMapBounds" InnerMargin="4,4,4,4" Depth="0.05">
+		<Panel Style="ThinPanel" Anchor="0,0" Bounds="Bind MiniMapBounds" Depth="0.05"/>
 	</Panel>
   
 </View>

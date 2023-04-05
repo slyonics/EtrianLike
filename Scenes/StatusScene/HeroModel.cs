@@ -22,12 +22,14 @@ namespace EtrianLike.Scenes.StatusScene
             EquipmentSlots.Value = heroRecord.EquipmentSlots;
 
             HealthGrowth.Value = heroRecord.HealthGrowth;
+            MagicGrowth.Value = heroRecord.MagicGrowth;
             StrengthGrowth.Value = heroRecord.StrengthGrowth;
             DefenseGrowth.Value = heroRecord.DefenseGrowth;
             AgilityGrowth.Value = heroRecord.AgilityGrowth;
             ManaGrowth.Value = heroRecord.ManaGrowth;
 
             NakedHealth.Value = Health.Value;
+            NakedMagic.Value = Magic.Value;
             NakedStrength.Value = Strength.Value;
             NakedDefense.Value = Defense.Value;
             NakedAgility.Value = Agility.Value;
@@ -62,6 +64,7 @@ namespace EtrianLike.Scenes.StatusScene
                 }
                 if (Class.Value == ClassType.Android) Mana.Value += item.RobotMana;
                 MaxHealth.Value = Health.Value;
+                MaxMagic.Value = Magic.Value;
             }
 
             foreach (string equipment in heroRecord.InitialEquipment)
@@ -83,7 +86,8 @@ namespace EtrianLike.Scenes.StatusScene
                     Agility.Value += item.RobotAgility;
                 }
                 if (Class.Value == ClassType.Android) Mana.Value += item.RobotMana;
-                MaxHealth.Value = Health.Value;
+                MaxHealth.Value = Health.Value; 
+                MaxMagic.Value = Magic.Value;
             }
 
             foreach (string ability in classRecord.InitialAbilities)
@@ -144,12 +148,14 @@ namespace EtrianLike.Scenes.StatusScene
         public ModelCollection<AbilityRecord> Abilities { get; set; } = new ModelCollection<AbilityRecord>();
         public ModelCollection<CommandRecord> Actions { get; set; } = new ModelCollection<CommandRecord>();
         public ModelProperty<double> HealthGrowth { get; set; } = new ModelProperty<double>(0);
+        public ModelProperty<double> MagicGrowth { get; set; } = new ModelProperty<double>(0);
         public ModelProperty<double> StrengthGrowth { get; set; } = new ModelProperty<double>(0);
         public ModelProperty<double> DefenseGrowth { get; set; } = new ModelProperty<double>(0);
         public ModelProperty<double> AgilityGrowth { get; set; } = new ModelProperty<double>(0);
         public ModelProperty<double> ManaGrowth { get; set; } = new ModelProperty<double>(0);
 
         public ModelProperty<int> NakedHealth { get; set; } = new ModelProperty<int>(0);
+        public ModelProperty<int> NakedMagic { get; set; } = new ModelProperty<int>(0);
         public ModelProperty<int> NakedStrength { get; set; } = new ModelProperty<int>(0);
         public ModelProperty<int> NakedDefense { get; set; } = new ModelProperty<int>(0);
         public ModelProperty<int> NakedAgility { get; set; } = new ModelProperty<int>(0);

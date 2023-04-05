@@ -19,7 +19,9 @@ namespace EtrianLike.Scenes.StatusScene
         Fire,
         Electric,
         Nuclear,
-        Poison
+        Poison,
+        Glass,
+        Water
     }
 
     public class HeroRecord
@@ -30,6 +32,7 @@ namespace EtrianLike.Scenes.StatusScene
         public string ProfileSprite { get; set; }
         public string PortraitSprite { get; set; }
         public double HealthGrowth { get; set; }
+        public double MagicGrowth { get; set; }
         public double StrengthGrowth { get; set; }
         public double DefenseGrowth { get; set; }
         public double AgilityGrowth { get; set; }

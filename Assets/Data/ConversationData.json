@@ -13,9 +13,79 @@
 			{
 				"Text": "Introduce Angélia. Direct player to find their second period classroom.",
 				"Script": [
-					"AddPortrait portrait Jane $rightPortraitX 84 1"
+					"AddPortrait portrait Jane $rightPortraitX 84 0.25",
+					"AddPortrait portrait2 Christine $leftPortraitX 84 0.25",
+					"DisableEnd",
+					"WaitForText",
+					"SelectionPrompt",
+					"ChoiceA",
+					"ChoiceB",
+					"ChoiceC",
+					"End",
+					"Switch $selection",
+					"Case ChoiceA",
+					"ChangeConversation ChoiceA",
+					"Break",
+					"Case ChoiceB",
+					"ChangeConversation ChoiceB",
+					"Break",
+					"Case ChoiceC",
+					"ChangeConversation ChoiceC",
+					"Break",
+					"End"
 				]
 			}
+		]
+	},
+	{
+		"Name": "ChoiceA",
+		"DialogueRecords": [
+			{
+				"Text": "You chose A!",
+				"Script": [
+					"AddPortrait portrait Jane $rightPortraitX 84 0",
+					"AddPortrait portrait2 Christine $leftPortraitX 84 0"
+				]
+			}
+		],
+		"EndScript": [
+			"RemovePortrait portrait 0.25",
+			"RemovePortrait portrait2 0.25",
+			"Wait 250"
+		]
+	},
+	{
+		"Name": "ChoiceB",
+		"DialogueRecords": [
+			{
+				"Text": "You chose B!",
+				"Script": [
+					"AddPortrait portrait Jane $rightPortraitX 84 0",
+					"AddPortrait portrait2 Christine $leftPortraitX 84 0"
+				]
+			}
+		],
+		"EndScript": [
+			"RemovePortrait portrait 0.25",
+			"RemovePortrait portrait2 0.25",
+			"Wait 250"
+		]
+	},
+	{
+		"Name": "ChoiceC",
+		"DialogueRecords": [
+			{
+				"Text": "You chose C!",
+				"Script": [
+					"AddPortrait portrait Jane $rightPortraitX 84 0",
+					"AddPortrait portrait2 Christine $leftPortraitX 84 0"
+				]
+			}
+		],
+		"EndScript": [
+			"RemovePortrait portrait 0.25",
+			"RemovePortrait portrait2 0.25",
+			"Wait 250"
 		]
 	},
 	{

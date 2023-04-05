@@ -3,8 +3,8 @@
 
 	<Panel Name="BattlePanel" Anchor="0,0" Bounds="0,0,$ScreenWidth,$ScreenHeight">
 		<DataGrid Name="TargetList" Bounds="0,0,$ScreenWidth,$ScreenHeight" Items="Bind Targets">
-			<Button Radio="True" Style="SubBlack" PushedStyle="SubPink" Bounds="Ref DataGrid.Bounds" Action="SelectTarget" ActionParameter="Ref DataGrid">
-				<Textplate Style="TechLabel" Alignment="Center" Bounds="Ref DataGrid.LabelBounds" InnerMargin="2,2,2,0" Text="Ref DataGrid.Name" Visible="Ref DataGrid.NameVisible"/>
+			<Button Radio="True" Style="Blank" PushedStyle="TargetFrame" Bounds="Ref DataGrid.Bounds" Action="SelectTarget" ActionParameter="Ref DataGrid">
+				<Textplate Style="EnemyFrame" Alignment="Center" Bounds="Ref DataGrid.LabelBounds" InnerMargin="6,5,6,6" Text="Ref DataGrid.Name" Font="Dialogue" Visible="Ref DataGrid.NameVisible"/>
 			</Button>
 		</DataGrid>
 	</Panel>

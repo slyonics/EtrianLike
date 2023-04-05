@@ -22,7 +22,8 @@ namespace EtrianLike.Scenes.BattleScene
             Ready,
             Attack,
             Hit,
-            Dead
+            Dead,
+            Hurting
         }
 
         public static readonly Dictionary<string, Animation> HERO_ANIMATIONS = new Dictionary<string, Animation>()
@@ -30,7 +31,8 @@ namespace EtrianLike.Scenes.BattleScene
             { HeroAnimation.Ready.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) },
             { HeroAnimation.Attack.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) },
             { HeroAnimation.Hit.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) },
-            { HeroAnimation.Dead.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) }
+            { HeroAnimation.Dead.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) },
+            { HeroAnimation.Hurting.ToString(), new Animation(0, 0, HERO_WIDTH, HERO_HEIGHT, 1, 10000) }
         };
 
         private Dictionary<string, int> exercise = new Dictionary<string, int>();

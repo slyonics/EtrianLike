@@ -20,7 +20,8 @@
 		"Actions": [],
 		"BattlerModel": {
 			"Name": { "Value": "Cyra" },
-			"MaxHealth": { "Value": 200 },
+			"MaxHealth": { "Value": 90 },
+			"MaxMagic": { "Value": 24 },
 			"Strength": { "Value": 5 },
 			"Defense": { "Value": 3 },
 			"Agility": { "Value": 8 },
@@ -49,6 +50,7 @@
 		"BattlerModel": {
 			"Name": { "Value": "Angélia" },
 			"MaxHealth": { "Value": 60 },
+			"MaxMagic": { "Value": 34 },
 			"Strength": { "Value": 3 },
 			"Defense": { "Value": 3 },
 			"Agility": { "Value": 2 },
@@ -75,6 +77,7 @@
 		"BattlerModel": {
 			"Name": { "Value": "Wren" },
 			"MaxHealth": { "Value": 50 },
+			"MaxMagic": { "Value": 16 },
 			"Strength": { "Value": 3 },
 			"Defense": { "Value": 3 },
 			"Agility": { "Value": 4 },

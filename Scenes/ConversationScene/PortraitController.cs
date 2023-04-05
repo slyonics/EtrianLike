@@ -20,6 +20,8 @@ namespace EtrianLike.Scenes.ConversationScene
 
         public override void PreUpdate(GameTime gameTime)
         {
+            if (Terminated) return;
+
             if (transitionTime < transitionLength)
             {
                 transitionTime += gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
@@ -53,6 +55,7 @@ namespace EtrianLike.Scenes.ConversationScene
 
         public override void PostUpdate(GameTime gameTime)
         {
+            if (Terminated) return;
             portrait.Position = Vector2.Lerp(startPosition, endPosition, transitionInterval);
         }
 
@@ -79,6 +82,7 @@ namespace EtrianLike.Scenes.ConversationScene
 
         public override void PostUpdate(GameTime gameTime)
         {
+            if (Terminated) return;
             shader.Parameters["transitionInterval"].SetValue(transitionInterval);
         }
 
@@ -105,6 +109,7 @@ namespace EtrianLike.Scenes.ConversationScene
 
         public override void PostUpdate(GameTime gameTime)
         {
+            if (Terminated) return;
             portrait.AnimatedSprite.SpriteColor = Color.Lerp(startColor, endColor, transitionInterval);
         }
 

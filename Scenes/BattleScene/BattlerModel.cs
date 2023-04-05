@@ -47,6 +47,8 @@ namespace EtrianLike.Scenes.BattleScene
         public ModelProperty<ClassType> Class { get; set; } = new ModelProperty<ClassType>(ClassType.Monster);
         public ModelProperty<int> Health { get; set; } = new ModelProperty<int>(10);
         public ModelProperty<int> MaxHealth { get; set; } = new ModelProperty<int>(10);
+        public ModelProperty<int> Magic { get; set; } = new ModelProperty<int>(10);
+        public ModelProperty<int> MaxMagic { get; set; } = new ModelProperty<int>(10);
         public ModelProperty<int> Strength { get; set; } = new ModelProperty<int>(3);
         public ModelProperty<int> Defense { get; set; } = new ModelProperty<int>(3);
         public ModelProperty<int> Agility { get; set; } = new ModelProperty<int>(3);

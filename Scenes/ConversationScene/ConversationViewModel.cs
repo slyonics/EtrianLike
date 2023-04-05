@@ -185,6 +185,6 @@ namespace EtrianLike.Scenes.ConversationScene
         public ModelProperty<string> Dialogue { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> Speaker { get; set; } = new ModelProperty<string>("");
 
-        public static readonly Rectangle CONVO_BOUNDS = new Rectangle(-345, 150, 690, 120);
+        public static readonly Rectangle CONVO_BOUNDS = new Rectangle(-345, 140, 690, 120);
     }
 }
