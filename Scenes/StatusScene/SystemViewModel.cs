@@ -141,6 +141,7 @@ namespace EtrianLike.Scenes.StatusScene
 
                 var save = GameProfile.SaveData;
 
+                AvailableSaves[saveSlot].Header.Value = "Cyra";
                 AvailableSaves[saveSlot].PlayerLocation.Value = (string)save["PlayerLocation"];
                 AvailableSaves[saveSlot].Date.Value = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
             }

@@ -104,7 +104,7 @@ namespace EtrianLike.Scenes.BattleScene
             AvailableCommands.ModelList = commands;
             ActivePlayer.HeroModel.LastCategory.Value = category = 1;
 
-            Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
+            Description.Value  = null;
         }
 
         public void SelectCommand(object parameter)
@@ -130,22 +130,14 @@ namespace EtrianLike.Scenes.BattleScene
             ActivePlayer.HeroModel.LastSlot.Value = slot = AvailableCommands.ToList().FindIndex(x => x.Value == record);
 
 
-            Description1.Value = record.Description.ElementAtOrDefault(0);
-            Description2.Value = record.Description.ElementAtOrDefault(1);
-            Description3.Value = record.Description.ElementAtOrDefault(2);
-            Description4.Value = record.Description.ElementAtOrDefault(3);
-            Description5.Value = record.Description.ElementAtOrDefault(4);
+            Description.Value = record.Description;
         }
 
 
         public BattlePlayer ActivePlayer { get; set; }
         public ModelCollection<CommandRecord> AvailableCommands { get; set; } = new ModelCollection<CommandRecord>();
 
-        public ModelProperty<string> Description1 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description2 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description3 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description4 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description5 { get; set; } = new ModelProperty<string>("");
+        public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
 
 
         public Rectangle PortraitBounds { get; set; } = new Rectangle(CrossPlatformGame.ScreenWidth - 255, 20, 255, 500); 

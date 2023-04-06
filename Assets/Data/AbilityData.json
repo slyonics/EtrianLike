@@ -2,14 +2,9 @@
 	{
 		"Name": "Shard Salvo",
 		"Animation": "Chanting",
-		"Description": [
-			"- Uses MANA",
-			"- 5x damage",
-			"- Incendiary",
-			"- VS all enemies"
-		],
+		"Description": "Light glass damage to all enemies. May inflict bleed.",
 		"Icon": "Fire",
-		"Charges": 15,
+		"Cost": 7,
 		"Targetting": "AllEnemy",
 		"PreScript": [ "Exercise Mana" ],
 		"Script": [
@@ -17,20 +12,16 @@
 			"Sound Fireball",
 			"Effect Flame $targetCenterX $targetCenterY 3",
 			"Flash 255 27 0",
-			"Damage Mana 5 Fire"
+			"Damage Mana 5 Glass",
+			"Bleed 50"
 		]
 	},
 	{
 		"Name": "Tezen's Song",
 		"Animation": "Chanting",
-		"Description": [
-			"- Uses MANA",
-			"- 10x damage",
-			"- Electric",
-			"- VS all enemies"
-		],
+		"Description": "Distract an enemy with a beguiling song.",
 		"Icon": "Lightning",
-		"Charges": 15,
+		"Cost": 3,
 		"Targetting": "AllEnemy",
 		"Script": [
 			"Exercise Mana",
@@ -44,13 +35,9 @@
 	{
 		"Name": "Heal",
 		"Animation": "Chanting",
-		"Description": [
-			"- 999 damage",
-			"- Incendiary",
-			"- VS all enemies"
-		],
+		"Description": "Restore health to a single ally.",
 		"Icon": "Heal",
-		"Charges": 15,
+		"Charges": 5,
 		"Targetting": "SingleAlly",
 		"Script": [
 			"Exercise Mana",

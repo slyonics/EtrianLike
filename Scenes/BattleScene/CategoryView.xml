@@ -10,12 +10,18 @@
 	<Button Name="Item" Radio="True" Style="RoundBlack" PushedStyle="RoundPink" Anchor="$CenterX,$CenterY" Bounds="-200,126,75,67" InnerMargin="16,16,16,16" Action="Item">
 		<Image Picture="Widgets_Icons_Potion" Alignment="Stretch"/>
 	</Button>
-	
-	
 
-	<Panel Name="PortraitPanel" Bounds="Ref PortraitBounds">
-		<Image Alignment="Stretch" GameSprite="Bind ActivePlayer.HeroModel.PortraitSprite" Visible="False"/>
+
+	<Panel Style="SkillWindow" Anchor="$CenterX,$CenterY" Bounds="160,-60,230,240" InnerMargin="8,9,8,3" Visible="Bind ShowSkills">
+		<DataGrid Name="CommandList" Items="Bind AvailableCommands" Alignment="Stretch" Scrolling="False">
+			<Button Radio="True" Style="Blank" PushedStyle="LabelGlow" Bounds="0,-1,214,30" Alignment="Vertical" Action="SelectCommand" ActionParameter="Ref DataGrid" Enabled="Ref DataGrid.Usable">
+				<Image Icon="Ref DataGrid.Icon" Alignment="Left" Bounds="1,1,8,24"/>
+				<Label Text="Ref DataGrid.Name" Font="Dialogue" Alignment="Left" TextAlignment="Left" Bounds="2,1,153,24"/>
+				<Label Visible="Ref DataGrid.ShowCost" Text="Ref DataGrid.Cost" Alignment="Left" TextAlignment="Right" Bounds="0,1,14,24"/>
+			</Button>
+		</DataGrid>
 	</Panel>
+	
 
 	<Panel Anchor="$CenterX,$CenterY" Bounds="-300,180,600,80" InnerMargin="16,18,16,18" TransitionIn="Expand" TransitionOut="Shrink">
 		<CrawlText Text="Bind Description" Font="Dialogue" Alignment="Stretch" Color="#D8D8D8FF"/>

@@ -217,7 +217,7 @@
 		"Strength": 6,
 		"Defense": 4,
 		"Agility": 1,
-		"Mana": 10,
+		"Mana": 1,
 		"Evasion": 50,
 		"Attacks": [
 			{

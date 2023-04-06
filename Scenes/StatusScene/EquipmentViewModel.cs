@@ -53,7 +53,7 @@ namespace EtrianLike.Scenes.StatusScene
                             Name = "- Empty Slot -",
                             Charges = -1,
                             ChargesLeft = -1,
-                            Description = new string[] { "", "Select to equip", "a new item", "", "" }
+                            Description = "Select to equip a new item"
                         }));
                     }
                     EquipmentList.ModelList = newEquipList;
@@ -122,11 +122,7 @@ namespace EtrianLike.Scenes.StatusScene
                         var item = EquipmentList.First().Value;
                         (GetWidget<DataGrid>("EquipmentList").ChildList[equipmentSlot] as Button).RadioSelect();
 
-                        Description1.Value = item.Description.ElementAtOrDefault(0);
-                        Description2.Value = item.Description.ElementAtOrDefault(1);
-                        Description3.Value = item.Description.ElementAtOrDefault(2);
-                        Description4.Value = item.Description.ElementAtOrDefault(3);
-                        Description5.Value = item.Description.ElementAtOrDefault(4);
+                        Description.Value = item.Description;
 
                         ShowDescription.Value = true;
                     }
@@ -140,11 +136,7 @@ namespace EtrianLike.Scenes.StatusScene
                     var item = EquipmentList.First().Value;
                     (GetWidget<DataGrid>("EquipmentList").ChildList[equipmentSlot] as Button).RadioSelect();
 
-                    Description1.Value = item.Description.ElementAtOrDefault(0);
-                    Description2.Value = item.Description.ElementAtOrDefault(1);
-                    Description3.Value = item.Description.ElementAtOrDefault(2);
-                    Description4.Value = item.Description.ElementAtOrDefault(3);
-                    Description5.Value = item.Description.ElementAtOrDefault(4);
+                    Description.Value = item.Description;
 
                     ShowDescription.Value = true;
                 }
@@ -248,7 +240,7 @@ namespace EtrianLike.Scenes.StatusScene
                     Name = "- Empty Slot -",
                     Charges = -1,
                     ChargesLeft = -1,
-                    Description = new string[] { "", "Select to equip", "a new item", "", "" }
+                    Description = "Select to equip a new item"
                 }));
             }
             EquipmentList.ModelList = newEquipList;
@@ -282,11 +274,7 @@ namespace EtrianLike.Scenes.StatusScene
             }
             else
             {
-                Description1.Value = record.Description.ElementAtOrDefault(0);
-                Description2.Value = record.Description.ElementAtOrDefault(1);
-                Description3.Value = record.Description.ElementAtOrDefault(2);
-                Description4.Value = record.Description.ElementAtOrDefault(3);
-                Description5.Value = record.Description.ElementAtOrDefault(4);
+                Description.Value = record.Description;
 
                 ShowDescription.Value = true;
             }
@@ -314,10 +302,6 @@ namespace EtrianLike.Scenes.StatusScene
         public ModelProperty<bool> ShowEquipment { get; set; } = new ModelProperty<bool>(false);
         public ModelProperty<bool> ShowDescription { get; set; } = new ModelProperty<bool>(false);
 
-        public ModelProperty<string> Description1 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description2 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description3 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description4 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description5 { get; set; } = new ModelProperty<string>("");
+        public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
     }
 }

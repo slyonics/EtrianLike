@@ -2,12 +2,7 @@
 	{
 		"Name": "Glass Staff",
 		"Animation": "Guarding",
-		"Description": [
-			"- Uses POWER",
-			"- 7x damage",
-			"- Physical",
-			"- VS 1 enemy"
-		],
+		"Description": "Magical staff with a glass ornament.",
 		"Icon": "Sword",
 		"Charges": -1,
 		"ItemType": "Weapon",
@@ -27,12 +22,7 @@
 	{
 		"Name": "Coral Machete",
 		"Animation": "Guarding",
-		"Description": [
-			"- Uses POWER",
-			"- 7x damage",
-			"- Physical",
-			"- VS 1 enemy"
-		],
+		"Description": "Small chance of inflicting bleed.",
 		"Icon": "Sword",
 		"Charges": -1,
 		"ItemType": "Weapon",
@@ -52,12 +42,7 @@
 	{
 		"Name": "Brass Knuckles",
 		"Animation": "Guarding",
-		"Description": [
-			"- Uses POWER",
-			"- 7x damage",
-			"- Physical",
-			"- VS 1 enemy"
-		],
+		"Description": "Sturdy tool for enhancing unarmed attacks.",
 		"Icon": "Sword",
 		"Charges": -1,
 		"ItemType": "Weapon",
@@ -72,115 +57,6 @@
 			"OnHit 100 Strength",
 			"Flash 255 27 0",
 			"Damage Strength 7 Physical"
-		]
-	},
-	{
-		"Name": "Spare Parts",
-		"Description": [
-			"",
-			"Used for crafting",
-			"basic drones"
-		],
-		"Icon": "Chest",
-		"Charges": -1,
-		"ItemType": "Crafting"
-	},
-	{
-		"Name": "Advanced Parts",
-		"Description": [
-			"",
-			"Used for crafting",
-			"advanced drones"
-		],
-		"Icon": "Chest",
-		"Charges": -1,
-		"ItemType": "Crafting"
-	},
-	{
-		"Name": "Kevlar",
-		"Description": [
-			"",
-			"Lightweight but",
-			"durable body armor"
-		],
-		"Icon": "Armor",
-		"Charges": -1,
-		"ItemType": "Armor",
-		"RobotHealth": 20,
-		"BonusDefense": 8
-	},
-	{
-		"Name": "Chainmail",
-		"Description": [
-			"",
-			"Primitive metal",
-			"body armor"
-		],
-		"Icon": "Armor",
-		"Charges": -1,
-		"ItemType": "Armor",
-		"RobotHealth": 12,
-		"BonusDefense": 5
-	},
-	{
-		"Name": "Wizard",
-		"Description": [
-			"",
-			"Armor that",
-			"enhances magic",
-			"abilities"
-		],
-		"Icon": "Armor",
-		"Charges": -1,
-		"ItemType": "Armor",
-		"RobotHealth": 4,
-		"BonusDefense": 6,
-		"BonusMana": 5
-	},
-	{
-		"Name": "Firebolt",
-		"Animation": "Guarding",
-		"Description": [
-			"- Uses MANA",
-			"- 6x damage",
-			"- Incendiary",
-			"- VS 1 enemy"
-		],
-		"Icon": "Staff",
-		"Charges": 3,
-		"ItemType": "Weapon",
-		"Targetting": "SingleEnemy",
-		"RobotMana": 6,
-		"Script": [
-			"Exercise Mana",
-			"Animate Attack",
-			"Sound Fireball",
-			"Effect Flame $targetCenterX $targetCenterY 3",
-			"Flash 255 27 0",
-			"Damage Mana 6 Fire"
-		]
-	},
-	{
-		"Name": "Inferno",
-		"Animation": "Guarding",
-		"Description": [
-			"- Uses MANA",
-			"- 6x damage",
-			"- Incendiary",
-			"- VS all enemies"
-		],
-		"Icon": "Staff",
-		"Charges": 2,
-		"ItemType": "Weapon",
-		"Targetting": "AllEnemy",
-		"RobotMana": 10,
-		"PreScript": [ "Exercise Mana" ],
-		"Script": [
-			"Animate Attack",
-			"Sound Fireball",
-			"Effect Flame $targetCenterX $targetCenterY 3",
-			"Flash 255 27 0",
-			"Damage Mana 6 Fire"
 		]
 	}
 ]

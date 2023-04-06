@@ -237,6 +237,8 @@ namespace EtrianLike.Scenes.BattleScene
 
         public void Fight()
         {
+            ShowSkills.Value = false;
+
             Description.Value = "Attack an enemy with your equipped weapon.";
 
             childViewModel?.Terminate();
@@ -250,6 +252,12 @@ namespace EtrianLike.Scenes.BattleScene
 
             childViewModel?.Terminate();
             childViewModel = null;
+
+            List<ModelProperty<CommandRecord>> commands = new List<ModelProperty<CommandRecord>>();
+            foreach (var command in ActivePlayer.HeroModel.Abilities.ModelList) commands.Add(new ModelProperty<CommandRecord>(command.Value as CommandRecord));
+            AvailableCommands.ModelList = commands;
+
+            ShowSkills.Value = true;
         }
 
         public void Item()
@@ -351,6 +359,7 @@ namespace EtrianLike.Scenes.BattleScene
 
         public BattlePlayer ActivePlayer { get; set; }
         public ModelCollection<CommandRecord> AvailableCommands { get; set; } = new ModelCollection<CommandRecord>();
+        public ModelProperty<bool> ShowSkills { get; set; } = new ModelProperty<bool>(false);
 
         public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
 

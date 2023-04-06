@@ -189,11 +189,7 @@ namespace EtrianLike.Scenes.StatusScene
 
             abilitySlot = AbilitiesList.ToList().FindIndex(x => x.Value == record);
 
-            Description1.Value = record.Description.ElementAtOrDefault(0);
-            Description2.Value = record.Description.ElementAtOrDefault(1);
-            Description3.Value = record.Description.ElementAtOrDefault(2);
-            Description4.Value = record.Description.ElementAtOrDefault(3);
-            Description5.Value = record.Description.ElementAtOrDefault(4);
+            Description.Value = record.Description;
 
             ShowDescription.Value = true;
         }
@@ -219,10 +215,6 @@ namespace EtrianLike.Scenes.StatusScene
         public ModelProperty<bool> ShowAbilities { get; set; } = new ModelProperty<bool>(false);
         public ModelProperty<bool> ShowDescription { get; set; } = new ModelProperty<bool>(false);
 
-        public ModelProperty<string> Description1 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description2 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description3 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description4 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description5 { get; set; } = new ModelProperty<string>("");
+        public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
     }
 }

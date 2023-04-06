@@ -113,6 +113,7 @@ namespace EtrianLike.Scenes.StatusScene
                     Targetting = TargetType.Self,
                     Script = new string[] { action }
                 };
+                /*
                 switch (action)
                 {
                     case "Delay": item.Description = new string[] { "Hold turn briefly", "and act later" }; break;
@@ -121,6 +122,7 @@ namespace EtrianLike.Scenes.StatusScene
                     case "Punch": item.Description = new string[] { "Improvised", "attack with", "bare hands" }; item.Icon = "Blank"; item.Targetting = TargetType.SingleEnemy; break;
                     case "Tackle": item.Description = new string[] { "Improvised", "attack with", "body slam" }; item.Icon = "Blank"; item.Targetting = TargetType.SingleEnemy; break;
                 }
+                */
                 Actions.Add(item);
             }
 

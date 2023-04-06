@@ -56,7 +56,7 @@ namespace EtrianLike.Scenes.StatusScene
                     Name = " - CANCEL - ",
                     Charges = -1,
                     ChargesLeft = -1,
-                    Description = new string[] { "", "Return to the", "previous menu", "", "" }
+                    Description = "Return to the previous menu"
                 });
             }
             else
@@ -67,7 +67,7 @@ namespace EtrianLike.Scenes.StatusScene
                     Name = " - CANCEL - ",
                     Charges = -1,
                     ChargesLeft = -1,
-                    Description = new string[] { "", "Return to the", "previous menu", "", "" }
+                    Description = "Return to the previous menu"
                 });
 
                 AvailableItems.Add(new ItemRecord()
@@ -76,7 +76,7 @@ namespace EtrianLike.Scenes.StatusScene
                     Name = " - REMOVE - ",
                     Charges = -1,
                     ChargesLeft = -1,
-                    Description = new string[] { "", "", "Unequip this slot", "", "" }
+                    Description = "Unequip this slot"
                 });
             }
 
@@ -85,8 +85,10 @@ namespace EtrianLike.Scenes.StatusScene
             else
                 AvailableItems.ModelList.AddRange(GameProfile.Inventory.Where(x => x.Value.ItemType == ItemType.Weapon || x.Value.ItemType == ItemType.Consumable || x.Value.ItemType == ItemType.Armor));
 
+            /*
             Description2.Value = AvailableItems.First().Value.Description[1];
             Description3.Value = AvailableItems.First().Value.Description[2];
+            */
 
             LoadView(GameView.StatusScene_SwapEquipView);
 
@@ -172,11 +174,7 @@ namespace EtrianLike.Scenes.StatusScene
             {
                 CalculateStatDelta(record);
 
-                Description1.Value = record.Description.ElementAtOrDefault(0);
-                Description2.Value = record.Description.ElementAtOrDefault(1);
-                Description3.Value = record.Description.ElementAtOrDefault(2);
-                Description4.Value = record.Description.ElementAtOrDefault(3);
-                Description5.Value = record.Description.ElementAtOrDefault(4);
+                Description.Value = record.Description;
             }
         }
 
@@ -258,7 +256,7 @@ namespace EtrianLike.Scenes.StatusScene
                     Name = "- Empty Slot -",
                     Charges = -1,
                     ChargesLeft = -1,
-                    Description = new string[] { "", "Select to equip", "a new item", "", "" }
+                    Description = "Select to equip a new item"
                 });
 
                 equipmentViewModel.EquipmentList.ModelList = EquipmentList.ModelList;
@@ -297,10 +295,6 @@ namespace EtrianLike.Scenes.StatusScene
         public ModelProperty<Color> ManaColor { get; set; } = new ModelProperty<Color>(Color.White);
 
 
-        public ModelProperty<string> Description1 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description2 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description3 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description4 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description5 { get; set; } = new ModelProperty<string>("");
+        public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
     }
 }

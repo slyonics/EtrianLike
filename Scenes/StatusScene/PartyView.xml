@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <View>
-	<Panel Style="TechWindow" Anchor="$CenterX,$CenterY" Bounds="-141,-80,282,71">
+	<Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-141,-80,282,71">
 		<DataGrid Name="PartyList" Items="Bind PartyMembers" Scrolling="False" Bounds="0,0,282,63" Alignment="Cascading" InnerMargin="4,3,0,4">
 			<Button Radio="True" Style="Blank" PushedStyle="LabelGlow" Alignment="Vertical" Bounds="0,0,274,16">
 				<Image Sprite="Bind DataGrid.PlayerSprite" Alignment="Left" Bounds="9,23,30,16"/>

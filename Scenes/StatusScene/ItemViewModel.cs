@@ -106,11 +106,7 @@ namespace EtrianLike.Scenes.StatusScene
 
             slot = AvailableItems.ToList().FindIndex(x => x.Value == record);
 
-            Description1.Value = record.Description.ElementAtOrDefault(0);
-            Description2.Value = record.Description.ElementAtOrDefault(1);
-            Description3.Value = record.Description.ElementAtOrDefault(2);
-            Description4.Value = record.Description.ElementAtOrDefault(3);
-            Description5.Value = record.Description.ElementAtOrDefault(4);
+            Description.Value = record.Description;
         }
 
         public void ResetSlot()
@@ -120,11 +116,7 @@ namespace EtrianLike.Scenes.StatusScene
 
             AvailableItems.ModelList = AvailableItems.ModelList;
 
-            Description1.Value = "";
-            Description2.Value = "";
-            Description3.Value = "";
-            Description4.Value = "";
-            Description5.Value = "";
+            Description.Value = "";
         }
 
         public void MoveAway()
@@ -134,10 +126,6 @@ namespace EtrianLike.Scenes.StatusScene
 
         public bool SuppressLeftRight { get => false; }
 
-        public ModelProperty<string> Description1 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description2 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description3 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description4 { get; set; } = new ModelProperty<string>("");
-        public ModelProperty<string> Description5 { get; set; } = new ModelProperty<string>("");
+        public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
     }
 }

@@ -29,7 +29,7 @@ namespace EtrianLike.Scenes.StatusScene
         {
             Name = clone.Name;
             Animation = clone.Animation;
-            Description = (string[])clone.Description.Clone();
+            Description = (string)clone.Description.Clone();
             Icon = clone.Icon;
             ChargesLeft = clone.ChargesLeft;
             Charges = clone.Charges;
@@ -43,11 +43,13 @@ namespace EtrianLike.Scenes.StatusScene
 
         public string Name { get; set; }
         public string Animation { get; set; }
-        public string[] Description { get; set; }
+        public string Description { get; set; }
         public string Icon { get; set; }
         public int ChargesLeft { get; set; } = -1;
         public int Charges { get; set; } = -1;
+        public int Cost { get; set; } = -1;
         public bool ShowCharges { get => Charges >= 0; }
+        public bool ShowCost { get => Charges >= 0; }
         public bool Usable { get => ChargesLeft != 0; }
         public TargetType Targetting { get; set; }
         public bool TargetDead { get; set; } // true if this can target dead allies
