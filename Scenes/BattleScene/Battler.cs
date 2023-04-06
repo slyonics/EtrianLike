@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Collections.Specialized.BitVector32;
 
 namespace EtrianLike.Scenes.BattleScene
 {
@@ -87,6 +88,15 @@ namespace EtrianLike.Scenes.BattleScene
         {
             base.Update(gameTime);
 
+            if (currentAction != null)
+            {
+                if (currentAction.Terminated)
+                {
+                    currentAction = null;
+                    ExecuteNextAction();
+                }
+            }
+
             drawSprite = false;
 
             if (flashTime > 0)
@@ -126,6 +136,16 @@ namespace EtrianLike.Scenes.BattleScene
 
         public virtual void EndTurn(int initiativeModifier = 0)
         {
+            if (BleedTurns > 0)
+            {
+                BleedTurns--;
+
+                int bleedDamage = (int)(Stats.MaxHealth.Value * BleedAmount);
+
+                BattleController battleController = new BattleController(battleScene, this, this, new string[] { "Damage " + bleedDamage, "Dialogue $attackerName took bleed damage." });
+                ExecuteAction(battleController);
+            }
+
             turnActive = false;
             if (Delaying) actionTime += initiativeModifier + STANDARD_TURN / 2;
             else actionTime += initiativeModifier + STANDARD_TURN;
@@ -170,6 +190,23 @@ namespace EtrianLike.Scenes.BattleScene
             */
         }
 
+        public virtual void Bleed(int chance, int duration, float amount)
+        {
+            if (Rng.RandomInt(0, 99) < chance)
+            {
+                BleedTurns = duration;
+                BleedAmount = amount;
+            }
+        }
+
+        public virtual void Confuse(int chance)
+        {
+            if (Rng.RandomInt(0, 99) < chance)
+            {
+                Confusion = true;
+            }
+        }
+
         public virtual void Heal(int healing)
         {
             if (Dead)
@@ -193,7 +230,7 @@ namespace EtrianLike.Scenes.BattleScene
         public bool Dead { get => Stats.Health.Value <= 0; }
 
         public int ActionTime { get => actionTime; set => actionTime = value; }
-        public virtual bool Busy { get => turnActive || ParticleList.Count > 0; }
+        public virtual bool Busy { get => turnActive || ParticleList.Count > 0 || currentAction != null; }
 
         public override bool Transitioning { get => GetParent<Panel>().Transitioning; }
 
@@ -208,6 +245,36 @@ namespace EtrianLike.Scenes.BattleScene
             {
                 return new Rectangle(currentWindow.Left + (int)Position.X, currentWindow.Top + (int)Position.Y, currentWindow.Width, currentWindow.Height);
             }
+        }
+
+        public bool Confusion { get; set; } = false;
+        public int BleedTurns { get; set; } = 0;
+        public float BleedAmount { get; set; } = 0;
+
+
+        protected BattleController currentAction;
+        protected Queue<BattleController> actionQueue = new Queue<BattleController>();
+
+        public void ExecuteAction(BattleController action)
+        {
+            if (currentAction == null || currentAction.Terminated)
+            {
+                currentAction = action;
+                battleScene.AddController(action);
+            }
+            else
+            {
+                actionQueue.Enqueue(action);
+            }
+        }
+
+        public void ExecuteNextAction()
+        {
+            if (actionQueue.Count == 0) return;
+
+            var nextAction = actionQueue.Dequeue();
+            currentAction = nextAction;
+            battleScene.AddController(nextAction);
         }
     }
 }

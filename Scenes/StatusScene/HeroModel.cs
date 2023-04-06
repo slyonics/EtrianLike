@@ -51,6 +51,7 @@ namespace EtrianLike.Scenes.StatusScene
                 Equipment.Add(new ItemRecord(item));
 
                 Health.Value += item.BonusHealth;
+                Magic.Value += item.BonusMagic;
                 Strength.Value += item.BonusStrength;
                 Defense.Value += item.BonusDefense;
                 Agility.Value += item.BonusAgility;
@@ -62,7 +63,11 @@ namespace EtrianLike.Scenes.StatusScene
                     Defense.Value += item.RobotDefense;
                     Agility.Value += item.RobotAgility;
                 }
-                if (Class.Value == ClassType.Android) Mana.Value += item.RobotMana;
+                if (Class.Value == ClassType.Android)
+                {
+                    Magic.Value += item.RobotMagic;
+                    Mana.Value += item.RobotMana;
+                }
                 MaxHealth.Value = Health.Value;
                 MaxMagic.Value = Magic.Value;
             }
@@ -85,7 +90,11 @@ namespace EtrianLike.Scenes.StatusScene
                     Defense.Value += item.RobotDefense;
                     Agility.Value += item.RobotAgility;
                 }
-                if (Class.Value == ClassType.Android) Mana.Value += item.RobotMana;
+                if (Class.Value == ClassType.Android)
+                {
+                    Magic.Value += item.RobotMagic;
+                    Mana.Value += item.RobotMana;
+                }
                 MaxHealth.Value = Health.Value; 
                 MaxMagic.Value = Magic.Value;
             }

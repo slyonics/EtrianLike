@@ -21,11 +21,7 @@
 
 	<Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="41,-80,100,68" Visible="Bind ShowDescription">
 		<Panel Bounds="0,-4,100,68" InnerMargin="0,11,0,5">
-			<Label Text="Bind Description1" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
-			<Label Text="Bind Description2" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
-			<Label Text="Bind Description3" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
-			<Label Text="Bind Description4" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
-			<Label Text="Bind Description5" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
+			<Label Text="Bind Description" Bounds="0,0,0,10" Alignment="Vertical" TextAlignment="Center"/>
 		</Panel>
 	</Panel>
 </View>

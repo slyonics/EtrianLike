@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using static System.Collections.Specialized.BitVector32;
 
 namespace EtrianLike.Scenes.BattleScene
 {
@@ -131,34 +132,86 @@ namespace EtrianLike.Scenes.BattleScene
         {
             base.StartTurn();
 
+            if (Confusion)
+            {
+                if (Rng.RandomBool())
+                {
+                    Confusion = false;
+
+                    BattleController battleController = new BattleController(battleScene, this, this, new string[] { "Dialogue $attackerName recovered from confusion." });
+                    ExecuteAction(battleController);
+                }
+                else
+                {
+                    BattleController preController = new BattleController(battleScene, this, this, new string[] { "Dialogue $attackerName lashed out in confusion!" });
+                    ExecuteAction(preController);
+
+                    BattleController battleController = new BattleController(battleScene, this, this, EnemyRecord.Attacks[0].Script);
+                    ExecuteAction(battleController);
+
+                    EndTurn();
+
+                    return;
+                }
+            }
+
             Dictionary<AttackData, double> attacks = EnemyRecord.Attacks.ToDictionary(x => x, x => (double)x.Weight);
             AttackData attack = Rng.WeightedEntry<AttackData>(attacks);
 
+            BattleController prescriptController = null;
             if (attack.PreScript != null)
             {
-                BattleController preController = new BattleController(battleScene, this, null, attack.PreScript);
-                battleScene.AddController(preController);
+                prescriptController = new BattleController(battleScene, this, null, attack.PreScript);
+                ExecuteAction(prescriptController);
             }
 
-            if (attack.AttackAll)
+            if (prescriptController != null)
             {
-                int delay = 0;
-                foreach (var player in battleScene.PlayerList.FindAll(x => !x.Dead))
+                prescriptController.OnStart += new TerminationFollowup(() =>
                 {
-                    string[] script = new string[attack.Script.Count() + 1];
-                    script[0] = "Wait " + delay;
-                    for (int i = 1; i < script.Count(); i++) script[i] = attack.Script[i - 1];
-                    delay += 200;
+                    if (attack.AttackAll)
+                    {
+                        int delay = 0;
+                        foreach (var player in battleScene.PlayerList.FindAll(x => !x.Dead))
+                        {
+                            string[] script = new string[attack.Script.Count() + 1];
+                            script[0] = "Wait " + delay;
+                            for (int i = 1; i < script.Count(); i++) script[i] = attack.Script[i - 1];
+                            delay += 200;
 
-                    BattleController battleController = new BattleController(battleScene, this, player, script);
-                    battleScene.AddController(battleController);
-                }
+                            BattleController battleController = new BattleController(battleScene, this, player, script);
+                            battleScene.AddController(battleController);
+                        }
+                    }
+                    else
+                    {
+                        BattleController battleController = new BattleController(battleScene, this, null, attack.Script);
+                        ExecuteAction(battleController);
+                    }
+                });
             }
             else
             {
-                BattleController battleController = new BattleController(battleScene, this, null, attack.Script);
-                battleScene.AddController(battleController);
-            }
+                if (attack.AttackAll)
+                {
+                    int delay = 0;
+                    foreach (var player in battleScene.PlayerList.FindAll(x => !x.Dead))
+                    {
+                        string[] script = new string[attack.Script.Count() + 1];
+                        script[0] = "Wait " + delay;
+                        for (int i = 1; i < script.Count(); i++) script[i] = attack.Script[i - 1];
+                        delay += 200;
+
+                        BattleController battleController = new BattleController(battleScene, this, player, script);
+                        battleScene.AddController(battleController);
+                    }
+                }
+                else
+                {
+                    BattleController battleController = new BattleController(battleScene, this, null, attack.Script);
+                    ExecuteAction(battleController);
+                }
+            }    
 
             EndTurn();
         }

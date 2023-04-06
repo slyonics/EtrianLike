@@ -17,6 +17,10 @@ namespace EtrianLike.Scenes.BattleScene
         ConversationScene.ConversationScene convoScene;
         double timeleft = 0;
 
+        bool firstTime = true;
+
+        public event TerminationFollowup OnStart;
+
         public BattleController(BattleScene iBattleScene, Battler iAttacker, Battler iTarget, string[] script)
            : base(iBattleScene, script, PriorityLevel.CutsceneLevel)
         {
@@ -33,6 +37,12 @@ namespace EtrianLike.Scenes.BattleScene
 
         public override void PreUpdate(GameTime gameTime)
         {
+            if (firstTime)
+            {
+                firstTime = false;
+                OnStart?.Invoke();
+            }
+
             if (scriptParser.Finished)
             {
                 if (convoScene != null)
@@ -62,6 +72,8 @@ namespace EtrianLike.Scenes.BattleScene
                 case "Damage": CalculateDamage(tokens); break;
                 case "Heal": CalculateHealing(tokens); break;
                 case "Repair": target.Repair(int.Parse(tokens[1])); break;
+                case "Bleed": target.Bleed(int.Parse(tokens[1]), int.Parse(tokens[2]), float.Parse(tokens[3])); break;
+                case "Confuse": target.Confuse(int.Parse(tokens[1])); break;
                 case "Flash": target.FlashColor(new Color(byte.Parse(tokens[1]), byte.Parse(tokens[2]), byte.Parse(tokens[3]))); break;
                 case "Attack": Attack(tokens); break;
                 case "Dialogue": Dialogue(tokens); break;
@@ -139,7 +151,11 @@ namespace EtrianLike.Scenes.BattleScene
 
                 default:
                     {
-                        if (tokens.Length == 3) damage = int.Parse(tokens[1]);
+                        if (tokens.Length == 2)
+                        {
+                            damage = int.Parse(tokens[1]);
+                            goto dealDamage;
+                        }
                         else damage = Rng.RandomInt(int.Parse(tokens[1]), int.Parse(tokens[2]));
                         damage += Rng.RandomInt(0, 9);
                         damage -= target.Stats.Defense.Value * 5;
@@ -170,8 +186,16 @@ namespace EtrianLike.Scenes.BattleScene
 
         private void Attack(string[] tokens)
         {
-            List<BattlePlayer> eligibleTargets = battleScene.PlayerList.FindAll(x => !x.Dead);
-            target = eligibleTargets[Rng.RandomInt(0, eligibleTargets.Count - 1)];
+            if (attacker.Confusion)
+            {
+                List<BattleEnemy> eligibleTargets = battleScene.EnemyList.FindAll(x => !x.Dead);
+                target = eligibleTargets[Rng.RandomInt(0, eligibleTargets.Count - 1)];
+            }
+            else
+            {
+                List<BattlePlayer> eligibleTargets = battleScene.PlayerList.FindAll(x => !x.Dead);
+                target = eligibleTargets[Rng.RandomInt(0, eligibleTargets.Count - 1)];
+            }
 
             scriptParser.RunScript("Dialogue " + attacker.Stats.Name + " attacks " + target.Stats.Name + "!\nAnimate Attack\nSound Slash\nEffect Bash $targetCenterX $targetCenterY 3\nOnHit 100 Strength\nFlash 255 27 0\nDamage Strength 5 Physical");
         }
@@ -255,6 +279,7 @@ namespace EtrianLike.Scenes.BattleScene
             switch (stat)
             {
                 case "Health": heroModel.MaxHealth.Value += increaseAmount; heroModel.NakedHealth.Value += increaseAmount; break;
+                case "Magic": heroModel.MaxMagic.Value += increaseAmount; heroModel.NakedMagic.Value += increaseAmount; break;
                 case "Strength": heroModel.Strength.Value += increaseAmount; heroModel.NakedStrength.Value += increaseAmount; break;
                 case "Defense": heroModel.Defense.Value += increaseAmount; heroModel.NakedDefense.Value += increaseAmount; break;
                 case "Agility": heroModel.Agility.Value += increaseAmount; heroModel.NakedAgility.Value += increaseAmount; break;

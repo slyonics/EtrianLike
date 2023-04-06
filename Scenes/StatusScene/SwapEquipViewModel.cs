@@ -31,6 +31,7 @@ namespace EtrianLike.Scenes.StatusScene
         public ModelCollection<ItemRecord> EquipmentList { get; private set; }
 
         int deltaHealth;
+        int deltaMagic;
         int deltaStrength;
         int deltaDefense;
         int deltaAgility;
@@ -199,6 +200,15 @@ namespace EtrianLike.Scenes.StatusScene
             else if (deltaHealth > 0) { HealthColor.Value = Color.SkyBlue; DeltaHealth.Value = "+" + deltaHealth; }
             else if (deltaHealth < 0) { HealthColor.Value = Color.PaleVioletRed; DeltaHealth.Value = deltaHealth.ToString(); }
 
+            deltaMagic = itemRecord.BonusMagic - EquipmentList[equipmentSlot].BonusMagic;
+            if (HeroModel.Class.Value == ClassType.Android || HeroModel.Class.Value == ClassType.Drone)
+            {
+                deltaMagic += itemRecord.RobotMagic - EquipmentList[equipmentSlot].RobotMagic;
+            }
+            if (deltaMagic == 0) { MagicColor.Value = Color.White; DeltaMagic.Value = ""; }
+            else if (deltaMagic > 0) { MagicColor.Value = Color.SkyBlue; DeltaMagic.Value = "+" + deltaMagic; }
+            else if (deltaMagic < 0) { MagicColor.Value = Color.PaleVioletRed; DeltaMagic.Value = deltaMagic.ToString(); }
+
             deltaStrength = itemRecord.BonusStrength - EquipmentList[equipmentSlot].BonusStrength;
             if (HeroModel.Class.Value == ClassType.Android || HeroModel.Class.Value == ClassType.Drone)
             {
@@ -276,6 +286,8 @@ namespace EtrianLike.Scenes.StatusScene
 
             HeroModel.MaxHealth.Value += deltaHealth;
             HeroModel.Health.Value = HeroModel.MaxHealth.Value;
+            HeroModel.MaxMagic.Value += deltaMagic;
+            HeroModel.Magic.Value = HeroModel.MaxMagic.Value;
             HeroModel.Strength.Value += deltaStrength;
             HeroModel.Defense.Value += deltaDefense;
             HeroModel.Agility.Value += deltaAgility;
@@ -283,12 +295,14 @@ namespace EtrianLike.Scenes.StatusScene
         }
 
         public ModelProperty<string> DeltaHealth { get; set; } = new ModelProperty<string>("");
+        public ModelProperty<string> DeltaMagic { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> DeltaStrength { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> DeltaDefense { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> DeltaAgility { get; set; } = new ModelProperty<string>("");
         public ModelProperty<string> DeltaMana { get; set; } = new ModelProperty<string>("");
 
         public ModelProperty<Color> HealthColor { get; set; } = new ModelProperty<Color>(Color.White);
+        public ModelProperty<Color> MagicColor { get; set; } = new ModelProperty<Color>(Color.White);
         public ModelProperty<Color> StrengthColor { get; set; } = new ModelProperty<Color>(Color.White);
         public ModelProperty<Color> DefenseColor { get; set; } = new ModelProperty<Color>(Color.White);
         public ModelProperty<Color> AgilityColor { get; set; } = new ModelProperty<Color>(Color.White);

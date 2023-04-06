@@ -2,8 +2,8 @@
 	{
 		"Name": "Shard Salvo",
 		"Animation": "Chanting",
-		"Description": "Light glass damage to all enemies. May inflict bleed.",
-		"Icon": "Fire",
+		"Description": "Light glass damage to all enemies. Inflict bleed for one turn.",
+		"Icon": "Glass",
 		"Cost": 7,
 		"Targetting": "AllEnemy",
 		"PreScript": [ "Exercise Mana" ],
@@ -13,23 +13,24 @@
 			"Effect Flame $targetCenterX $targetCenterY 3",
 			"Flash 255 27 0",
 			"Damage Mana 5 Glass",
-			"Bleed 50"
+			"Bleed 100 1 0.1"
 		]
 	},
 	{
 		"Name": "Tezen's Song",
 		"Animation": "Chanting",
 		"Description": "Distract an enemy with a beguiling song.",
-		"Icon": "Lightning",
+		"Icon": "Voice",
 		"Cost": 3,
-		"Targetting": "AllEnemy",
+		"Targetting": "SingleEnemy",
 		"Script": [
 			"Exercise Mana",
 			"Animate Attack",
 			"Sound Thunder",
 			"Effect Shock $targetCenterX $targetCenterY 3",
 			"Flash 251 206 177",
-			"Damage Mana 10 Electric"
+			"Confuse 100",
+			"Dialogue $targetName was entranced by the song!"
 		]
 	},
 	{

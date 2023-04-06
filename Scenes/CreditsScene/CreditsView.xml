@@ -30,7 +30,7 @@
 		
     </Panel>
 
-    <Button Style="SubBlack" PushedStyle="TechSelected" Bounds="0, -20, 60, 18" Alignment="ReverseVertical" Action="Back" InnerMargin="0,1,0,0">
+    <Button Style="SubBlack" PushedStyle="SubPink" Bounds="0, -20, 60, 18" Alignment="ReverseVertical" Action="Back" InnerMargin="0,1,0,0">
       <Label Text="Back" Alignment="Center" Color="#E0BFA2FF" Font="Dialogue"/>
     </Button>
   </Panel>

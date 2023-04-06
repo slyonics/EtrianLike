@@ -33,6 +33,7 @@ namespace EtrianLike.Scenes.StatusScene
             Icon = clone.Icon;
             ChargesLeft = clone.ChargesLeft;
             Charges = clone.Charges;
+            Cost = clone.Cost;
             Targetting = clone.Targetting;
             TargetDead = clone.TargetDead;
             TargetMechanical = clone.TargetMechanical;
@@ -49,8 +50,8 @@ namespace EtrianLike.Scenes.StatusScene
         public int Charges { get; set; } = -1;
         public int Cost { get; set; } = -1;
         public bool ShowCharges { get => Charges >= 0; }
-        public bool ShowCost { get => Charges >= 0; }
-        public bool Usable { get => ChargesLeft != 0; }
+        public bool ShowCost { get => Cost >= 0; }
+        public bool Usable { get; set; } = true;
         public TargetType Targetting { get; set; }
         public bool TargetDead { get; set; } // true if this can target dead allies
         public bool TargetMechanical { get; set; } // true if this only targets robots

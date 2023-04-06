@@ -3,24 +3,24 @@
 	
 	<Panel Anchor="$CenterX,$CenterY" Bounds="180,-180,100,72">		  
 		<Button Style="SmallButton" PushedStyle="SmallButtonSelected" Bounds="0,0,100,24" Alignment="Vertical" Action="SettingsMenu" InnerMargin="8,4,8,4">
-			<Label Text="Settings" Alignment="Center" Color="#E0BFA2FF" Font="DotFont"/>
+			<Label Text="Settings" Alignment="Center" Color="#E0BFA2FF" Font="Battle"/>
 		</Button>
 		<Button Style="SmallButton" PushedStyle="SmallButtonSelected" Bounds="0,0,100,24" Alignment="Vertical" Action="Credits" InnerMargin="8,4,8,4">
-			<Label Text="Credits" Alignment="Center" Color="#E0BFA2FF" Font="DotFont"/>
+			<Label Text="Credits" Alignment="Center" Color="#E0BFA2FF" Font="Battle"/>
 		</Button>
 		<Button Style="SmallButton" PushedStyle="SmallButtonSelected" Bounds="0,0,100,24" Alignment="Vertical" Action="Exit" InnerMargin="8,4,8,4">
-			<Label Text="Exit" Alignment="Center" Color="#E0BFA2FF" Font="DotFont"/>
+			<Label Text="Exit" Alignment="Center" Color="#E0BFA2FF" Font="Battle"/>
 		</Button>
 	</Panel>
 
 	<Panel Anchor="$CenterX,$CenterY" Bounds="-160,-80,320,280">
-		<Button Radio="True" Name="NewGame" Style="SubBlack" PushedStyle="SubPink" Alignment="Vertical" Bounds="0,0,140,40" Action="NewGame" InnerMargin="8,4,8,4">
-			<Label Text="New Game" Alignment="Center" Color="#E0BFA2FF" Font="DotFont"/>
+		<Button Radio="True" Name="NewGame" Style="SubBlack" PushedStyle="SubPink" Alignment="Vertical" Bounds="0,0,140,40" Action="NewGame" InnerMargin="8,0,8,6">
+			<Label Text="New Game" Alignment="Center" Color="#E0BFA2FF" Font="Dialogue"/>
 		</Button>
-		<DataGrid Name="SaveList" Items="Bind AvailableSaves" Scrolling="False" Alignment="Vertical" Bounds="0,0,320,240">
-			<Button Radio="True" Style="SubBlack" PushedStyle="SubPink" Alignment="Vertical" Bounds="0,0,320,60" Action="Continue" ActionParameter="Ref DataGrid.SaveSlot">
-				<Label Text="Bind DataGrid.Header" Font="Dialogue" Alignment="Cascading" TextAlignment="Left" Bounds="22,0,280,10"/>
-				<Label Text="Bind DataGrid.PlayerLocation" Font="DotFont" TextAlignment="Left" Bounds="22,30,110,10"/>
+		<DataGrid Name="SaveList" Items="Bind AvailableSaves" Scrolling="False" Alignment="Vertical" Bounds="0,8,240,240">
+			<Button Radio="True" Style="SubBlack" PushedStyle="SubPink" Alignment="Vertical" Bounds="0,0,240,60" Action="Continue" ActionParameter="Ref DataGrid.SaveSlot">
+				<Label Text="Bind DataGrid.PlayerLocation" Font="Dialogue" Alignment="Cascading" TextAlignment="Left" Bounds="22,4,110,30"/>
+				<Label Text="Bind DataGrid.Date" Font="Battle" Alignment="Cascading" TextAlignment="Left" Bounds="22,4,110,30"/>
 			</Button>
 		</DataGrid>
 	</Panel>

@@ -21,6 +21,8 @@ namespace EtrianLike.Scenes.BattleScene
             Name.Value = clone.Name.Value;
             MaxHealth.Value = clone.MaxHealth.Value;
             Health.Value = MaxHealth.Value;
+            MaxMagic.Value = clone.MaxMagic.Value;
+            Magic.Value = MaxMagic.Value;
             Strength.Value = clone.Strength.Value;
             Defense.Value = clone.Defense.Value;
             Agility.Value = clone.Agility.Value;
@@ -33,6 +35,8 @@ namespace EtrianLike.Scenes.BattleScene
             Name.Value = enemyRecord.Name;
             MaxHealth.Value = enemyRecord.MaxHealth;
             Health.Value = MaxHealth.Value;
+            MaxMagic.Value = enemyRecord.MaxMagic;
+            Magic.Value = MaxMagic.Value;
             Strength.Value = enemyRecord.Strength;
             Defense.Value = enemyRecord.Defense;
             Agility.Value = enemyRecord.Agility;

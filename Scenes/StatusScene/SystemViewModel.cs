@@ -51,7 +51,7 @@ namespace EtrianLike.Scenes.StatusScene
                         Header = new ModelProperty<string>(heroModel.Name.Value),
                         PlayerLocation = new ModelProperty<string>(""),
                         SaveSlot = new ModelProperty<int>(i),
-                        Date = new ModelProperty<string>(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString()),
+                        Date = new ModelProperty<string>(""),
                     });
                 }
             }
@@ -143,7 +143,7 @@ namespace EtrianLike.Scenes.StatusScene
 
                 AvailableSaves[saveSlot].Header.Value = "Cyra";
                 AvailableSaves[saveSlot].PlayerLocation.Value = (string)save["PlayerLocation"];
-                AvailableSaves[saveSlot].Date.Value = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
+                AvailableSaves[saveSlot].Date.Value = "";
             }
             else
             {

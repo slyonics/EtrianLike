@@ -37,18 +37,20 @@ namespace EtrianLike.Scenes.BattleScene
             abilitiesButton = GetWidget<Button>("Abilities");
             actionsButton = GetWidget<Button>("Actions");
 
-/*
-            if (ActivePlayer.HeroModel.Equipment.Count() == 0) equipmentButton.Enabled = false;
-            if (ActivePlayer.HeroModel.Abilities.Count() == 0) abilitiesButton.Enabled = false;
+            GetWidget<Button>("Skills").Enabled = ActivePlayer.HeroModel.Abilities.Count() > 0;
 
-            
-            if (!equipmentButton.Enabled && ActivePlayer.HeroModel.LastCategory.Value == 0) ActivePlayer.HeroModel.LastCategory.Value = 1;
-            if (!abilitiesButton.Enabled && ActivePlayer.HeroModel.LastCategory.Value == 1)
-            {
-                if (equipmentButton.Enabled) ActivePlayer.HeroModel.LastCategory.Value = 0;
-                else ActivePlayer.HeroModel.LastCategory.Value = 2;
-            }
-            */
+            /*
+                        if (ActivePlayer.HeroModel.Equipment.Count() == 0) equipmentButton.Enabled = false;
+                        if (ActivePlayer.HeroModel.Abilities.Count() == 0) abilitiesButton.Enabled = false;
+
+
+                        if (!equipmentButton.Enabled && ActivePlayer.HeroModel.LastCategory.Value == 0) ActivePlayer.HeroModel.LastCategory.Value = 1;
+                        if (!abilitiesButton.Enabled && ActivePlayer.HeroModel.LastCategory.Value == 1)
+                        {
+                            if (equipmentButton.Enabled) ActivePlayer.HeroModel.LastCategory.Value = 0;
+                            else ActivePlayer.HeroModel.LastCategory.Value = 2;
+                        }
+                        */
         }
 
         public override void Update(GameTime gameTime)
@@ -254,7 +256,12 @@ namespace EtrianLike.Scenes.BattleScene
             childViewModel = null;
 
             List<ModelProperty<CommandRecord>> commands = new List<ModelProperty<CommandRecord>>();
-            foreach (var command in ActivePlayer.HeroModel.Abilities.ModelList) commands.Add(new ModelProperty<CommandRecord>(command.Value as CommandRecord));
+            foreach (var command in ActivePlayer.HeroModel.Abilities.ModelList)
+            {
+                var c = command.Value as CommandRecord;
+                c.Usable = ActivePlayer.HeroModel.Magic.Value >= c.Cost;
+                commands.Add(new ModelProperty<CommandRecord>(c));
+            }
             AvailableCommands.ModelList = commands;
 
             ShowSkills.Value = true;
@@ -304,7 +311,12 @@ namespace EtrianLike.Scenes.BattleScene
             if (Input.MOUSE_MODE) slot = -1;
 
             List<ModelProperty<CommandRecord>> commands = new List<ModelProperty<CommandRecord>>();
-            foreach (var command in ActivePlayer.HeroModel.Abilities.ModelList) commands.Add(new ModelProperty<CommandRecord>(command.Value as CommandRecord));
+            foreach (var command in ActivePlayer.HeroModel.Abilities.ModelList)
+            {
+                var c = command.Value as CommandRecord;
+                c.Usable = ActivePlayer.HeroModel.Magic.Value >= c.Cost;
+                commands.Add(new ModelProperty<CommandRecord>(c));
+            }
             AvailableCommands.ModelList = commands;
             ActivePlayer.HeroModel.LastCategory.Value = category = 1;
 
@@ -347,6 +359,8 @@ namespace EtrianLike.Scenes.BattleScene
             }
 
             ActivePlayer.HeroModel.LastSlot.Value = slot = AvailableCommands.ToList().FindIndex(x => x.Value == record);
+
+            Description.Value = record.Description;
 
             /*
             Description1.Value = record.Description.ElementAtOrDefault(0);

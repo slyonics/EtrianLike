@@ -135,7 +135,7 @@ namespace EtrianLike.Scenes.BattleScene
                                 if (Rng.RandomDouble(0, 1) < challengeBias * (Stats as HeroModel).HealthGrowth.Value) points += Rng.RandomInt(3, 8);
                             }
                             if (points <= 0) continue;
-                            string report = Stats.Name.Value + "'s @Heart HEALTH increased by " + points + " points!";
+                            string report = Stats.Name.Value + "'s HP increased by " + points + " points!";
                             ConversationScene.DialogueRecord dialogueRecord = new ConversationScene.DialogueRecord()
                             {
                                 Text = report,
@@ -154,7 +154,7 @@ namespace EtrianLike.Scenes.BattleScene
                                 if (Rng.RandomDouble(0, 1) < challengeBias * (Stats as HeroModel).StrengthGrowth.Value) points++;
                             }
                             if (points <= 0) continue;
-                            string report = Stats.Name.Value + "'s @Axe POWER increased by " + points + ((points > 1) ? " points!" : " point!");
+                            string report = Stats.Name.Value + "'s strength increased by " + points + ((points > 1) ? " points!" : " point!");
                             ConversationScene.DialogueRecord dialogueRecord = new ConversationScene.DialogueRecord()
                             {
                                 Text = report,
@@ -173,7 +173,7 @@ namespace EtrianLike.Scenes.BattleScene
                                 if (Rng.RandomDouble(0, 1) < challengeBias * (Stats as HeroModel).DefenseGrowth.Value) points++;
                             }
                             if (points <= 0) continue;
-                            string report = Stats.Name.Value + "'s @Shield GRIT increased by " + points + ((points > 1) ? " points!" : " point!");
+                            string report = Stats.Name.Value + "'s defense increased by " + points + ((points > 1) ? " points!" : " point!");
                             ConversationScene.DialogueRecord dialogueRecord = new ConversationScene.DialogueRecord()
                             {
                                 Text = report,
@@ -192,7 +192,7 @@ namespace EtrianLike.Scenes.BattleScene
                                 if (Rng.RandomDouble(0, 1) < challengeBias * (Stats as HeroModel).AgilityGrowth.Value) points++;
                             }
                             if (points <= 0) continue;
-                            string report = Stats.Name.Value + "'s @Gun TECH increased by " + points + ((points > 1) ? " points!" : " point!");
+                            string report = Stats.Name.Value + "'s agility increased by " + points + ((points > 1) ? " points!" : " point!");
                             ConversationScene.DialogueRecord dialogueRecord = new ConversationScene.DialogueRecord()
                             {
                                 Text = report,
@@ -211,7 +211,7 @@ namespace EtrianLike.Scenes.BattleScene
                                 if (Rng.RandomDouble(0, 1) < challengeBias * (Stats as HeroModel).ManaGrowth.Value) points++;
                             }
                             if (points <= 0) continue;
-                            string report = Stats.Name.Value + "'s @Staff MANA increased by " + points + ((points > 1) ? " points!" : " point!");
+                            string report = Stats.Name.Value + "'s magic increased by " + points + ((points > 1) ? " points!" : " point!");
                             ConversationScene.DialogueRecord dialogueRecord = new ConversationScene.DialogueRecord()
                             {
                                 Text = report,

@@ -250,6 +250,15 @@ namespace EtrianLike.Scenes.BattleScene
                 }
             }
 
+            if (Command.Cost > 0)
+            {
+                Player.HeroModel.Magic.Value = Player.HeroModel.Magic.Value - Command.Cost;
+                if (Player.HeroModel.Magic.Value <= 0)
+                {
+                    Player.HeroModel.Magic.Value = 0;
+                }
+            }
+
             Terminate();
             Player.EndTurn();
 
@@ -278,6 +287,7 @@ namespace EtrianLike.Scenes.BattleScene
 
                 case TargetType.AllEnemy:
                     {
+                        if (Command.PreScript != null)
                         {
                             BattleController battleController = new BattleController(battleScene, Player, null, Command.PreScript);
                             battleScene.AddController(battleController);
@@ -299,6 +309,7 @@ namespace EtrianLike.Scenes.BattleScene
 
                 case TargetType.AllAlly:
                     {
+                        if (Command.PreScript != null)
                         {
                             BattleController battleController = new BattleController(battleScene, Player, null, Command.PreScript);
                             battleScene.AddController(battleController);

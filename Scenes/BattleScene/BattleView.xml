@@ -20,7 +20,7 @@
 						<Label Text="Bind DataGrid.MaxHealth" Font="Battle" Color="Bind DataGrid.HealthColor" Alignment="Left" TextAlignment="Left" Bounds="10,9,0,20"/>
 					</Panel>
 					<Panel Bounds="0,0,125,25" Alignment="Cascading">
-						<Label Text="HP:" Font="Dialogue" Alignment="Left" TextAlignment="Left" Bounds="5,0,65,20"/>
+						<Label Text="SP:" Font="Dialogue" Alignment="Left" TextAlignment="Left" Bounds="5,0,65,20"/>
 						
 						<Label Text="Bind DataGrid.Magic" Font="Battle" Color="Bind DataGrid.HealthColor" Alignment="Left" TextAlignment="Right" Bounds="0,2,0,20"/>
 						<Label Text="/" Font="Battle" Color="Bind DataGrid.HealthColor" Alignment="Left" TextAlignment="Left" Bounds="3,5,5,20"/>

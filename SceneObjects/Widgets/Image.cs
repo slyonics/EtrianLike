@@ -48,16 +48,18 @@ namespace EtrianLike.SceneObjects.Widgets
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            Color drawColor = (parent.Enabled) ? Color : new Color(190, 190, 190, 255);
+
             if (icon != null)
             {
-                spriteBatch.Draw(icon, new Vector2(currentWindow.Center.X - icon.Width / 2, currentWindow.Center.Y - icon.Height / 2) + Position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, Depth - 0.0001f);
+                spriteBatch.Draw(icon, new Vector2(currentWindow.Center.X - icon.Width / 2, currentWindow.Center.Y - icon.Height / 2) + Position, null, drawColor, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, Depth - 0.0001f);
             }
             else if (Picture != null)
             {
                 if (Alignment == Alignment.Bottom)
-                    spriteBatch.Draw(Picture, new Rectangle(currentWindow.Left + (int)Position.X, (int)Position.Y + currentWindow.Top, currentWindow.Width, currentWindow.Height), null, Color, 0.0f, Vector2.Zero, SpriteEffects.None, Depth + 0.0001f);
+                    spriteBatch.Draw(Picture, new Rectangle(currentWindow.Left + (int)Position.X, (int)Position.Y + currentWindow.Top, currentWindow.Width, currentWindow.Height), null, drawColor, 0.0f, Vector2.Zero, SpriteEffects.None, Depth + 0.0001f);
                 // spriteBatch.Draw(picture, new Rectangle(currentWindow.Left + (int)Position.X, -currentWindow.Height + (int)Position.Y + parent.InnerBounds.Height / 2 - parent.InnerMargin.Y * CrossPlatformGame.Scale, currentWindow.Width, currentWindow.Height), null, color, 0.0f, Vector2.Zero, SpriteEffects.None, depth - 0.0001f);
-                else spriteBatch.Draw(Picture, new Rectangle(currentWindow.X + (int)Position.X, currentWindow.Y + (int)Position.Y, currentWindow.Width, currentWindow.Height), null, Color, 0.0f, Vector2.Zero, SpriteEffects.None, Depth + 0.0001f);
+                else spriteBatch.Draw(Picture, new Rectangle(currentWindow.X + (int)Position.X, currentWindow.Y + (int)Position.Y, currentWindow.Width, currentWindow.Height), null, drawColor, 0.0f, Vector2.Zero, SpriteEffects.None, Depth + 0.0001f);
             }
             else if (Sprite != null)
             {

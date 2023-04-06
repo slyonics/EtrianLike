@@ -224,7 +224,7 @@
 				"Script": [
 					"Attack"
 				],
-				"Weight": 50
+				"Weight": 5
 			},
 			{
 				"PreScript": [ "Dialogue $attackerName attacks the party with fire magic!", "Animate Attack" ],
@@ -234,7 +234,7 @@
 					"Flash 255 27 0",
 					"Damage Mana 4 Fire"
 				],
-				"Weight": 50,
+				"Weight": 509,
 				"AttackAll": "true"
 			}
 		]

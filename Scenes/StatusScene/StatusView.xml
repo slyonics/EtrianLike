@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <View>
 
-	<Panel Anchor="$CenterX,$CenterY" Bounds="-141,-102,282,22">
-		<Button Name="PartyButton" Radio="True" Style="Blank" PushedStyle="Bind PlayerProfile.SelectedStyle" Bounds="0,0,44,22" InnerMargin="8,4,8,3" Alignment="Left" Action="SelectParty">
+	<Panel Anchor="$CenterX,$CenterY" Bounds="-341,-102,240,225">
+		<Button Name="PartyButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectParty">
 			<Label Font="Dialogue" Text="Party" Alignment="Vertical"/>
 		</Button>
-		<Button Name="ItemsButton" Radio="True" Style="Blank" PushedStyle="Bind PlayerProfile.SelectedStyle" Bounds="0,0,40,22" InnerMargin="8,4,8,3" Alignment="Left" Action="SelectItems">
+		<Button Name="ItemsButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectItems">
 			<Label Font="Dialogue" Text="Items" Alignment="Vertical"/>
 		</Button>
-		<Button Name="EquipmentButton" Radio="True" Style="Blank" PushedStyle="Bind PlayerProfile.SelectedStyle" Bounds="0,0,64,22" InnerMargin="8,4,8,3" Alignment="Left" Action="SelectEquipment">
+		<Button Name="EquipmentButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectEquipment">
 			<Label Font="Dialogue" Text="Equipment" Alignment="Vertical" />
 		</Button>
-		<Button Name="AbilitiesButton" Radio="True" Style="Blank" PushedStyle="Bind PlayerProfile.SelectedStyle" Bounds="0,0,52,22" InnerMargin="8,4,8,3" Alignment="Left" Action="SelectAbilities">
+		<Button Name="AbilitiesButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectAbilities">
 			<Label Font="Dialogue" Text="Abilities" Alignment="Vertical" />
 		</Button>
-		<Button Name="SystemButton" Radio="True" Style="Blank" PushedStyle="Bind PlayerProfile.SelectedStyle" Bounds="0,0,82,22" InnerMargin="8,4,8,3" Alignment="Left" Action="SelectSystem">
+		<Button Name="SystemButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectSystem">
 			<Label Font="Dialogue" Text="Save &amp; Quit" Alignment="Vertical"/>
 		</Button>
 	</Panel>
