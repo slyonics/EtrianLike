@@ -352,7 +352,16 @@ namespace EtrianLike.Scenes.MapScene
                         stepsRemaining = Rng.RandomInt(8, 14);
                         GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
 
-                        BattleScene.BattleScene battleScene = new BattleScene.BattleScene("ScorpionNest");
+                    string encounterName = "";
+                        switch (Rng.RandomInt(0, 4))
+                    {
+                        case 0: encounterName = "Random1"; break;
+                        case 1: encounterName = "Random1"; break;
+                        case 2: encounterName = "Random2"; break;
+                        case 3: encounterName = "Random2"; break;
+                        case 4: encounterName = "Random3"; break;
+                    }
+                        BattleScene.BattleScene battleScene = new BattleScene.BattleScene(encounterName);
                         CrossPlatformGame.StackScene(battleScene, true);
 
                         parentScene.ResetPathfinding();

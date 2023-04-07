@@ -1,10 +1,65 @@
 [
 	{
-		"Name": "ScorpionNest",
+		"Name": "Random1",
 		"Background": "Desert",
 		"Enemies": [
-			"Specter",
-			"Specter"
+			"Enemy1",
+			"Enemy1"
+		],
+		"Challenge": 2,
+		"Script": [],
+		"Intro": "A test battle commences!!"
+	},
+	{
+		"Name": "Random2",
+		"Background": "Desert",
+		"Enemies": [
+			"Enemy1",
+			"Enemy2",
+			"Enemy1"
+		],
+		"Challenge": 2,
+		"Script": [],
+		"Intro": "A test battle commences!!"
+	},
+	{
+		"Name": "Random3",
+		"Background": "Desert",
+		"Enemies": [
+			"Enemy2",
+			"Enemy2"
+		],
+		"Challenge": 2,
+		"Script": [],
+		"Intro": "A test battle commences!!"
+	},
+	{
+		"Name": "Random4",
+		"Background": "Desert",
+		"Enemies": [
+			"Enemy3"
+		],
+		"Challenge": 2,
+		"Script": [],
+		"Intro": "A test battle commences!!"
+	},
+	{
+		"Name": "Boss1",
+		"Background": "Desert",
+		"Enemies": [
+			"Boss1"
+		],
+		"Challenge": 2,
+		"Script": [],
+		"Intro": "A test battle commences!!"
+	},
+	{
+		"Name": "Boss2",
+		"Background": "Desert",
+		"Enemies": [
+			"Enemy2",
+			"Boss2",
+			"Enemy2"
 		],
 		"Challenge": 2,
 		"Script": [],

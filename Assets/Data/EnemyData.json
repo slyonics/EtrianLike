@@ -224,7 +224,7 @@
 				"Script": [
 					"Attack"
 				],
-				"Weight": 5
+				"Weight": 50
 			},
 			{
 				"PreScript": [ "Dialogue $attackerName attacks the party with fire magic!", "Animate Attack" ],
@@ -234,8 +234,65 @@
 					"Flash 255 27 0",
 					"Damage Mana 4 Fire"
 				],
-				"Weight": 509,
+				"Weight": 50,
 				"AttackAll": "true"
+			}
+		]
+	},
+	{
+		"Name": "Enemy1",
+		"Sprite": "Ghost",
+		"ShadowOffset": 4,
+		"MaxHealth": 40,
+		"Strength": 6,
+		"Defense": 4,
+		"Agility": 1,
+		"Mana": 1,
+		"Evasion": 50,
+		"Attacks": [
+			{
+				"Script": [
+					"Attack"
+				],
+				"Weight": 100
+			}
+		]
+	},
+	{
+		"Name": "Enemy2",
+		"Sprite": "Ghost",
+		"ShadowOffset": 4,
+		"MaxHealth": 40,
+		"Strength": 6,
+		"Defense": 4,
+		"Agility": 1,
+		"Mana": 1,
+		"Evasion": 50,
+		"Attacks": [
+			{
+				"Script": [
+					"Attack"
+				],
+				"Weight": 100
+			}
+		]
+	},
+	{
+		"Name": "Enemy3",
+		"Sprite": "Ghost",
+		"ShadowOffset": 4,
+		"MaxHealth": 40,
+		"Strength": 6,
+		"Defense": 4,
+		"Agility": 1,
+		"Mana": 1,
+		"Evasion": 50,
+		"Attacks": [
+			{
+				"Script": [
+					"Attack"
+				],
+				"Weight": 100
 			}
 		]
 	}
