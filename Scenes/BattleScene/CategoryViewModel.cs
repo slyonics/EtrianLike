@@ -16,9 +16,9 @@ namespace EtrianLike.Scenes.BattleScene
 
         ViewModel childViewModel;
 
-        Button equipmentButton;
-        Button abilitiesButton;
-        Button actionsButton;
+        Button fightButton;
+        Button skillsButton;
+        Button itemsButton;
 
         int category = -1;
         int slot = -1;
@@ -33,11 +33,20 @@ namespace EtrianLike.Scenes.BattleScene
 
             LoadView(GameView.BattleScene_CategoryView);
 
-            equipmentButton = GetWidget<Button>("Equipment");
-            abilitiesButton = GetWidget<Button>("Abilities");
-            actionsButton = GetWidget<Button>("Actions");
+            fightButton = GetWidget<Button>("Fight");
+            skillsButton = GetWidget<Button>("Skills");
+            itemsButton = GetWidget<Button>("Items");
 
             GetWidget<Button>("Skills").Enabled = ActivePlayer.HeroModel.Abilities.Count() > 0;
+
+            /*if (!Input.MOUSE_MODE)
+            {
+                Fight();
+                fightButton.RadioSelect();
+            }*/
+
+            fightButton.RadioSelect();
+            Description.Value = "Attack an enemy with your equipped weapon.";
 
             /*
                         if (ActivePlayer.HeroModel.Equipment.Count() == 0) equipmentButton.Enabled = false;
@@ -79,20 +88,17 @@ namespace EtrianLike.Scenes.BattleScene
             {
                 case 0:
                     Audio.PlaySound(GameSound.menu_select);
-                    SelectActions();
+                    Fight();
                     slot = 0;
-                    (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                    SelectCommand(AvailableCommands.ElementAt(slot));
-                    ActivePlayer.HeroModel.LastSlot.Value = slot;
-                    actionsButton.RadioSelect();
+                    fightButton.RadioSelect();
                     break;
 
                 case 1:
-                    if (GetWidget<Button>("Equipment").Enabled)
+                    if (skillsButton.Enabled)
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        equipmentButton.RadioSelect();
-                        SelectEquipment();
+                        fightButton.RadioSelect();
+                        Skills();
                         slot = 0;
                         (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
                         SelectCommand(AvailableCommands.ElementAt(slot));
@@ -106,25 +112,25 @@ namespace EtrianLike.Scenes.BattleScene
                         (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
                         SelectCommand(AvailableCommands.ElementAt(slot));
                         ActivePlayer.HeroModel.LastSlot.Value = slot;
-                        actionsButton.RadioSelect();
+                        itemsButton.RadioSelect();
                     }
                     break;
 
                 case 2:
-                    if (abilitiesButton.Enabled)
+                    if (skillsButton.Enabled)
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        abilitiesButton.RadioSelect();
-                        SelectAbilities();
+                        fightButton.RadioSelect();
+                        Skills();
                         slot = 0;
                         (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
                         SelectCommand(AvailableCommands.ElementAt(slot));
                         ActivePlayer.HeroModel.LastSlot.Value = slot;
                     }
-                    else if (equipmentButton.Enabled)
+                    else if (fightButton.Enabled)
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        equipmentButton.RadioSelect();
+                        fightButton.RadioSelect();
                         SelectEquipment();
                         slot = 0;
                         (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
@@ -141,15 +147,14 @@ namespace EtrianLike.Scenes.BattleScene
             switch (ActivePlayer.HeroModel.LastCategory.Value)
             {
                 case 0:
-                    if (abilitiesButton.Enabled)
+                    if (skillsButton.Enabled)
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        abilitiesButton.RadioSelect();
-                        SelectAbilities();
-                        slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
+                        skillsButton.RadioSelect();
+                        Skills();
+                        slot = -1;
+
+
                     }
                     else
                     {
@@ -159,14 +164,14 @@ namespace EtrianLike.Scenes.BattleScene
                         (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
                         SelectCommand(AvailableCommands.ElementAt(slot));
                         ActivePlayer.HeroModel.LastSlot.Value = slot;
-                        actionsButton.RadioSelect();
+                        itemsButton.RadioSelect();
                     }
                     break;
 
                 case 1:
                     Audio.PlaySound(GameSound.menu_select);
-                    SelectActions();
-                    actionsButton.RadioSelect();
+                    Item();
+                    itemsButton.RadioSelect();
                     slot = 0;
                     (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
                     SelectCommand(AvailableCommands.ElementAt(slot));
@@ -174,21 +179,18 @@ namespace EtrianLike.Scenes.BattleScene
                     break;
 
                 case 2:
-                    if (equipmentButton.Enabled)
+                    if (fightButton.Enabled)
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        equipmentButton.RadioSelect();
-                        SelectEquipment();
+                        Fight();
                         slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
+                        fightButton.RadioSelect();
                     }
-                    else if (abilitiesButton.Enabled)
+                    else if (skillsButton.Enabled)
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        abilitiesButton.RadioSelect();
-                        SelectAbilities();
+                        fightButton.RadioSelect();
+                        Skills();
                         slot = 0;
                         (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
                         SelectCommand(AvailableCommands.ElementAt(slot));
@@ -201,6 +203,8 @@ namespace EtrianLike.Scenes.BattleScene
 
         private void CursorUp()
         {
+            if (fightButton.Selected) return;
+
             Audio.PlaySound(GameSound.menu_select);
 
             if (slot == -1) slot = 0;
@@ -214,6 +218,8 @@ namespace EtrianLike.Scenes.BattleScene
 
         private void CursorDown()
         {
+            if (fightButton.Selected) return;
+
             Audio.PlaySound(GameSound.menu_select);
 
             if (slot == -1) slot = 0;
@@ -227,7 +233,22 @@ namespace EtrianLike.Scenes.BattleScene
 
         private void CursorSelect()
         {
-            if (slot == -1) return;
+            if (fightButton.Selected)
+            {
+                childViewModel?.Terminate();
+                childViewModel = new TargetViewModel(battleScene, ActivePlayer, ActivePlayer.HeroModel.Equipment.First().Value);
+                battleScene.AddView(childViewModel);
+                return;
+            }
+
+            if (slot == -1)
+            {
+                slot = 0;
+                (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
+                SelectCommand(AvailableCommands.ElementAt(slot));
+                ActivePlayer.HeroModel.LastSlot.Value = slot;
+                return;
+            }
             CommandRecord record = (GetWidget<DataGrid>("CommandList").Items.ElementAt(slot) as IModelProperty).GetValue() as CommandRecord;
             if (!record.Usable) return;
 
@@ -243,9 +264,12 @@ namespace EtrianLike.Scenes.BattleScene
 
             Description.Value = "Attack an enemy with your equipped weapon.";
 
-            childViewModel?.Terminate();
-            childViewModel = new TargetViewModel(battleScene, ActivePlayer, ActivePlayer.HeroModel.Equipment.First().Value);
-            battleScene.AddView(childViewModel);
+            if (Input.MOUSE_MODE)
+            {
+                childViewModel?.Terminate();
+                childViewModel = new TargetViewModel(battleScene, ActivePlayer, ActivePlayer.HeroModel.Equipment.First().Value);
+                battleScene.AddView(childViewModel);
+            }
         }
 
         public void Skills()
@@ -340,34 +364,37 @@ namespace EtrianLike.Scenes.BattleScene
 
         public void SelectCommand(object parameter)
         {
-            CommandRecord record;
-            if (parameter is IModelProperty)
+            if (fightButton.Selected)
             {
-                record = (CommandRecord)((IModelProperty)parameter).GetValue();
-            }
-            else record = (CommandRecord)parameter;
-
-            childViewModel?.Terminate();
-            childViewModel = null;
-
-            if (Input.MOUSE_MODE) slot = -1;
-
-            if (Input.MOUSE_MODE)
-            {
-                childViewModel = new TargetViewModel(battleScene, ActivePlayer, record);
+                childViewModel?.Terminate();
+                childViewModel = new TargetViewModel(battleScene, ActivePlayer, ActivePlayer.HeroModel.Equipment.First().Value);
                 battleScene.AddView(childViewModel);
             }
+            else
+            {
+                CommandRecord record;
+                if (parameter is IModelProperty)
+                {
+                    record = (CommandRecord)((IModelProperty)parameter).GetValue();
+                }
+                else record = (CommandRecord)parameter;
 
-            ActivePlayer.HeroModel.LastSlot.Value = slot = AvailableCommands.ToList().FindIndex(x => x.Value == record);
+                childViewModel?.Terminate();
+                childViewModel = null;
 
-            Description.Value = record.Description;
+                if (Input.MOUSE_MODE) slot = -1;
 
-            /*
-            Description1.Value = record.Description.ElementAtOrDefault(0);
-            Description2.Value = record.Description.ElementAtOrDefault(1);
-            Description3.Value = record.Description.ElementAtOrDefault(2);
-            Description4.Value = record.Description.ElementAtOrDefault(3);
-            Description5.Value = record.Description.ElementAtOrDefault(4);*/
+                if (Input.MOUSE_MODE)
+                {
+                    childViewModel = new TargetViewModel(battleScene, ActivePlayer, record);
+                    battleScene.AddView(childViewModel);
+                }
+
+                ActivePlayer.HeroModel.LastSlot.Value = slot = AvailableCommands.ToList().FindIndex(x => x.Value == record);
+
+                Description.Value = record.Description;
+
+            }
         }
 
 

@@ -76,8 +76,8 @@ namespace EtrianLike.Scenes.StatusScene
             InputFrame currentInput = Input.CurrentInput;
             if (ChildViewModel == null || !ChildViewModel.SuppressLeftRight)
             {
-                if (currentInput.CommandPressed(Command.Left)) CursorLeft();
-                else if (currentInput.CommandPressed(Command.Right)) CursorRight();
+                if (currentInput.CommandPressed(Command.Up)) CursorLeft();
+                else if (currentInput.CommandPressed(Command.Down)) CursorRight();
                 else if (currentInput.CommandPressed(Command.Cancel) && (ChildViewModel == null || !suppressCancel))
                 {
                     Audio.PlaySound(GameSound.Back);

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <View>
 
-	<Panel Anchor="$CenterX,$CenterY" Bounds="-341,-102,240,225">
+	<Panel Anchor="$CenterX,$CenterY" Bounds="-341,-162,240,225">
 		<Button Name="PartyButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectParty">
 			<Label Font="Dialogue" Text="Party" Alignment="Vertical"/>
 		</Button>

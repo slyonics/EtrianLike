@@ -3,7 +3,7 @@
 
 	<Panel Anchor="$CenterX,$CenterY" Bounds="Bind Window" InnerMargin="16,16,16,18">
 		<CrawlText Name="ConversationText" Text="Bind Dialogue" Font="Bind ConversationFont" Alignment="Stretch" Color="#D8D8D8FF"/>
-		<Textplate Name="SpeakerPlate" Style="SubBlack" Alignment="BottomLeft" Bounds="8,-68,-1,-1" InnerMargin="9,4,7,4" Font="Bind ConversationFont" Text="Bind Speaker" Color="#E0BFA2FF"/>
+		<Textplate Name="SpeakerPlate" Style="SubBlack" Alignment="BottomLeft" Bounds="16,-76,-1,-1" InnerMargin="9,4,7,4" Font="Bind ConversationFont" Text="Bind Speaker" Color="#E0BFA2FF"/>
 	</Panel>
   
 </View>

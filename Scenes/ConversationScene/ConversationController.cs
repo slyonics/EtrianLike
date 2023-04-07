@@ -50,6 +50,18 @@ namespace EtrianLike.Scenes.ConversationScene
                 case "DisableEnd": conversationScene.ConversationViewModel.disableEnd = true; break;
 
                 //case "ChangeMap": MapScene.EventController.ChangeMap(tokens, null); break;
+                case "ShowMapView":
+                    {
+                        TransitionController transitionController = new TransitionController(TransitionDirection.In, 1000, PriorityLevel.CutsceneLevel);
+                        transitionController.UpdateTransition += new Action<float>(f => MapScene.MapScene.Instance.MapViewModel.MapColor.Value = Color.Lerp(Color.Black, Color.White, f));
+                        transitionController.FinishTransition += new Action<TransitionDirection>(d => MapScene.MapScene.Instance.MapViewModel.MapColor.Value = Color.White);
+
+                        conversationScene.AddController(transitionController);
+
+                        
+
+                        break;
+                    }
 
                 default: return false;
             }

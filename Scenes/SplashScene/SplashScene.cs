@@ -68,7 +68,7 @@ namespace EtrianLike.Scenes.SplashScene
 
             // CrossPlatformGame.Transition(typeof(IntroScene.IntroScene));
 
-            CrossPlatformGame.Transition(typeof(MapScene.MapScene), "SchoolHall");
+            CrossPlatformGame.Transition(typeof(MapScene.MapScene), "Classroom1");
         }
 
         public bool Terminated { get => false; }

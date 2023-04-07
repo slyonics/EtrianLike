@@ -3,7 +3,226 @@
 		"Name": "GameIntro",
 		"DialogueRecords": [
 			{
-				"Text": "Game Introduction. Establish setting and instruct player to find their first class with directions in #F3C14CFF colored text."
+				"Speaker": "???",
+				"Text": "Cyra! Wake up!"
+			},
+			{
+				"Speaker": "???",
+				"Text": "Cyra, get up you're going to get in trouble!",
+				"Script": [
+					"DisableEnd",
+					"WaitForText",
+					"SelectionPrompt",
+					"Keep snoozing",
+					"Wake up",
+					"End",
+					"Switch $selection",
+					"Case Keep snoozing",
+					"ChangeConversation Keepsnoozing",
+					"Break",
+					"Case Wake up",
+					"ChangeConversation Wakeup",
+					"Break",
+					"End"
+				]
+			}
+		]
+	},
+	{
+		"Name": "Keepsnoozing",
+		"DialogueRecords": [
+			{
+				"Speaker": "Cyra",
+				"Text": "Mhm..."
+			},
+			{
+				"Speaker": "???",
+				"Text": "Ugh. I knew this would happen... Shame on your sisters for keeping you up with their chores."
+			},
+			{
+				"Text": " * SMACK * ",
+				"Script": [ "PlaySound Bounce" ]
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "ACK!"
+			},
+			{
+				"Speaker": "Mr. Henrick",
+				"Text": "I hope you enjoyed your nap Cyra.",
+				"Script": [ "ShowMapView" ]
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Oh, I-- I'm sorry Mr. Henrick. I didn't get much sleep last night."
+			},
+			{
+				"Speaker": "Mr. Henrick",
+				"Text": "I'll let it slide this time. Next time you'll be seeing me after class."
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Hmm... maybe I shouldn't have smacked you so hard."
+			},
+			{
+				"Text": "[Cyra glares at Ivona. She's lucky no one in class could see her.]"
+			}
+		],
+		"EndScript": [ "ChangeConversation EndIntro" ]
+	},
+	{
+		"Name": "Wakeup",
+		"DialogueRecords": [
+			{
+				"Text": "[Cyra nods her head awake. She looks around the class. No one looks up from their desk.]",
+				"Script": [ "ShowMapView" ]
+			},
+			{
+				"Text": "[Ivona perches on her desk and hops up and down to make sure Cyra is awake. She's lucky only Cyra can see her right now.]"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Stay awake Cyra! Class is almost over."
+			},
+			{
+				"Text": "[Cyra gives her an apologetic smile.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Right, right. Thank you, Ivona."
+			}
+		],
+		"EndScript": [ "ChangeConversation EndIntro" ]
+	},
+	{
+		"Name": "EndIntro",
+		"DialogueRecords": [
+			{
+				"Speaker": "Mr. Henrick",
+				"Text": "Alright. Remember class, I need you to read chapters 1-4 of 'How to Kill a Pigeon' this weekend."
+			},
+			{
+				"Speaker": "Male Student",
+				"Text": "Uh, I think something is wrong with my copy."
+			},
+			{
+				"Text": "[Mr. Henrick sighs. He scratches his head in annoyance.]"
+			},
+			{
+				"Speaker": "Mr. Henrick",
+				"Text": "I check all the copies myself. Nice try--"
+			},
+			{
+				"Speaker": "Male Student",
+				"Text": "No, Mr. Henrick. My pages are blank!"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Hmm?"
+			},
+			{
+				"Text": "[Mr. Henrick stares at the student before he walks over and picks up his book. His expression grows more puzzled as he flips through the pages.]"
+			},
+			{
+				"Speaker": "Female Student",
+				"Text": "Hey! My book is blank too! I could've sworn I saw the pages yesterday..."
+			},
+			{
+				"Text": "[Murmurs erupt across the class as students flip through their book to find blank pages.]"
+			},
+			{
+				"Speaker": "Mr. Henrick",
+				"Text": "Is this some kind of prank!?"
+			},
+			{
+				"Text": "[Mr. Henrick frantically goes from student to student and grabs their books to be greeted by none other than blank pages.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Ivona, did something--"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "A labrinyth has opened up in the school."
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "J-just now?"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "It's alright. Just as we practiced. Act natural and let's get the other girls."
+			},
+			{
+				"Text": "[The school bell rings. Mr. Henrick nearly jumps out of his shoes.]",
+				"Script": [ "PlaySound Laser" ]
+			},
+			{
+				"Speaker": "Mr. Henrick",
+				"Text": "Alright, I don’t know whose idea of a prank this is but... you will not have homework for this weekend."
+			},
+			{
+				"Speaker": "Mr. Henrick",
+				"Text": "I have to make some calls."
+			},
+			{
+				"Text": "[The class hoots and hollers as they collect their things and leave the classroom. Cyra grabs her backpack and follows suit.]"
+			}
+		]
+	},
+	{
+		"Name": "GameOrientation",
+		"DialogueRecords": [
+			{
+				"Speaker": "Cyra",
+				"Text": "Okay, so I guess we got to find the labryinth entrance and then stop things from getting out of hand--"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "HOLD IT THERE YOUNG LADY!"
+			},
+			{
+				"Text": "[The little magical cockatoo flaps her wings in your face in exasperation.]"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "LABRYINTH OR NOT, YOU HAVE TO FINISH SCHOOL TODAY!"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "My conscious will not rest if I interrupt your schooling in anyway!"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "But, Ivona--"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Go to your next class! Let's keep a look out for any oddities in the school so we can find the labryinth entrance."
+			},
+			{
+				"Text": "[Cyra nods and takes one step and stops.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Uh... I forgot my schedule at home. Do you remember my next class?"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "What am I going to do with you?"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Sorry..."
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "You're going to algebra. Just in case you also lost your sense of direction that's located #2880E0FF straight ahead and down the hallway to your right."
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Your algebra classroom will be the #2880E0FF second door on your left. #FFFFFFFF I'll mark it on your map with a star when you get close.",
+				"Script": [ "SetWaypoint 5 9" ]
 			}
 		]
 	},
@@ -89,10 +308,136 @@
 		]
 	},
 	{
-		"Name": "SecondPeriod",
+		"Name": "MeetFriends",
 		"DialogueRecords": [
 			{
-				"Text": "Introduce Wren. Direct player to find the library."
+				"Text": "[In front of the door you’re greeted by Wren and Angélia. Angélia nods in greeting while Wren bursts into a big grin as she starts to chant.]"
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "Labryinth! Labryinth!"
+			},
+			{
+				"Text": "[Angélia elbows the girl. Wren hisses as she massages her own arm.]"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Could you be any louder?"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "I see you girls have also noticed a labryinth has opened somewhere in the school as well."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "It's obvious. I was in history class and everything got weird. Mrs. Keith was mid lesson then just... froze there."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "She snapped out of it and just dismissed us early. It was like she forgot why she was even here."
+			},
+			{
+				"Text": "[Wren nods her head aggressively as she listens to Angélia speak.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Err, what happened to you then Wren?"
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "Um..."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "She skipped class."
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "I did skip class."
+			},
+			{
+				"Text": "[Wren grins as she says it, not ashamed in the slightest despite the death glare she gets from Ivona.]"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "After class, we should do some investigating to find out where that labryinth entrance is."
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "Alright, but where do we start looking?",
+				"Script": [
+					"DisableEnd",
+					"WaitForText",
+					"SelectionPrompt",
+					"Check the cafeteria",
+					"Go to the library after class",
+					"End",
+					"Switch $selection",
+					"Case Check the cafeteria",
+					"ChangeConversation ChooseCafeteria",
+					"Break",
+					"Case Go to the library after class",
+					"ChangeConversation ChooseLibrary",
+					"Break",
+					"End"
+				]
+			}
+		]
+	},
+	{
+		"Name": "ChooseCafeteria",
+		"DialogueRecords": [
+			{
+				"Speaker": "Cyra",
+				"Text": "I don't know. The cafeteria seems pretty big. Wouldn't a labryinth entrance fit there?"
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "Uh, did you miss breakfast? Why would it be in there?"
+			},
+			{
+				"Text": "[Angélia shakes her head.]"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Shouldn't we check the library? Most of these occurrences have something to do with books. It makes the most sense to go there first at least."
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Oh, yeah. Right."
+			},
+			{
+				"Text": "[Cyra deflates, embarrassed.]"
+			},
+			{
+				"Text": "[Ivona flies up to perch on her shoulder and nuzzles her cheek.]"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "It's alright darling. You're all new to this. You'll get better."
+			},
+			{
+				"Text": "[Cyra smiles, appreciating Ivona's comfort.]"
+			}
+		]
+	},
+	{
+		"Name": "ChooseLibrary",
+		"DialogueRecords": [
+			{
+				"Speaker": "Cyra",
+				"Text": "The library just makes sense doesn't it? I think if we go there we're bound to find something useful to finding the entrance."
+			},
+			{
+				"Text": "[Ivona nods her head in approval.]"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Bright idea, Cyra!"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Yeah, I'd say the same thing."
 			}
 		]
 	},
@@ -125,10 +470,34 @@
 		]
 	},
 	{
+		"Name": "NotYourClass",
+		"DialogueRecords": [
+			{
+				"Text": "[This door leads to a class already in session. Best not to interrupt them.]"
+			}
+		]
+	},
+	{
 		"Name": "Rumors",
 		"DialogueRecords": [
 			{
-				"Text": "Overheard rumors or encounters with classmates help to build the setting and foreshadow upcoming events."
+				"Text": "[You overhear other students loudly sharing some rumors.]"
+			},
+			{
+				"Speaker": "Laid-Back Student",
+				"Text": "Dude, did your hear Principal Reed is acting weird today?"
+			},
+			{
+				"Speaker": "Slacker Student",
+				"Text": "Whaddaya mean?"
+			},
+			{
+				"Speaker": "Laid-Back Student",
+				"Text": "Someone said he was tearing pages out of all those books in his office."
+			},
+			{
+				"Speaker": "Slacker Student",
+				"Text": "Bro? I thought those were like his babies!"
 			}
 		]
 	},

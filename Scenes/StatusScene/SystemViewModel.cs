@@ -143,7 +143,7 @@ namespace EtrianLike.Scenes.StatusScene
 
                 AvailableSaves[saveSlot].Header.Value = "Cyra";
                 AvailableSaves[saveSlot].PlayerLocation.Value = (string)save["PlayerLocation"];
-                AvailableSaves[saveSlot].Date.Value = "";
+                AvailableSaves[saveSlot].Date.Value = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
             }
             else
             {

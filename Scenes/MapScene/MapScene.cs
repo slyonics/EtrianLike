@@ -14,6 +14,8 @@ namespace EtrianLike.Scenes.MapScene
 {
     public class MapScene : Scene
     {
+        public static MapScene Instance;
+
         private const int WALL_LENGTH = 128;
 
         public enum Direction
@@ -54,6 +56,8 @@ namespace EtrianLike.Scenes.MapScene
 
         public MapScene(string iMapName)
         {
+            Instance = this;
+
             MapName = iMapName;
 
             mapViewModel = AddView(new MapViewModel(this, GameView.MapScene_MapView));
@@ -68,6 +72,8 @@ namespace EtrianLike.Scenes.MapScene
 
         public MapScene(string iMapName, string spawnName)
         {
+            Instance = this;
+
             MapName = iMapName;
 
             mapViewModel = AddView(new MapViewModel(this, GameView.MapScene_MapView));
@@ -84,6 +90,8 @@ namespace EtrianLike.Scenes.MapScene
 
         public MapScene(string iMapName, int spawnX, int spawnY, Direction iDirection)
         {
+            Instance = this;
+
             MapName = iMapName;
 
             mapViewModel = AddView<MapViewModel>(new MapViewModel(this, GameView.MapScene_MapView));

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="42">
+ <properties>
+  <property name="AmbientLight" type="float" value="0.4"/>
+  <property name="LocationName" value="Literature Class"/>
+  <property name="Name" value="Literature Class"/>
+  <property name="Wall" value="ClassroomWall"/>
+ </properties>
+ <tileset firstgid="1" source="Walls.tsx"/>
+ <layer id="1" name="Floor" width="12" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,4,4,4,4,0,0,0,0,
+0,0,0,0,4,4,4,4,0,0,0,0,
+0,0,0,0,4,4,4,4,0,0,0,0,
+0,0,0,0,4,4,4,4,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="Ceiling" width="12" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,11,11,11,11,0,0,0,0,
+0,0,0,0,11,9,11,11,0,0,0,0,
+0,0,0,0,11,11,9,11,0,0,0,0,
+0,0,0,0,11,11,11,11,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="Walls" width="12" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,13,3,0,13,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,6,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="Spawns">
+  <object id="1" name="Default" type="Spawn" x="640" y="640" width="128" height="128">
+   <properties>
+    <property name="Direction" value="North"/>
+   </properties>
+  </object>
+  <object id="41" name="SchoolHall" type="Spawn" x="640" y="896" width="128" height="128">
+   <properties>
+    <property name="Direction" value="North"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="Events">
+  <object id="15" name="GameIntro" type="Enter" x="640" y="640" width="128" height="128">
+   <properties>
+    <property name="DisableIf" value="GameIntro"/>
+    <property name="Script">Conversation GameIntro
+SetFlag GameIntro True
+DisableEvent
+ChangeMap SchoolHall Classroom1</property>
+   </properties>
+  </object>
+  <object id="34" name="Exit Door" type="ActivateSouth" x="640" y="1024" width="128" height="128">
+   <properties>
+    <property name="Script" value="ChangeMap SchoolHall Classroom1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Lighting">
+  <object id="10" x="512" y="512" width="512" height="512"/>
+ </objectgroup>
+ <objectgroup id="7" name="Walls"/>
+</map>

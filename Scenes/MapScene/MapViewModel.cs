@@ -32,6 +32,11 @@ namespace EtrianLike.Scenes.MapScene
             MapRender.Value = CrossPlatformGame.GameInstance.mapRender;
             MiniMapRender.Value = CrossPlatformGame.GameInstance.minimapRender;
 
+            if (!GameProfile.GetSaveData<bool>("GameIntro"))
+            {
+                MapColor.Value = Color.Black;
+            }
+
             LoadView(GameView.MapScene_MapView);
         }
 
@@ -96,6 +101,8 @@ namespace EtrianLike.Scenes.MapScene
 
         public ModelProperty<RenderTarget2D> MapRender { get; set; } = new ModelProperty<RenderTarget2D>(null);
         public ModelProperty<RenderTarget2D> MiniMapRender { get; set; } = new ModelProperty<RenderTarget2D>(null);
+
+        public ModelProperty<Color> MapColor { get; set; } = new ModelProperty<Color>(Color.White);
 
         public ModelProperty<Rectangle> MiniMapBounds { get; set; } = new ModelProperty<Rectangle>(new Rectangle(CrossPlatformGame.ScreenWidth - 132, 12, 120, 120));
     }

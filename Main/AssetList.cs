@@ -296,6 +296,7 @@ namespace EtrianLike.Main
         Widgets_LabelGlow,
         Widgets_MainBlack,
         Widgets_MapFrame,
+        Widgets_Nameplate,
         Widgets_RoundBlack,
         Widgets_RoundPink,
         Widgets_SelectedFrame,
@@ -361,6 +362,7 @@ namespace EtrianLike.Main
 
     public enum GameMap
     {
+        Classroom1,
         DarkLibrary,
         DarkSchool,
         Foundry,

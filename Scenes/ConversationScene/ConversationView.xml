@@ -3,7 +3,7 @@
 
 	<Panel Style="MainBlack" Anchor="$CenterX,$CenterY" Bounds="Bind Window" InnerMargin="16,16,16,18" TransitionIn="Expand" TransitionOut="Shrink">
 		<CrawlText Name="ConversationText" Text="Bind Dialogue" Font="Bind ConversationFont" Alignment="Stretch" Color="#D8D8D8FF" VoiceSound="Blip"/>
-		<Textplate Name="SpeakerPlate" Style="SubBlack" Alignment="Left" Bounds="8,-19,-1,-1" InnerMargin="9,4,7,4" Font="Bind ConversationFont" Text="Bind Speaker" Color="#E0BFA2FF"/>
+		<Textplate Name="SpeakerPlate" Style="Nameplate" Alignment="Left" Bounds="16,-55,-1,-1" InnerMargin="48,16,48,16" Font="Bind ConversationFont" Text="Bind Speaker" Color="#E0BFA2FF"/>
 		<Image Sprite="Enter,0,0,12,12,2,1200,-1" Alignment="BottomRight" Bounds="7,7,36,36" Visible="Bind ReadyToProceed"/>
 	</Panel>
   
