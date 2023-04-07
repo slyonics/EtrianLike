@@ -87,8 +87,8 @@ namespace EtrianLike.Main
         Battle,
         SchoolDay,
         SchoolNight,
-        SMP_TNS,
         Title,
+        Victory,
 
         None = -1
     }
@@ -239,6 +239,7 @@ namespace EtrianLike.Main
         Portraits_CyraMahou,
         Portraits_Jane,
         Portraits_JaneFace,
+        Portraits_Mascot,
         Portraits_WarriorF,
         Portraits_WarriorM,
         Tiles_Tl_World_A1,
@@ -328,6 +329,7 @@ namespace EtrianLike.Main
         Widgets_Icons_Armor,
         Widgets_Icons_Axe,
         Widgets_Icons_Blank,
+        Widgets_Icons_Boots,
         Widgets_Icons_Chest,
         Widgets_Icons_Claw,
         Widgets_Icons_Defend,

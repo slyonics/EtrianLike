@@ -117,6 +117,8 @@ namespace EtrianLike.Scenes.BattleScene
             {
                 if (EnemyList.Count == 0)
                 {
+                    Audio.PlayMusic(GameMusic.Victory, false);
+
                     List<ConversationScene.DialogueRecord> dialogueRecords = new List<ConversationScene.DialogueRecord>();
                     dialogueRecords.Add(new ConversationScene.DialogueRecord() { Text = "Victory!" });
                     foreach (BattlePlayer battlePlayer in PlayerList)

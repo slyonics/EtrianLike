@@ -81,7 +81,7 @@ namespace EtrianLike.Main
             MusicVolume = Settings.GetProgramSetting<float>("MusicVolume");
         }
 
-        public static void PlayMusic(GameMusic musicType)
+        public static void PlayMusic(GameMusic musicType, bool loop = true)
         {
             if (musicType == currentMusic) return;
 
@@ -89,8 +89,12 @@ namespace EtrianLike.Main
 
             fmodSystem.playSound(GAME_MUSIC[musicType], null, false, out fmodChannel);
             if (fmodChannel != null) fmodChannel.setVolume(musicVolume);
-            fmodChannel.setMode(MODE.LOOP_NORMAL);
-            fmodChannel.setLoopCount(-1);
+
+            if (loop)
+            {
+                fmodChannel.setMode(MODE.LOOP_NORMAL);
+                fmodChannel.setLoopCount(-1);
+            }
 
             currentMusic = musicType;
         }

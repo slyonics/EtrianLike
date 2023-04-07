@@ -41,7 +41,7 @@
 			},
 			{
 				"Text": " * SMACK * ",
-				"Script": [ "PlaySound Bounce" ]
+				"Script": [ "PlaySound Slash" ]
 			},
 			{
 				"Speaker": "Cyra",
@@ -62,7 +62,8 @@
 			},
 			{
 				"Speaker": "Ivona",
-				"Text": "Hmm... maybe I shouldn't have smacked you so hard."
+				"Text": "Hmm... maybe I shouldn't have smacked you so hard.",
+				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
 			},
 			{
 				"Text": "[Cyra glares at Ivona. She's lucky no one in class could see her.]"
@@ -78,7 +79,8 @@
 				"Script": [ "ShowMapView" ]
 			},
 			{
-				"Text": "[Ivona perches on her desk and hops up and down to make sure Cyra is awake. She's lucky only Cyra can see her right now.]"
+				"Text": "[Ivona perches on her desk and hops up and down to make sure Cyra is awake. She's lucky only Cyra can see her right now.]",
+				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
 			},
 			{
 				"Speaker": "Ivona",
@@ -118,7 +120,8 @@
 			},
 			{
 				"Speaker": "Ivona",
-				"Text": "Hmm?"
+				"Text": "Hmm?",
+				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
 			},
 			{
 				"Text": "[Mr. Henrick stares at the student before he walks over and picks up his book. His expression grows more puzzled as he flips through the pages.]"
@@ -175,7 +178,8 @@
 		"DialogueRecords": [
 			{
 				"Speaker": "Cyra",
-				"Text": "Okay, so I guess we got to find the labryinth entrance and then stop things from getting out of hand--"
+				"Text": "Okay, so I guess we got to find the labryinth entrance and then stop things from getting out of hand--",
+				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0" ]
 			},
 			{
 				"Speaker": "Ivona",
@@ -326,7 +330,8 @@
 			},
 			{
 				"Speaker": "Ivona",
-				"Text": "I see you girls have also noticed a labryinth has opened somewhere in the school as well."
+				"Text": "I see you girls have also noticed a labryinth has opened somewhere in the school as well.",
+				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
 			},
 			{
 				"Speaker": "Angélia",
@@ -389,7 +394,8 @@
 		"DialogueRecords": [
 			{
 				"Speaker": "Cyra",
-				"Text": "I don't know. The cafeteria seems pretty big. Wouldn't a labryinth entrance fit there?"
+				"Text": "I don't know. The cafeteria seems pretty big. Wouldn't a labryinth entrance fit there?",
+				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0" ]
 			},
 			{
 				"Speaker": "Wren",
@@ -426,7 +432,8 @@
 		"DialogueRecords": [
 			{
 				"Speaker": "Cyra",
-				"Text": "The library just makes sense doesn't it? I think if we go there we're bound to find something useful to finding the entrance."
+				"Text": "The library just makes sense doesn't it? I think if we go there we're bound to find something useful to finding the entrance.",
+				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0" ]
 			},
 			{
 				"Text": "[Ivona nods her head in approval.]"

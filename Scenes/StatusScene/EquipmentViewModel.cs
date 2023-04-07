@@ -297,7 +297,7 @@ namespace EtrianLike.Scenes.StatusScene
             ChildViewModel = null;
         }
 
-        public bool SuppressLeftRight { get => partySlot != -1; }
+        public bool SuppressLeftRight { get => true; }
 
         public ModelProperty<bool> ShowEquipment { get; set; } = new ModelProperty<bool>(false);
         public ModelProperty<bool> ShowDescription { get; set; } = new ModelProperty<bool>(false);

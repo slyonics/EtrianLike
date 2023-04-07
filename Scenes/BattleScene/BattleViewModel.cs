@@ -100,7 +100,7 @@ namespace EtrianLike.Scenes.BattleScene
 
         public ModelProperty<Rectangle> EnemyWindow { get; set; } = new ModelProperty<Rectangle>(new Rectangle());
         public ModelProperty<Rectangle> EnemyMargin { get; set; } = new ModelProperty<Rectangle>(new Rectangle());
-        public ModelProperty<Rectangle> PlayerWindow { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-CrossPlatformGame.ScreenWidth / 2, -CrossPlatformGame.ScreenHeight / 2, 240, (3) * 120 + 24));
+        public ModelProperty<Rectangle> PlayerWindow { get; set; } = new ModelProperty<Rectangle>(new Rectangle(-CrossPlatformGame.ScreenWidth / 2, -CrossPlatformGame.ScreenHeight / 2, 240 * 2, (2) * 120 + 24));
 
         public ModelProperty<bool> ReadyToProceed { get; set; } = new ModelProperty<bool>(false);
         public ModelProperty<bool> PlayerTurn { get; set; } = new ModelProperty<bool>(false);

@@ -61,8 +61,8 @@ namespace EtrianLike.Scenes.StatusScene
 
             LoadView(GameView.StatusScene_StatusView);
 
-            GetWidget<Button>("PartyButton").RadioSelect();
-            SelectParty();
+            GetWidget<Button>("EquipmentButton").RadioSelect();
+            SelectSystem();
         }
 
         public override void Update(GameTime gameTime)
@@ -103,9 +103,9 @@ namespace EtrianLike.Scenes.StatusScene
         private void CursorLeft()
         {
             slot--;
-            if (slot < 0)
+            if (slot < 4)
             {
-                slot = 0;
+                slot = 4;
                 return;
             }
             else Audio.PlaySound(GameSound.menu_select);
@@ -169,8 +169,11 @@ namespace EtrianLike.Scenes.StatusScene
 
         public void SelectEquipment()
         {
-            ChildViewModel.Visible = false;
-            ChildViewModel.MoveAway();
+            if (ChildViewModel != null)
+            {
+                ChildViewModel.Visible = false;
+                ChildViewModel.MoveAway();
+            }
 
             slot = 2;
             ChildViewModel = SubViews.First(x => x is EquipmentViewModel) as IStatusSubView;
@@ -195,8 +198,11 @@ namespace EtrianLike.Scenes.StatusScene
 
         public void SelectSystem()
         {
-            ChildViewModel.Visible = false;
-            ChildViewModel.MoveAway();
+            if (ChildViewModel != null)
+            {
+                ChildViewModel.Visible = false;
+                ChildViewModel.MoveAway();
+            }
 
             slot = 4;
             ChildViewModel = SubViews.First(x => x is SystemViewModel) as IStatusSubView;

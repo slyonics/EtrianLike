@@ -7,10 +7,11 @@
 		"PortraitSprite": "CyraMahou",
 		"EquipmentSlots": 3,
 		"HealthGrowth": 0.5,
+		"MagicGrowth": 0.4,
 		"StrengthGrowth": 0.3,
 		"DefenseGrowth": 0.01,
 		"AgilityGrowth": 0.4,
-		"ManaGrowth": 0.2,
+		"ManaGrowth": 0.5,
 		"InitialEquipment": [
 			"Glass Staff"
 		],
@@ -20,12 +21,12 @@
 		"Actions": [],
 		"BattlerModel": {
 			"Name": { "Value": "Cyra" },
-			"MaxHealth": { "Value": 90 },
+			"MaxHealth": { "Value": 60 },
 			"MaxMagic": { "Value": 24 },
-			"Strength": { "Value": 5 },
+			"Strength": { "Value": 4 },
 			"Defense": { "Value": 3 },
-			"Agility": { "Value": 8 },
-			"Mana": { "Value": 3 }
+			"Agility": { "Value": 5 },
+			"Mana": { "Value": 6 }
 		}
 	},
 	{
@@ -35,11 +36,12 @@
 		"ProfileSprite": "ChristineFace",
 		"PortraitSprite": "Christine",
 		"EquipmentSlots": 3,
-		"HealthGrowth": 0.5,
-		"StrengthGrowth": 0.3,
+		"HealthGrowth": 0.3,
+		"MagicGrowth": 0.5,
+		"StrengthGrowth": 0.2,
 		"DefenseGrowth": 0.01,
-		"AgilityGrowth": 0.1,
-		"ManaGrowth": 0.6,
+		"AgilityGrowth": 0.4,
+		"ManaGrowth": 0.4,
 		"InitialEquipment": [
 			"Antique Machete"
 		],
@@ -49,12 +51,12 @@
 		"Actions": [],
 		"BattlerModel": {
 			"Name": { "Value": "Angélia" },
-			"MaxHealth": { "Value": 60 },
+			"MaxHealth": { "Value": 40 },
 			"MaxMagic": { "Value": 34 },
 			"Strength": { "Value": 3 },
 			"Defense": { "Value": 3 },
-			"Agility": { "Value": 2 },
-			"Mana": { "Value": 5 }
+			"Agility": { "Value": 8 },
+			"Mana": { "Value": 6 }
 		}
 	},
 	{
@@ -64,10 +66,11 @@
 		"ProfileSprite": "ChristineFace",
 		"PortraitSprite": "Christine",
 		"EquipmentSlots": 3,
-		"HealthGrowth": 0.2,
-		"StrengthGrowth": 0.2,
+		"HealthGrowth": 0.6,
+		"MagicGrowth": 0.2,
+		"StrengthGrowth": 0.5,
 		"DefenseGrowth": 0.02,
-		"AgilityGrowth": 0.2,
+		"AgilityGrowth": 0.4,
 		"ManaGrowth": 0.2,
 		"InitialEquipment": [
 			"Brass Knuckles"
@@ -76,10 +79,10 @@
 		"Actions": [],
 		"BattlerModel": {
 			"Name": { "Value": "Wren" },
-			"MaxHealth": { "Value": 50 },
+			"MaxHealth": { "Value": 70 },
 			"MaxMagic": { "Value": 16 },
-			"Strength": { "Value": 3 },
-			"Defense": { "Value": 3 },
+			"Strength": { "Value": 7 },
+			"Defense": { "Value": 4 },
 			"Agility": { "Value": 4 },
 			"Mana": { "Value": 3 }
 		}

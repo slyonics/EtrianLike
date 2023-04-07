@@ -2,19 +2,19 @@
 <View>
 
 	<Panel Anchor="$CenterX,$CenterY" Bounds="-341,-162,240,225">
-		<Button Name="PartyButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectParty">
+		<Button Name="PartyButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectParty" Visible="False">
 			<Label Font="Dialogue" Text="Party" Alignment="Vertical"/>
 		</Button>
-		<Button Name="ItemsButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectItems">
+		<Button Name="ItemsButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectItems" Visible="False">
 			<Label Font="Dialogue" Text="Items" Alignment="Vertical"/>
 		</Button>
-		<Button Name="EquipmentButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectEquipment">
+		<Button Name="EquipmentButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectEquipment" Visible="False">
 			<Label Font="Dialogue" Text="Equipment" Alignment="Vertical" />
 		</Button>
-		<Button Name="AbilitiesButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectAbilities">
+		<Button Name="AbilitiesButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectAbilities" Visible="False">
 			<Label Font="Dialogue" Text="Abilities" Alignment="Vertical" />
 		</Button>
-		<Button Name="SystemButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Bounds="0,0,240,45" InnerMargin="8,4,8,4" Alignment="Vertical" Action="SelectSystem">
+		<Button Name="SystemButton" Radio="True" Style="Button" PushedStyle="ButtonSelected" Anchor="$CenterX,$CenterY" Bounds="-120,-220,240,45" InnerMargin="8,4,8,4" Action="SelectSystem" >
 			<Label Font="Dialogue" Text="Save &amp; Quit" Alignment="Vertical"/>
 		</Button>
 	</Panel>

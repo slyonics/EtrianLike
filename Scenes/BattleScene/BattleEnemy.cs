@@ -134,7 +134,7 @@ namespace EtrianLike.Scenes.BattleScene
 
             if (Confusion)
             {
-                if (Rng.RandomBool())
+                if (Rng.RandomInt(0, 2) == 2)
                 {
                     Confusion = false;
 

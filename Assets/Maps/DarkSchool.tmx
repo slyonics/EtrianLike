@@ -82,17 +82,6 @@ SetFlag GameIntro True
 DisableEvent</property>
    </properties>
   </object>
-  <object id="27" name="Door to Second Period" type="ActivateSouth" x="1024" y="1152" width="128" height="128">
-   <properties>
-    <property name="Script">SetWaypoint 1 9
-Conversation SecondPeriod</property>
-   </properties>
-  </object>
-  <object id="28" name="Door to Office" type="ActivateSouth" x="640" y="1152" width="128" height="128">
-   <properties>
-    <property name="Script" value="ChangeMap Office FromSchool"/>
-   </properties>
-  </object>
   <object id="29" name="Door to Library" type="ActivateSouth" x="128" y="1152" width="128" height="128">
    <properties>
     <property name="Script">Conversation First boss encounter and Cyra is joined by Angelia and Wren. Player enters dark library.

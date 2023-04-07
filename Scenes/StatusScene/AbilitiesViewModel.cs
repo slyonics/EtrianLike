@@ -210,7 +210,7 @@ namespace EtrianLike.Scenes.StatusScene
 
         }
 
-        public bool SuppressLeftRight { get => ShowDescription.Value; }
+        public bool SuppressLeftRight { get => true; }
 
         public ModelProperty<bool> ShowAbilities { get; set; } = new ModelProperty<bool>(false);
         public ModelProperty<bool> ShowDescription { get; set; } = new ModelProperty<bool>(false);

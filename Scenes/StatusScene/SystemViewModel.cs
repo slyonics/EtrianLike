@@ -79,6 +79,7 @@ namespace EtrianLike.Scenes.StatusScene
                 }
                 else Save(saveSlot);
             }
+            else if (currentInput.CommandPressed(Command.Cancel)) { statusScene.EndScene(); }
         }
 
         private void CursorUp()
@@ -189,6 +190,6 @@ namespace EtrianLike.Scenes.StatusScene
 
         }
 
-        public bool SuppressLeftRight { get => false; }
+        public bool SuppressLeftRight { get => true; }
     }
 }

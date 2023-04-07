@@ -3,7 +3,7 @@
 
 	<Panel Name="PlayerPanel" Anchor="$CenterX,$CenterY" Bounds="Bind PlayerWindow" InnerMargin="8,16,8,8" TransitionIn="Expand" TransitionOut="Shrink">
 		<DataGrid Items="Bind PlayerProfile.Party" Scrolling="False" Alignment="Stretch">
-			<Panel Alignment="Vertical" Bounds="0,0,227,120">
+			<Panel Alignment="Cascading" Bounds="0,0,227,120">
 				
 				<Panel Style="FaceFrame" Alignment="Cascading" Bounds="0,0,102,120">
 					<Scenes.BattleScene.BattlePlayer HeroModel="Bind DataGrid" Alignment="Center"/>

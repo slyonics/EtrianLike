@@ -18,9 +18,9 @@ namespace EtrianLike.Scenes.BattleScene
 
         Button fightButton;
         Button skillsButton;
-        Button itemsButton;
+        Button fleeButton;
 
-        int category = -1;
+        int category = 0;
         int slot = -1;
 
 
@@ -35,31 +35,14 @@ namespace EtrianLike.Scenes.BattleScene
 
             fightButton = GetWidget<Button>("Fight");
             skillsButton = GetWidget<Button>("Skills");
-            itemsButton = GetWidget<Button>("Items");
+            fleeButton = GetWidget<Button>("Flee");
 
             GetWidget<Button>("Skills").Enabled = ActivePlayer.HeroModel.Abilities.Count() > 0;
 
-            /*if (!Input.MOUSE_MODE)
-            {
-                Fight();
-                fightButton.RadioSelect();
-            }*/
 
             fightButton.RadioSelect();
             Description.Value = "Attack an enemy with your equipped weapon.";
 
-            /*
-                        if (ActivePlayer.HeroModel.Equipment.Count() == 0) equipmentButton.Enabled = false;
-                        if (ActivePlayer.HeroModel.Abilities.Count() == 0) abilitiesButton.Enabled = false;
-
-
-                        if (!equipmentButton.Enabled && ActivePlayer.HeroModel.LastCategory.Value == 0) ActivePlayer.HeroModel.LastCategory.Value = 1;
-                        if (!abilitiesButton.Enabled && ActivePlayer.HeroModel.LastCategory.Value == 1)
-                        {
-                            if (equipmentButton.Enabled) ActivePlayer.HeroModel.LastCategory.Value = 0;
-                            else ActivePlayer.HeroModel.LastCategory.Value = 2;
-                        }
-                        */
         }
 
         public override void Update(GameTime gameTime)
@@ -84,67 +67,40 @@ namespace EtrianLike.Scenes.BattleScene
 
         private void CursorLeft()
         {
-            switch (ActivePlayer.HeroModel.LastCategory.Value)
+            switch (category)
             {
-                case 0:
+                case 1:
                     Audio.PlaySound(GameSound.menu_select);
                     Fight();
                     slot = 0;
+                    category = 0;
                     fightButton.RadioSelect();
-                    break;
-
-                case 1:
-                    if (skillsButton.Enabled)
-                    {
-                        Audio.PlaySound(GameSound.menu_select);
-                        fightButton.RadioSelect();
-                        Skills();
-                        slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
-                    }
-                    else
-                    {
-                        Audio.PlaySound(GameSound.menu_select);
-                        SelectActions();
-                        slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
-                        itemsButton.RadioSelect();
-                    }
                     break;
 
                 case 2:
                     if (skillsButton.Enabled)
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        fightButton.RadioSelect();
+                        skillsButton.RadioSelect();
                         Skills();
-                        slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
+                        slot = -1;
+                        category = 1;
                     }
-                    else if (fightButton.Enabled)
+                    else
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        fightButton.RadioSelect();
-                        SelectEquipment();
+                        Fight();
                         slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
+                        category = 0;
+                        fightButton.RadioSelect();
                     }
-                    else return;
                     break;
             }
         }
 
         private void CursorRight()
         {
-            switch (ActivePlayer.HeroModel.LastCategory.Value)
+            switch (category)
             {
                 case 0:
                     if (skillsButton.Enabled)
@@ -153,50 +109,26 @@ namespace EtrianLike.Scenes.BattleScene
                         skillsButton.RadioSelect();
                         Skills();
                         slot = -1;
-
-
+                        category = 1;
                     }
                     else
                     {
                         Audio.PlaySound(GameSound.menu_select);
-                        SelectActions();
-                        slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
-                        itemsButton.RadioSelect();
+                        fleeButton.RadioSelect();
+                        slot = -1;
+                        category = 2; 
+                        ShowSkills.Value = false;
+                        Description.Value = "End the battle and continue exploring.";
                     }
                     break;
 
                 case 1:
                     Audio.PlaySound(GameSound.menu_select);
-                    Item();
-                    itemsButton.RadioSelect();
-                    slot = 0;
-                    (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                    SelectCommand(AvailableCommands.ElementAt(slot));
-                    ActivePlayer.HeroModel.LastSlot.Value = slot;
-                    break;
-
-                case 2:
-                    if (fightButton.Enabled)
-                    {
-                        Audio.PlaySound(GameSound.menu_select);
-                        Fight();
-                        slot = 0;
-                        fightButton.RadioSelect();
-                    }
-                    else if (skillsButton.Enabled)
-                    {
-                        Audio.PlaySound(GameSound.menu_select);
-                        fightButton.RadioSelect();
-                        Skills();
-                        slot = 0;
-                        (GetWidget<DataGrid>("CommandList").ChildList[slot] as Button).RadioSelect();
-                        SelectCommand(AvailableCommands.ElementAt(slot));
-                        ActivePlayer.HeroModel.LastSlot.Value = slot;
-                    }
-                    else return;
+                    fleeButton.RadioSelect();
+                    slot = -1;
+                    category = 2; 
+                    ShowSkills.Value = false;
+                    Description.Value = "End the battle and continue exploring.";
                     break;
             }
         }
@@ -241,6 +173,12 @@ namespace EtrianLike.Scenes.BattleScene
                 return;
             }
 
+            if (fleeButton.Selected)
+            {
+                Flee();
+                return;
+            }
+
             if (slot == -1)
             {
                 slot = 0;
@@ -260,6 +198,8 @@ namespace EtrianLike.Scenes.BattleScene
 
         public void Fight()
         {
+            category = 0;
+
             ShowSkills.Value = false;
 
             Description.Value = "Attack an enemy with your equipped weapon.";
@@ -274,6 +214,8 @@ namespace EtrianLike.Scenes.BattleScene
 
         public void Skills()
         {
+            category = 1;
+
             Description.Value = "Spend MP to use a special ability.";
 
             childViewModel?.Terminate();
@@ -293,7 +235,7 @@ namespace EtrianLike.Scenes.BattleScene
 
         public void Item()
         {
-            Description.Value = "Use a consumable item.";
+            Description.Value = "End the battle and continue exploring.";
 
             childViewModel?.Terminate();
             childViewModel = null;
@@ -301,65 +243,45 @@ namespace EtrianLike.Scenes.BattleScene
 
         public void Flee()
         {
+            category = 2;
 
-        }
+            ShowSkills.Value = false;
 
-        public void SelectEquipment()
-        {
-            if (category == 0) return;
+            Description.Value = "End the battle and continue exploring.";
+            GetWidget<CrawlText>("Desc").FinishText();
 
-            childViewModel?.Terminate();
-            childViewModel = null;
+            var dialogueRecords = new List<ConversationScene.DialogueRecord>();
 
-            List<ModelProperty<CommandRecord>> commands = new List<ModelProperty<CommandRecord>>();
-            foreach (var command in ActivePlayer.HeroModel.Equipment.ModelList)
+            dialogueRecords.Add(new ConversationScene.DialogueRecord()
             {
-                if (command.Value.ItemType != ItemType.Armor && command.Value.ItemType != ItemType.Crafting)
+                Text = "Flee from battle?",
+                Script = new string[] { "DisableEnd", "WaitForText", "SelectionPrompt", "No", "Yes", "End", "Switch $selection", "Case No", "EndConversation", "Break", "Case Yes", "EndConversation", "Break", "End" }
+            });
+
+            var convoRecord = new ConversationScene.ConversationRecord()
+            {
+                DialogueRecords = dialogueRecords.ToArray()
+            };
+            var convoScene = new ConversationScene.ConversationScene(convoRecord);
+            CrossPlatformGame.StackScene(convoScene, true);
+            convoScene.OnTerminated += new TerminationFollowup(() =>
+            {
+                if (GameProfile.GetSaveData<string>("LastSelection") == "Yes")
                 {
-                    commands.Add(new ModelProperty<CommandRecord>(command.Value as CommandRecord));
+                    Terminate();
+
+                    var convoRecord = new ConversationScene.ConversationRecord()
+                    {
+                        DialogueRecords = new ConversationScene.DialogueRecord[] {
+                                new ConversationScene.DialogueRecord() { Text = "Escaped from battle." }
+                            }
+                    };
+
+                    var convoScene = new ConversationScene.ConversationScene(convoRecord, ConversationScene.ConversationViewModel.CONVO_BOUNDS);
+                    convoScene.OnTerminated += battleScene.BattleViewModel.Close;
+                    CrossPlatformGame.StackScene(convoScene);
                 }
-            }
-            AvailableCommands.ModelList = commands;
-            ActivePlayer.HeroModel.LastCategory.Value = category = 0;
-
-            //Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
-        }
-
-        public void SelectAbilities()
-        {
-            if (category == 1) return;
-
-            childViewModel?.Terminate();
-            childViewModel = null;
-
-            if (Input.MOUSE_MODE) slot = -1;
-
-            List<ModelProperty<CommandRecord>> commands = new List<ModelProperty<CommandRecord>>();
-            foreach (var command in ActivePlayer.HeroModel.Abilities.ModelList)
-            {
-                var c = command.Value as CommandRecord;
-                c.Usable = ActivePlayer.HeroModel.Magic.Value >= c.Cost;
-                commands.Add(new ModelProperty<CommandRecord>(c));
-            }
-            AvailableCommands.ModelList = commands;
-            ActivePlayer.HeroModel.LastCategory.Value = category = 1;
-
-            //Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
-        }
-
-        public void SelectActions()
-        {
-            if (category == 2) return;
-
-            childViewModel?.Terminate();
-            childViewModel = null;
-
-            if (Input.MOUSE_MODE) slot = -1;
-
-            AvailableCommands.ModelList = ActivePlayer.HeroModel.Actions.ModelList;
-            ActivePlayer.HeroModel.LastCategory.Value = category = 2;
-
-            //Description1.Value = Description2.Value = Description3.Value = Description4.Value = Description5.Value = null;
+            });
         }
 
         public void SelectCommand(object parameter)
@@ -405,6 +327,8 @@ namespace EtrianLike.Scenes.BattleScene
         public ModelProperty<string> Description { get; set; } = new ModelProperty<string>("");
 
 
-        public Rectangle PortraitBounds { get; set; } = new Rectangle(CrossPlatformGame.ScreenWidth - 255, 20, 255, 500); 
+        public Rectangle SkillBounds { get; set; } = new Rectangle(CrossPlatformGame.ScreenWidth / 2 - 248, -60, 230, 240);
+
+
     }
 }

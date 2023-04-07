@@ -1,36 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <View>
 
-  <Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-160,-120,320,240" InnerMargin="8,8,8,8" TransitionIn="Expand" TransitionOut="Shrink">
+  <Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-320,-240,640,480" InnerMargin="8,8,8,8" TransitionIn="Expand" TransitionOut="Shrink">
 
-    <Panel Bounds="0,0,304,200">
+    <Panel Bounds="0,0,608,400">
+
+		<Label Text="Story and Writing by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
+		<Label Text="Potato Mika" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
+
+		<Label Text="Character Art by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
+		<Label Text="Coconut Ranger" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 		
-      <Label Text="Created by Slyonics" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
+		<Label Text="Music and Sounds by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
+		<Label Text="Canslli" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
+
+		<Label Text="Programming by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
+		<Label Text="Slyonics" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 
 		<LineBreak/>
+		
 
 		<Label Text="Includes sprite art from" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
 		<Label Text="Ocean's Nostalgia, Omega Modern" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 
-		<LineBreak/>
-
 		<Label Text="Includes particle effects by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
 		<Label Text="Ben M. Henry" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 
-		<LineBreak/>
-
 		<Label Text="Includes fonts by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
-		<Label Text="Masubiwa, Samuel Sousa" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
+		<Label Text="Masubiwa, Poppy Works, Samuel Sousa" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 
 		<LineBreak/>
 
-		<Label Text="Includes music from" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
-		<Label Text="8bit RPG ME Perfect Collection" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
-		<Label Text="8Bit Sound VGM Materials 'Orichalcum Sword'" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
-		
     </Panel>
 
-    <Button Style="SubBlack" PushedStyle="SubPink" Bounds="0, -20, 60, 18" Alignment="ReverseVertical" Action="Back" InnerMargin="0,1,0,0">
+    <Button Style="SubBlack" PushedStyle="SubPink" Bounds="0, -20, 120, 40" Alignment="ReverseVertical" Action="Back" InnerMargin="0,1,0,0">
       <Label Text="Back" Alignment="Center" Color="#E0BFA2FF" Font="Dialogue"/>
     </Button>
   </Panel>
