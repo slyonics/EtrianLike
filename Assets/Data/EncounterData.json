@@ -3,75 +3,63 @@
 		"Name": "Random0",
 		"Background": "Desert",
 		"Enemies": [
-			"Enemy1"
+			"Book Spook",
+			"Book Spook"
 		],
-		"Challenge": 2,
+		"Challenge": 1,
 		"Script": [],
-		"Intro": "A test battle commences!!"
+		"Intro": "Possessed books rush to defend the library door!"
 	},
 	{
 		"Name": "Random1",
 		"Background": "Desert",
 		"Enemies": [
-			"Enemy1",
-			"Enemy1"
+			"Book Spook",
+			"Book Spook"
 		],
-		"Challenge": 2,
+		"Challenge": 1,
 		"Script": [],
-		"Intro": "A test battle commences!!"
+		"Intro": "More possessed books fly off the shelves to fight!"
 	},
 	{
 		"Name": "Random2",
 		"Background": "Desert",
 		"Enemies": [
-			"Enemy1",
-			"Enemy2",
-			"Enemy1"
+			"Book Spook",
+			"Haunted Scroll"
 		],
-		"Challenge": 2,
+		"Challenge": 1,
 		"Script": [],
-		"Intro": "A test battle commences!!"
+		"Intro": "Haunted parchment and pages swirl about you!"
 	},
 	{
 		"Name": "Random3",
 		"Background": "Desert",
 		"Enemies": [
-			"Enemy2",
-			"Enemy2"
+			"Haunted Scroll",
+			"Haunted Scroll"
 		],
 		"Challenge": 2,
 		"Script": [],
-		"Intro": "A test battle commences!!"
+		"Intro": "Foreboding scrolls covered in glowing runes appear!"
 	},
 	{
 		"Name": "Random4",
 		"Background": "Desert",
 		"Enemies": [
-			"Enemy3"
+			"Dark Scholar"
 		],
-		"Challenge": 2,
+		"Challenge": 3,
 		"Script": [],
-		"Intro": "A test battle commences!!"
+		"Intro": "A dark scholar emerges from beneath the floor!"
 	},
 	{
 		"Name": "Boss1",
 		"Background": "Desert",
 		"Enemies": [
-			"Boss1"
+			"Corrupted Reed"
 		],
-		"Challenge": 2,
-		"Script": [],
-		"Intro": "A test battle commences!!"
-	},
-	{
-		"Name": "Boss2",
-		"Background": "Desert",
-		"Enemies": [
-			"Enemy2",
-			"Boss2",
-			"Enemy2"
-		],
-		"Challenge": 2,
+		"Challenge": 4,
 		"Script": [],
 		"Intro": "A test battle commences!!"
 	}

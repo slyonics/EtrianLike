@@ -357,9 +357,9 @@ namespace EtrianLike.Scenes.MapScene
                     {
                         case 0: encounterName = "Random1"; break;
                         case 1: encounterName = "Random1"; break;
-                        case 2: encounterName = "Random2"; break;
+                        case 2: encounterName = "Random1"; break;
                         case 3: encounterName = "Random2"; break;
-                        case 4: encounterName = "Random3"; break;
+                        case 4: encounterName = "Random2"; break;
                     }
                         BattleScene.BattleScene battleScene = new BattleScene.BattleScene(encounterName);
                         CrossPlatformGame.StackScene(battleScene, true);
@@ -368,7 +368,7 @@ namespace EtrianLike.Scenes.MapScene
                     }
                 
             }
-            else if (parentScene.MapName == "School (Night)")
+            else if (parentScene.MapName == "Dark Library B1")
             {
 
                 int stepsRemaining = GameProfile.GetSaveData<int>("RandomBattle");
@@ -383,11 +383,11 @@ namespace EtrianLike.Scenes.MapScene
                     string encounterName = "";
                     switch (Rng.RandomInt(0, 4))
                     {
-                        case 0: encounterName = "Random0"; break;
-                        case 1: encounterName = "Random0"; break;
-                        case 2: encounterName = "Random0"; break;
-                        case 3: encounterName = "Random1"; break;
-                        case 4: encounterName = "Random2"; break;
+                        case 0: encounterName = "Random1"; break;
+                        case 1: encounterName = "Random1"; break;
+                        case 2: encounterName = "Random2"; break;
+                        case 3: encounterName = "Random2"; break;
+                        case 4: encounterName = "Random3"; break;
                     }
                     BattleScene.BattleScene battleScene = new BattleScene.BattleScene(encounterName);
                     CrossPlatformGame.StackScene(battleScene, true);
@@ -396,7 +396,6 @@ namespace EtrianLike.Scenes.MapScene
                 }
 
             }
-
         }
 
         

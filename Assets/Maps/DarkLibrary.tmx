@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="49">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="54">
  <properties>
   <property name="AmbientLight" type="float" value="0.2"/>
   <property name="LocationName" value="Dark Library"/>
@@ -10,60 +10,55 @@
  <layer id="1" name="Floor" width="12" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,23,0,0,0,0,0,
-0,0,23,23,23,0,25,0,0,0,0,0,
-0,0,25,23,24,23,23,23,23,25,23,0,
-0,0,23,23,23,0,23,0,0,0,23,0,
-0,0,0,23,0,0,23,24,23,23,23,0,
-0,23,23,24,23,0,23,0,0,0,23,0,
-0,23,23,23,23,0,23,23,24,23,23,0,
-0,0,0,23,23,0,23,0,0,0,23,0,
-0,0,0,0,0,0,25,23,23,23,23,0,
+0,23,23,0,0,0,0,0,23,23,23,0,
+0,0,23,0,0,0,23,0,23,0,23,0,
+0,0,23,23,23,0,25,0,23,0,23,0,
+0,0,25,23,24,23,23,23,23,0,23,0,
+0,23,23,23,23,0,0,0,0,0,23,0,
+0,23,0,0,0,0,23,24,23,23,23,0,
+0,23,0,0,0,0,23,0,0,0,23,0,
+0,23,23,23,0,0,23,23,23,0,23,0,
+0,0,0,23,0,0,23,0,23,0,23,0,
+0,23,23,23,0,0,25,0,23,0,23,0,
 0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <layer id="3" name="Ceiling" width="12" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,15,0,0,0,0,0,
-0,0,15,15,15,0,15,0,0,0,0,0,
-0,0,15,19,15,15,19,15,18,15,19,0,
-0,0,15,15,15,0,17,0,0,0,15,0,
-0,0,0,17,0,0,15,15,15,18,15,0,
-0,15,15,15,15,0,15,0,0,0,15,0,
-0,15,15,15,15,0,19,15,18,15,19,0,
-0,0,0,15,15,0,17,0,0,0,15,0,
-0,0,0,0,0,0,15,18,15,15,15,0,
+0,15,15,0,0,0,0,0,15,15,15,0,
+0,0,15,0,0,0,15,0,15,0,15,0,
+0,0,15,15,15,0,15,0,15,0,15,0,
+0,0,15,19,15,15,19,15,15,0,19,0,
+0,15,15,15,15,0,0,0,0,0,15,0,
+0,15,0,0,0,0,15,15,15,15,15,0,
+0,15,0,0,0,0,15,0,0,0,15,0,
+0,15,15,19,0,0,19,15,15,0,19,0,
+0,0,0,15,0,0,15,0,15,0,15,0,
+0,15,15,15,0,0,15,0,15,0,15,0,
 0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <layer id="4" name="Walls" width="12" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,27,0,0,0,0,0,
-0,0,27,0,27,0,0,27,0,0,0,0,
-0,29,0,0,0,0,0,0,27,0,0,0,
-0,27,0,0,0,0,0,0,0,0,0,0,
-0,29,0,0,0,0,0,0,0,0,0,0,
-0,27,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,27,0,0,0,0,0,0,
+0,0,0,0,0,0,20,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,27,0,0,0,0,0,0,0,0,0,0,
-0,0,0,29,29,0,0,0,0,0,0,27,
-0,0,0,0,0,0,27,0,0,27,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,20,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <objectgroup id="2" name="Spawns">
   <object id="1" name="Default" type="Spawn" x="768" y="256" width="128" height="128">
    <properties>
     <property name="Direction" value="South"/>
-   </properties>
-  </object>
-  <object id="46" name="Rumors" type="Enter" x="512" y="640" width="128" height="128">
-   <properties>
-    <property name="Script" value="Encounter ScorpionNest"/>
    </properties>
   </object>
   <object id="47" name="SchoolHall" type="Spawn" x="768" y="256" width="128" height="128">
@@ -76,14 +71,39 @@
     <property name="Direction" value="South"/>
    </properties>
   </object>
+  <object id="53" name="DarkLibrary1" type="Spawn" x="768" y="1280" width="128" height="128">
+   <properties>
+    <property name="Direction" value="East"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="5" name="Events"/>
+ <objectgroup id="5" name="Events">
+  <object id="49" name="StartCrawl" type="Enter" x="768" y="256" width="128" height="128">
+   <properties>
+    <property name="DisableIf" value="StartCrawl"/>
+    <property name="Script">Conversation StartCrawl
+SetFlag StartCrawl True
+DisableEvent</property>
+   </properties>
+  </object>
+  <object id="51" name="Door to Classroom1" type="ActivateNorth" x="768" y="128" width="128" height="128">
+   <properties>
+    <property name="Script" value="Conversation StayOnMission"/>
+   </properties>
+  </object>
+  <object id="52" name="Door to Classroom1" type="ActivateWest" x="640" y="1280" width="128" height="128">
+   <properties>
+    <property name="Script" value="ChangeMap DarkLibrary1 DarkLibrary"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="6" name="Lighting">
   <object id="37" x="768" y="512" width="128" height="128"/>
   <object id="42" x="1280" y="512" width="128" height="128"/>
   <object id="43" x="384" y="512" width="128" height="128"/>
   <object id="44" x="768" y="1024" width="128" height="128"/>
   <object id="45" x="1280" y="1024" width="128" height="128"/>
+  <object id="50" x="384" y="1024" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="7" name="Walls"/>
 </map>

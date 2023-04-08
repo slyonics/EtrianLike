@@ -1,14 +1,14 @@
 [
 	{
-		"Name": "Enemy1",
+		"Name": "Book Spook",
 		"Sprite": "Book",
 		"ShadowOffset": 4,
 		"MaxHealth": 40,
 		"Strength": 6,
 		"Defense": 4,
 		"Agility": 1,
-		"Mana": 1,
-		"Evasion": 50,
+		"Mana": 2,
+		"Evasion": 0,
 		"Attacks": [
 			{
 				"Script": [
@@ -19,14 +19,14 @@
 		]
 	},
 	{
-		"Name": "Enemy2",
+		"Name": "Haunted Scroll",
 		"Sprite": "Scroll",
 		"ShadowOffset": 4,
-		"MaxHealth": 40,
+		"MaxHealth": 80,
 		"Strength": 6,
-		"Defense": 4,
-		"Agility": 1,
-		"Mana": 1,
+		"Defense": 5,
+		"Agility": 6,
+		"Mana": 6,
 		"Evasion": 50,
 		"Attacks": [
 			{
@@ -38,15 +38,15 @@
 		]
 	},
 	{
-		"Name": "Enemy3",
+		"Name": "Dark Scholar",
 		"Sprite": "Scholar",
 		"ShadowOffset": 4,
-		"MaxHealth": 40,
-		"Strength": 6,
-		"Defense": 4,
-		"Agility": 1,
-		"Mana": 1,
-		"Evasion": 50,
+		"MaxHealth": 120,
+		"Strength": 12,
+		"Defense": 8,
+		"Agility": 10,
+		"Mana": 12,
+		"Evasion": 30,
 		"Attacks": [
 			{
 				"Script": [
@@ -57,15 +57,15 @@
 		]
 	},
 	{
-		"Name": "Boss1",
+		"Name": "Corrupted Reed",
 		"Sprite": "Boss",
 		"ShadowOffset": 4,
-		"MaxHealth": 40,
-		"Strength": 6,
-		"Defense": 4,
-		"Agility": 1,
-		"Mana": 1,
-		"Evasion": 50,
+		"MaxHealth": 300,
+		"Strength": 10,
+		"Defense": 6,
+		"Agility": 10,
+		"Mana": 12,
+		"Evasion": 30,
 		"Attacks": [
 			{
 				"Script": [
