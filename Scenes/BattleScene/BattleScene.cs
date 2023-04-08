@@ -20,7 +20,7 @@ namespace EtrianLike.Scenes.BattleScene
             new Rectangle(32, 0, 16, 112),
         };
 
-        private EncounterRecord encounterRecord;
+        public EncounterRecord encounterRecord;
 
         private BattleViewModel battleViewModel;
 

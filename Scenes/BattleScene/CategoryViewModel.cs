@@ -38,6 +38,7 @@ namespace EtrianLike.Scenes.BattleScene
             fleeButton = GetWidget<Button>("Flee");
 
             GetWidget<Button>("Skills").Enabled = ActivePlayer.HeroModel.Abilities.Count() > 0;
+            fleeButton.Enabled = battleScene.encounterRecord.CanFlee;
 
 
             fightButton.RadioSelect();
@@ -123,12 +124,15 @@ namespace EtrianLike.Scenes.BattleScene
                     break;
 
                 case 1:
-                    Audio.PlaySound(GameSound.menu_select);
-                    fleeButton.RadioSelect();
-                    slot = -1;
-                    category = 2; 
-                    ShowSkills.Value = false;
-                    Description.Value = "End the battle and continue exploring.";
+                    if (fleeButton.Enabled)
+                    {
+                        Audio.PlaySound(GameSound.menu_select);
+                        fleeButton.RadioSelect();
+                        slot = -1;
+                        category = 2;
+                        ShowSkills.Value = false;
+                        Description.Value = "End the battle and continue exploring.";
+                    }
                     break;
             }
         }

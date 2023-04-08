@@ -288,7 +288,7 @@ namespace EtrianLike.Scenes.BattleScene
         {
             get
             {
-                return new Rectangle(currentWindow.Left - 14 + (int)Position.X, currentWindow.Top - 4 + (int)Position.Y, 130, 23);
+                return new Rectangle(currentWindow.Left + (int)Position.X, currentWindow.Top + (int)Position.Y, 100, 100);
             }
         }
     }

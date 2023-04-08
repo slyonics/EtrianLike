@@ -54,7 +54,7 @@ namespace EtrianLike.Scenes.BattleScene
                         int nameLines = name.Count(x => x == '\n');
 
                         int offset = 0;
-                        if (battleEnemy.AnimatedSprite.SpriteBounds().Height > 200) offset -= 30;
+                        if (battleEnemy.AnimatedSprite.SpriteBounds().Height > 200) offset -= 24;
 
                         Targets.Add(new TargetButton()
                         {
@@ -84,7 +84,7 @@ namespace EtrianLike.Scenes.BattleScene
                     {
                         if (battlePlayer.Dead && !Command.TargetDead) continue;
 
-                        Rectangle bounds = battlePlayer.AnimatedSprite.SpriteBounds();
+                        Rectangle bounds = battlePlayer.SpriteBounds;
                         Targets.Add(new TargetButton() { Name = "", NameVisible = false, Bounds = bounds, target = battlePlayer });
                     }
                     break;

@@ -60,6 +60,7 @@
 		"Icon": "Heal",
 		"Cost": 4,
 		"Targetting": "SingleAlly",
+		"TargetDead": "True",
 		"Script": [
 			"Exercise Mana",
 			"Animate Attack",

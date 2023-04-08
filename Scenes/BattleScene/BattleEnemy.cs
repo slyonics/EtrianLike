@@ -50,7 +50,7 @@ namespace EtrianLike.Scenes.BattleScene
 
             bounds = AnimatedSprite.SpriteBounds();
             bounds.Y -= EnemyRecord.ShadowOffset / 2;
-            if (AnimatedSprite.SpriteBounds().Height > 200) bounds.Y -= 30;
+            if (AnimatedSprite.SpriteBounds().Height > 200) bounds.Y -= 24;
 
             battleScene.AddBattler(this);
         }
