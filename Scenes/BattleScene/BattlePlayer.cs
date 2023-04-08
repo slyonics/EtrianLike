@@ -118,7 +118,7 @@ namespace EtrianLike.Scenes.BattleScene
         {
             List<ConversationScene.DialogueRecord> reports = new List<ConversationScene.DialogueRecord>();
 
-            int characterIndex = GetParent<DataGrid>().ChildList.IndexOf(GetParent<Panel>());
+            int characterIndex = GetParent<DataGrid>().ChildList.IndexOf(GetParent<Panel>().GetParent<Panel>());
 
             foreach (var statUsage in exercise)
             {
@@ -136,6 +136,25 @@ namespace EtrianLike.Scenes.BattleScene
                             }
                             if (points <= 0) continue;
                             string report = Stats.Name.Value + "'s HP increased by " + points + " points!";
+                            ConversationScene.DialogueRecord dialogueRecord = new ConversationScene.DialogueRecord()
+                            {
+                                Text = report,
+                                Script = new string[] { "IncreaseStat " + characterIndex + " " + statUsage.Key + " " + points }
+                            };
+                            reports.Add(dialogueRecord);
+                        }
+                        break;
+
+                    case "Magic":
+                        {
+                            double challengeBias = encounterRecord.Challenge - (Stats as HeroModel).NakedMagic.Value / 30;
+                            int points = 0;
+                            for (int i = 0; i < amountGained; i++)
+                            {
+                                if (Rng.RandomDouble(0, 1) < challengeBias * (Stats as HeroModel).MagicGrowth.Value) points += Rng.RandomInt(2, 5);
+                            }
+                            if (points <= 0) continue;
+                            string report = Stats.Name.Value + "'s SP increased by " + points + " points!";
                             ConversationScene.DialogueRecord dialogueRecord = new ConversationScene.DialogueRecord()
                             {
                                 Text = report,

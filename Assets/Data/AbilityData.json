@@ -9,11 +9,12 @@
 		"PreScript": [ "Exercise Mana" ],
 		"Script": [
 			"Animate Attack",
-			"Sound Fireball",
-			"Effect Flame $targetCenterX $targetCenterY 3",
+			"Exercise Magic",
+			"Sound Glass",
+			"Effect Glass $targetCenterX $targetCenterY 2",
 			"Flash 255 27 0",
 			"Damage Mana 5 Glass",
-			"Bleed 100 1 0.1"
+			"Bleed 100 2 0.2"
 		]
 	},
 	{
@@ -25,8 +26,9 @@
 		"Targetting": "SingleEnemy",
 		"Script": [
 			"Exercise Mana",
+			"Exercise Magic",
 			"Animate Attack",
-			"Sound Thunder",
+			"Sound Sing",
 			"Effect Shock $targetCenterX $targetCenterY 3",
 			"Flash 251 206 177",
 			"Confuse 100",

@@ -35,7 +35,7 @@ namespace EtrianLike.Scenes.MapScene
                 case "Animate": Animate(tokens); break;
                 case "GameEvent": GameEvent(tokens); break;
                 case "EndGame": EndGame = true; break;
-                case "ChangeMap": ChangeMap(tokens); Audio.PlaySound(GameSound.wall_enter); break;
+                case "ChangeMap": ChangeMap(tokens); Audio.PlaySound(GameSound.Door); break;
                 case "DisableEvent": mapRoom.Script = null; break;
                 case "SetWaypoint": SetWaypoint(tokens); break;
                 case "Conversation": Conversation(tokens); break;

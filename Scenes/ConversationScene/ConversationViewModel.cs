@@ -23,6 +23,8 @@ namespace EtrianLike.Scenes.ConversationScene
 
         public bool disableEnd = false;
 
+        bool endscriptrunning;
+
         public ConversationViewModel(ConversationScene iScene, ConversationRecord iConversationRecord)
             : base(iScene, PriorityLevel.GameLevel)
         {
@@ -133,8 +135,13 @@ namespace EtrianLike.Scenes.ConversationScene
             {
                 if (conversationRecord.EndScript != null)
                 {
+                    if (endscriptrunning) return;
+                    endscriptrunning = true;
                     ConversationController conversationController = conversationScene.AddController(new ConversationController(conversationScene, conversationRecord.EndScript));
-                    conversationController.OnTerminated += EndConversation;
+                    conversationController.OnTerminated += new TerminationFollowup(() =>
+                    {
+                        if (endscriptrunning) EndConversation();
+                    });
                 }
                 else if (!disableEnd) EndConversation();
 
@@ -175,6 +182,7 @@ namespace EtrianLike.Scenes.ConversationScene
             Dialogue.Value = currentDialogue.Text;
 
             disableEnd = false;
+            endscriptrunning = false;
         }
 
         public event Action OnDialogueScrolled;

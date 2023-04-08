@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="53">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="55">
  <properties>
   <property name="AmbientLight" type="float" value="0.2"/>
   <property name="LocationName" value="School (Day)"/>
   <property name="Name" value="School Foyer"/>
-  <property name="Wall" value="PlainFoyerWall"/>
+  <property name="Wall" value="ClassroomWall"/>
  </properties>
  <tileset firstgid="1" source="Walls.tsx"/>
  <layer id="1" name="Floor" width="12" height="12">
@@ -12,10 +12,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,2,0,2,2,2,2,2,2,2,2,0,
-0,2,0,2,0,0,0,0,2,2,2,0,
-0,2,0,2,0,0,0,0,2,0,2,0,
-0,2,2,2,0,0,0,0,2,0,2,0,
-0,2,0,2,0,0,0,0,2,0,2,0,
+0,2,0,0,0,0,0,0,2,2,2,0,
+0,2,0,0,0,0,0,0,2,0,0,0,
+0,2,2,2,0,0,0,0,2,2,2,0,
+0,2,0,2,0,0,0,0,2,0,0,0,
 0,2,0,2,0,0,0,0,2,2,2,0,
 0,2,0,2,2,2,2,2,2,2,2,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -28,10 +28,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,11,0,9,11,11,9,11,11,9,11,0,
-0,11,0,11,0,0,0,0,11,11,9,0,
-0,9,0,11,0,0,0,0,11,0,11,0,
-0,11,11,11,0,0,0,0,9,0,11,0,
-0,9,0,11,0,0,0,0,11,0,11,0,
+0,11,0,0,0,0,0,0,11,11,9,0,
+0,9,0,0,0,0,0,0,11,0,0,0,
+0,11,11,11,0,0,0,0,9,11,11,0,
+0,9,0,11,0,0,0,0,11,0,0,0,
 0,11,0,11,0,0,0,0,11,11,9,0,
 0,11,0,9,11,11,9,11,11,9,11,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -42,15 +42,15 @@
  <layer id="4" name="Walls" width="12" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,7,0,0,0,14,10,10,7,10,10,0,
-0,0,0,0,0,0,0,0,0,0,0,14,
-14,0,0,0,10,0,7,0,0,0,0,14,
-14,0,0,0,10,0,0,10,0,10,0,0,
-0,0,0,0,7,0,0,10,0,10,0,8,
-14,0,0,0,10,0,0,10,0,10,0,0,
-14,0,0,0,10,0,7,0,0,0,0,14,
-0,0,0,0,0,0,0,0,0,0,0,14,
-0,7,0,0,0,7,10,10,14,10,10,0,
+0,6,0,0,0,13,10,10,6,10,10,0,
+0,0,0,0,0,0,0,0,0,0,0,13,
+13,0,0,0,10,0,6,0,0,0,0,13,
+13,0,0,0,0,0,0,10,0,0,0,0,
+0,0,0,0,6,0,0,10,0,0,0,8,
+13,0,0,0,10,0,0,10,0,0,0,0,
+13,0,0,0,10,0,6,0,0,0,0,13,
+0,0,0,0,0,0,0,0,0,0,0,13,
+0,6,0,0,0,6,10,10,13,10,10,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -90,7 +90,7 @@ DisableEvent</property>
   </object>
   <object id="34" name="Exit Door" type="ActivateEast" x="1408" y="640" width="128" height="128">
    <properties>
-    <property name="Script">If $Flag.DayOneDone
+    <property name="Script">If $Flag.Principal
 Conversation EndFirstDay
 ChangeMap DarkSchool Default
 Else
@@ -144,6 +144,24 @@ DisableEvent</property>
   <object id="52" name="Door to Classroom1" type="ActivateNorth" x="128" y="128" width="128" height="128">
    <properties>
     <property name="Script" value="Conversation NotYourClass"/>
+   </properties>
+  </object>
+  <object id="53" name="Rumors2" type="Enter" x="256" y="640" width="128" height="128">
+   <properties>
+    <property name="DisableIf" value="Rumors2"/>
+    <property name="Script">If !$Flag.Rumors2
+Conversation Rumors2
+SetFlag Rumors2 True
+DisableEvent
+End</property>
+   </properties>
+  </object>
+  <object id="54" name="Principal" type="Enter" x="128" y="1024" width="128" height="128">
+   <properties>
+    <property name="DisableIf" value="Principal"/>
+    <property name="Script">Conversation Principal
+SetFlag Principal True
+ChangeMap DarkSchool Default</property>
    </properties>
   </object>
  </objectgroup>

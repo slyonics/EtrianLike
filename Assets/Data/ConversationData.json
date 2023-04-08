@@ -41,11 +41,12 @@
 			},
 			{
 				"Text": " * SMACK * ",
-				"Script": [ "PlaySound Slash" ]
+				"Script": [ "Sound Slash" ]
 			},
 			{
 				"Speaker": "Cyra",
-				"Text": "ACK!"
+				"Text": "ACK!",
+				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25" ]
 			},
 			{
 				"Speaker": "Mr. Henrick",
@@ -63,24 +64,24 @@
 			{
 				"Speaker": "Ivona",
 				"Text": "Hmm... maybe I shouldn't have smacked you so hard.",
-				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
+				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
 			},
 			{
 				"Text": "[Cyra glares at Ivona. She's lucky no one in class could see her.]"
 			}
 		],
-		"EndScript": [ "ChangeConversation EndIntro" ]
+		"EndScript": [ "RemovePortrait bird 0.25", "ChangeConversation EndIntro" ]
 	},
 	{
 		"Name": "Wakeup",
 		"DialogueRecords": [
 			{
 				"Text": "[Cyra nods her head awake. She looks around the class. No one looks up from their desk.]",
-				"Script": [ "ShowMapView" ]
+				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25", "Wait 100", "ShowMapView"  ]
 			},
 			{
 				"Text": "[Ivona perches on her desk and hops up and down to make sure Cyra is awake. She's lucky only Cyra can see her right now.]",
-				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
+				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
 			},
 			{
 				"Speaker": "Ivona",
@@ -94,7 +95,7 @@
 				"Text": "Right, right. Thank you, Ivona."
 			}
 		],
-		"EndScript": [ "ChangeConversation EndIntro" ]
+		"EndScript": [ "RemovePortrait bird 0.25", "ChangeConversation EndIntro" ]
 	},
 	{
 		"Name": "EndIntro",
@@ -121,7 +122,7 @@
 			{
 				"Speaker": "Ivona",
 				"Text": "Hmm?",
-				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
+				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
 			},
 			{
 				"Text": "[Mr. Henrick stares at the student before he walks over and picks up his book. His expression grows more puzzled as he flips through the pages.]"
@@ -158,7 +159,7 @@
 			},
 			{
 				"Text": "[The school bell rings. Mr. Henrick nearly jumps out of his shoes.]",
-				"Script": [ "PlaySound Laser" ]
+				"Script": [ "Sound SchoolBell" ]
 			},
 			{
 				"Speaker": "Mr. Henrick",
@@ -169,7 +170,8 @@
 				"Text": "I have to make some calls."
 			},
 			{
-				"Text": "[The class hoots and hollers as they collect their things and leave the classroom. Cyra grabs her backpack and follows suit.]"
+				"Text": "[The class hoots and hollers as they collect their things and leave the classroom. Cyra grabs her backpack and follows suit.]",
+				"Script": [ "RemovePortrait cyra 0.25", "RemovePortrait bird 0.25" ]
 			}
 		]
 	},
@@ -179,11 +181,12 @@
 			{
 				"Speaker": "Cyra",
 				"Text": "Okay, so I guess we got to find the labryinth entrance and then stop things from getting out of hand--",
-				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0" ]
+				"Script": [ "AddPortrait cyra CyraCivilian $leftPortraitX 184 0.25" ]
 			},
 			{
 				"Speaker": "Ivona",
-				"Text": "HOLD IT THERE YOUNG LADY!"
+				"Text": "HOLD IT THERE YOUNG LADY!",
+				"Script": [ "AddPortrait bird Mascot $rightPortraitX 128 0.25" ]
 			},
 			{
 				"Text": "[The little magical cockatoo flaps her wings in your face in exasperation.]"
@@ -225,104 +228,27 @@
 			},
 			{
 				"Speaker": "Ivona",
-				"Text": "Your algebra classroom will be the #2880E0FF second door on your left. #FFFFFFFF I'll mark it on your map with a star when you get close.",
+				"Text": "Your algebra classroom will be the #2880E0FF first door on your left. #FFFFFFFF I'll mark it on your map with a star when you get close.",
 				"Script": [ "SetWaypoint 5 9" ]
 			}
-		]
-	},
-	{
-		"Name": "FirstPeriod",
-		"DialogueRecords": [
-			{
-				"Text": "Introduce Angélia. Direct player to find their second period classroom.",
-				"Script": [
-					"AddPortrait portrait Jane $rightPortraitX 84 0.25",
-					"AddPortrait portrait2 Christine $leftPortraitX 84 0.25",
-					"DisableEnd",
-					"WaitForText",
-					"SelectionPrompt",
-					"ChoiceA",
-					"ChoiceB",
-					"ChoiceC",
-					"End",
-					"Switch $selection",
-					"Case ChoiceA",
-					"ChangeConversation ChoiceA",
-					"Break",
-					"Case ChoiceB",
-					"ChangeConversation ChoiceB",
-					"Break",
-					"Case ChoiceC",
-					"ChangeConversation ChoiceC",
-					"Break",
-					"End"
-				]
-			}
-		]
-	},
-	{
-		"Name": "ChoiceA",
-		"DialogueRecords": [
-			{
-				"Text": "You chose A!",
-				"Script": [
-					"AddPortrait portrait Jane $rightPortraitX 84 0",
-					"AddPortrait portrait2 Christine $leftPortraitX 84 0"
-				]
-			}
 		],
-		"EndScript": [
-			"RemovePortrait portrait 0.25",
-			"RemovePortrait portrait2 0.25",
-			"Wait 250"
-		]
-	},
-	{
-		"Name": "ChoiceB",
-		"DialogueRecords": [
-			{
-				"Text": "You chose B!",
-				"Script": [
-					"AddPortrait portrait Jane $rightPortraitX 84 0",
-					"AddPortrait portrait2 Christine $leftPortraitX 84 0"
-				]
-			}
-		],
-		"EndScript": [
-			"RemovePortrait portrait 0.25",
-			"RemovePortrait portrait2 0.25",
-			"Wait 250"
-		]
-	},
-	{
-		"Name": "ChoiceC",
-		"DialogueRecords": [
-			{
-				"Text": "You chose C!",
-				"Script": [
-					"AddPortrait portrait Jane $rightPortraitX 84 0",
-					"AddPortrait portrait2 Christine $leftPortraitX 84 0"
-				]
-			}
-		],
-		"EndScript": [
-			"RemovePortrait portrait 0.25",
-			"RemovePortrait portrait2 0.25",
-			"Wait 250"
-		]
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
 	},
 	{
 		"Name": "MeetFriends",
 		"DialogueRecords": [
 			{
-				"Text": "[In front of the door you’re greeted by Wren and Angélia. Angélia nods in greeting while Wren bursts into a big grin as she starts to chant.]"
+				"Text": "[In front of the door you’re greeted by Wren and Angélia. Angélia nods in greeting while Wren bursts into a big grin as she starts to chant.]",
+				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25" ]
 			},
 			{
 				"Speaker": "Wren",
-				"Text": "Labryinth! Labryinth!"
+				"Text": "Labryinth! Labryinth!",
+				"Script": [ "AddPortrait wren WrenCivilian $leftPortraitX2 204 0.25" ]
 			},
 			{
-				"Text": "[Angélia elbows the girl. Wren hisses as she massages her own arm.]"
+				"Text": "[Angélia elbows the girl. Wren hisses as she massages her own arm.]",
+				"Script": [ "AddPortrait angelia AngeliaCivilian $leftPortraitX 184 0.25" ]
 			},
 			{
 				"Speaker": "Angélia",
@@ -331,7 +257,7 @@
 			{
 				"Speaker": "Ivona",
 				"Text": "I see you girls have also noticed a labryinth has opened somewhere in the school as well.",
-				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0.25" ]
+				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
 			},
 			{
 				"Speaker": "Angélia",
@@ -394,8 +320,7 @@
 		"DialogueRecords": [
 			{
 				"Speaker": "Cyra",
-				"Text": "I don't know. The cafeteria seems pretty big. Wouldn't a labryinth entrance fit there?",
-				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0" ]
+				"Text": "I don't know. The cafeteria seems pretty big. Wouldn't a labryinth entrance fit there?"
 			},
 			{
 				"Speaker": "Wren",
@@ -425,7 +350,8 @@
 			{
 				"Text": "[Cyra smiles, appreciating Ivona's comfort.]"
 			}
-		]
+		],
+		"EndScript": [ "ChangeConversation EndMeetFriends" ]
 	},
 	{
 		"Name": "ChooseLibrary",
@@ -433,7 +359,6 @@
 			{
 				"Speaker": "Cyra",
 				"Text": "The library just makes sense doesn't it? I think if we go there we're bound to find something useful to finding the entrance.",
-				"Script": [ "AddPortrait portrait Mascot $rightPortraitX 384 0" ]
 			},
 			{
 				"Text": "[Ivona nods her head in approval.]"
@@ -446,35 +371,26 @@
 				"Speaker": "Angélia",
 				"Text": "Yeah, I'd say the same thing."
 			}
-		]
+		],
+		"EndScript": [ "ChangeConversation EndMeetFriends" ]
 	},
 	{
-		"Name": "LibraryIntro",
+		"Name": "EndMeetFriends",
 		"DialogueRecords": [
 			{
-				"Text": "Players learns about book banning, maybe gets a promonition of bad mojo from the library or witnesses a supernatural event."
+				"Speaker": "Cyra",
+				"Text": "Alright, then it's settled. Let's take a peek inside the library after class!"
 			},
 			{
-				"Text": "Rest of the day is fast-forwarded and the player is directed to leave through the main entrance.",
-				"Script": [ "SetFlag DayOneDone True" ]
-			}
-		]
-	},
-	{
-		"Name": "EndFirstDay",
-		"DialogueRecords": [
+				"Speaker": "Angélia",
+				"Text": "I'll meet you there but I'm not really too familiar with the way to the library yet."
+			},
 			{
-				"Text": "End of the first day, player returns to school at night to investigate library."
+				"Speaker": "Cyra",
+				"Text": "Oh! That's right. You’re still getting used to the classes here. Just continue #2880E0FF further down this hall, then take a left at the intersection."
 			}
-		]
-	},
-	{
-		"Name": "Inn",
-		"DialogueRecords": [
-			{
-				"Text": "All abilities restored to maximum charges!"
-			}
-		]
+		],
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
 	},
 	{
 		"Name": "NotYourClass",
@@ -505,6 +421,147 @@
 			{
 				"Speaker": "Slacker Student",
 				"Text": "Bro? I thought those were like his babies!"
+			}
+		]
+	},
+	{
+		"Name": "Rumors2",
+		"DialogueRecords": [
+			{
+				"Text": "[Another student is walking your way from the library and stops to talk.]"
+			},
+			{
+				"Speaker": "Stylish Student",
+				"Text": "Hey, are you guys heading to the library??"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Uh, yes! Why?",
+				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25" ]
+			},
+			{
+				"Speaker": "Stylish Student",
+				"Text": "Don't bother. Principal Reed is blocking the door and he's acting weird."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "How so?",
+				"Script": [ "AddPortrait angelia AngeliaCivilian $leftPortraitX 184 0.25" ]
+			},
+			{
+				"Speaker": "Stylish Student",
+				"Text": "I had a book I checked out a month ago thats due today. So, of course I come to return it because I don't want to pay a late fee because I'm broke and it's super lame--"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Get to the point."
+			},
+			{
+				"Text": "[The Stylish Student gasps as she places a hand on her heart with her mouth still agape.]"
+			},
+			{
+				"Speaker": "Stylish Student",
+				"Text": "Rude! I was going to say he blocked me from going inside and told me to just get rid of the book!"
+			},
+			{
+				"Speaker": "Stylish Student",
+				"Text": "What am I supposed to do with this? This is school property not mine!"
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "Well... free is free?",
+				"Script": [ "AddPortrait wren WrenCivilian $leftPortraitX2 204 0.25" ]
+			},
+			{
+				"Speaker": "Stylish Student",
+				"Text": "Oh please. I'll celebrate a free gift card to GlossMart, not a moderately used book."
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Thank you for the warning. I think we'll still stop by to see what's going on."
+			},
+			{
+				"Speaker": "Stylish Student",
+				"Text": "Suit yourself!"
+			}
+		],
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "Wait 250", "EndConversation" ]
+	},
+	{
+		"Name": "Principal",
+		"DialogueRecords": [
+			{
+				"Text": "[Cyra, Wren, and Angélia stop in their tracks as a hulking figure of a man stands in their way with his fists balled.]",
+				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25", "AddPortrait wren WrenCivilian $leftPortraitX2 204 0.25", "AddPortrait angelia AngeliaCivilian $leftPortraitX 184 0.25" ]
+			},
+			{
+				"Speaker": "Principal Reed",
+				"Text": "The library is closed until further notice! Keep walking!"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "We don't mean to be rude Principal Reed but how come?"
+			},
+			{
+				"Text": "[The man looks at Cyra in surprise, as if this is the most incredulous question he's ever heard in his life. The irritation practically radiates off of him.]"
+			},
+			{
+				"Speaker": "Principal Reed",
+				"Text": "These books have become nothing but a nuisance by plaguing the minds of the youth! Better yet, I want to BAN books."
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "BAN? You’ve got to be joking!"
+			},
+			{
+				"Text": "[Principal Reed gains a strange fiery glow. Ivona who has been silent this whole time lets out a gasp.]"
+			},
+			{
+				"Speaker": "Principal Reed",
+				"Text": "Why would I be joking? Don’t talk back to me!"
+			},
+			{
+				"Text": "[A strange energy seeps from the man.]"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "This man is obviously blocking the entrance to the labyrinth but we need something to trigger the entrance. There's no way for you to get in there now!",
+				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
+			},
+			{
+				"Text": "[Before Principal Reed could say anything more Angélia grabs Cyra and Wren and pushes them along.]"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "We got all the information we needed. Let's come back tonight and fix this before anything worse happens. The door will be open by then, we don't need to provoke him anymore."
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "A minute longer and I'm sure he would've bitten our heads off... all at once."
+			},
+			{
+				"Text": "[You all leave the library entrance and carry out your school day. The four of you make preparations to enter The Library Labyrinth.]",
+				"Script": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "HideMapView" ]
+			}
+		]
+	},
+	{
+		"Name": "SneakLibrary",
+		"DialogueRecords": [
+			{
+				"Text": "[The four of you slink into the halls. The school has an eerie feeling to it. It's odd compared to the bustling and noisy aura of it in the day time.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Thank God you know where your coach keeps his spare keys to the doors, Wren."
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "Let's just not let her know, yeah?"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Girls, tread with caution. The energy I felt coming from your principal is stronger, and coming from down the hall. I fear he must have been called by the labyrinth already."
 			}
 		]
 	},

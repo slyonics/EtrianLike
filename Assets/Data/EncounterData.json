@@ -1,5 +1,15 @@
 [
 	{
+		"Name": "Random0",
+		"Background": "Desert",
+		"Enemies": [
+			"Enemy1"
+		],
+		"Challenge": 2,
+		"Script": [],
+		"Intro": "A test battle commences!!"
+	},
+	{
 		"Name": "Random1",
 		"Background": "Desert",
 		"Enemies": [

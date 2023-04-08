@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="44">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="61">
  <properties>
-  <property name="AmbientLight" type="float" value="0.35"/>
+  <property name="AmbientLight" type="float" value="0.2"/>
   <property name="LocationName" value="School (Night)"/>
   <property name="Name" value="School (Night)"/>
-  <property name="Wall" value="PlainFoyerWall"/>
+  <property name="Wall" value="ClassroomWall"/>
  </properties>
  <tileset firstgid="1" source="Walls.tsx"/>
  <layer id="1" name="Floor" width="12" height="12">
@@ -12,11 +12,11 @@
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,2,0,2,2,2,2,2,2,2,2,0,
-0,2,0,2,0,0,0,0,0,2,2,0,
-0,2,0,2,0,0,0,0,0,2,2,0,
+0,2,0,0,0,0,0,0,2,2,2,0,
+0,2,0,0,0,0,0,0,2,0,0,0,
 0,2,2,2,0,0,0,0,2,2,2,0,
-0,2,0,2,0,0,0,0,0,2,2,0,
-0,2,0,2,0,0,0,0,0,2,2,0,
+0,2,0,2,0,0,0,0,2,0,0,0,
+0,2,0,2,0,0,0,0,2,2,2,0,
 0,2,0,2,2,2,2,2,2,2,2,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -27,13 +27,13 @@
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,11,0,11,11,11,11,11,11,11,11,0,
-0,11,0,11,0,0,0,0,0,11,11,0,
-0,11,0,11,0,0,0,0,0,11,11,0,
+0,11,0,9,11,11,9,11,11,9,11,0,
+0,11,0,0,0,0,0,0,11,11,9,0,
+0,9,0,0,0,0,0,0,11,0,0,0,
 0,11,11,11,0,0,0,0,9,11,11,0,
-0,11,0,11,0,0,0,0,0,11,11,0,
-0,11,0,11,0,0,0,0,0,11,11,0,
-0,11,0,11,11,11,11,11,11,11,11,0,
+0,9,0,11,0,0,0,0,11,0,0,0,
+0,11,0,11,0,0,0,0,11,11,9,0,
+0,11,0,9,11,11,9,11,11,9,11,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0
@@ -42,15 +42,15 @@
  <layer id="4" name="Walls" width="12" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,7,0,0,0,7,10,10,7,0,0,0,
-0,0,10,0,0,0,0,0,0,0,0,14,
-14,0,10,0,10,0,7,0,0,0,0,14,
-14,0,10,0,10,0,0,0,10,0,0,0,
-0,0,0,0,7,0,0,10,0,0,0,8,
-14,0,10,0,10,0,0,0,10,0,0,0,
-14,0,10,0,10,0,7,0,0,0,0,14,
-0,0,10,0,0,0,0,0,0,0,0,14,
-0,7,0,0,0,7,10,10,7,0,0,0,
+0,6,0,0,0,13,10,10,6,10,10,0,
+0,0,0,0,0,0,0,0,0,0,0,13,
+13,0,0,0,10,0,6,0,0,0,0,13,
+13,0,0,0,0,0,0,10,0,0,0,0,
+0,0,0,0,6,0,0,10,0,0,0,8,
+13,0,0,0,10,0,0,10,0,0,0,0,
+13,0,0,0,10,0,6,0,0,0,0,13,
+0,0,0,0,0,0,0,0,0,0,0,13,
+0,6,0,0,0,6,10,10,13,10,10,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -63,65 +63,49 @@
   </object>
  </objectgroup>
  <objectgroup id="5" name="Events">
-  <object id="6" name="Door to Foundry" type="ActivateNorth" x="768" y="896" width="128" height="128">
-   <properties>
-    <property name="Script" value="ChangeMap Foundry FromSchool"/>
-   </properties>
-  </object>
-  <object id="7" name="Door to Office" type="ActivateSouth" x="768" y="384" width="128" height="128">
-   <properties>
-    <property name="Script" value="ChangeMap Office FromSchool"/>
-   </properties>
-  </object>
-  <object id="15" name="GameIntro" type="Enter" x="1280" y="640" width="128" height="128">
-   <properties>
-    <property name="DisableIf" value="GameIntro"/>
-    <property name="Script">SetWaypoint 5 1
-Conversation GameIntro
-SetFlag GameIntro True
-DisableEvent</property>
-   </properties>
-  </object>
   <object id="29" name="Door to Library" type="ActivateSouth" x="128" y="1152" width="128" height="128">
    <properties>
-    <property name="Script">Conversation First boss encounter and Cyra is joined by Angelia and Wren. Player enters dark library.
-ChangeMap DarkLibrary Default</property>
+    <property name="Script">ChangeMap DarkLibrary DarkSchool
+</property>
    </properties>
   </object>
-  <object id="30" name="Door to Foundry" type="ActivateNorth" x="128" y="128" width="128" height="128">
+  <object id="32" name="Door to Classroom1" type="ActivateNorth" x="1024" y="128" width="128" height="128">
    <properties>
-    <property name="Script" value="ChangeMap Foundry FromSchool"/>
+    <property name="Script" value="ChangeMap Classroom1 SchoolHall"/>
    </properties>
   </object>
-  <object id="31" name="Door to First Period" type="ActivateNorth" x="640" y="128" width="128" height="128">
+  <object id="48" name="Door to Classroom1" type="ActivateNorth" x="768" y="896" width="128" height="128">
    <properties>
-    <property name="Script">SetWaypoint 8 9
-Conversation FirstPeriod</property>
+    <property name="Script" value="Conversation NotYourClass"/>
    </properties>
   </object>
-  <object id="32" name="Door to Foundry" type="ActivateNorth" x="1024" y="128" width="128" height="128">
+  <object id="49" name="Door to Classroom1" type="ActivateSouth" x="768" y="384" width="128" height="128">
    <properties>
-    <property name="Script" value="ChangeMap Foundry FromSchool"/>
+    <property name="Script" value="Conversation NotYourClass"/>
    </properties>
   </object>
-  <object id="33" name="Door to Foundry" type="ActivateEast" x="512" y="640" width="128" height="128">
+  <object id="51" name="Door to Classroom1" type="ActivateEast" x="512" y="640" width="128" height="128">
    <properties>
-    <property name="Script" value="ChangeMap Foundry FromSchool"/>
+    <property name="Script" value="Conversation NotYourClass"/>
    </properties>
   </object>
-  <object id="34" name="Exit Door" type="ActivateEast" x="1408" y="640" width="128" height="128">
+  <object id="52" name="Door to Classroom1" type="ActivateNorth" x="128" y="128" width="128" height="128">
    <properties>
-    <property name="Script">If $Flag.DayOneDone
-Conversation EndFirstDay
-ChangeMap DarkSchool
-Else
-Conversation It's too early to leave school. Return here after the final bell rings.
-End</property>
+    <property name="Script" value="Conversation NotYourClass"/>
+   </properties>
+  </object>
+  <object id="60" name="SneakLibrary" type="Enter" x="1280" y="640" width="128" height="128">
+   <properties>
+    <property name="DisableIf" value="SneakLibrary"/>
+    <property name="Script">Conversation SneakLibrary
+SetFlag SneakLibrary True
+DisableEvent</property>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="6" name="Lighting">
-  <object id="43" x="1024" y="640" width="128" height="128"/>
+  <object id="14" x="256" y="640" width="128" height="128"/>
+  <object id="57" x="1024" y="1024" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="7" name="Walls"/>
 </map>

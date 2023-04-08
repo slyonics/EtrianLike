@@ -23,7 +23,8 @@ namespace EtrianLike.SceneObjects.Particles
         Electric,
         Shock,
         GreenHeal,
-        BlueHeal
+        BlueHeal,
+        Glass
     }
 
     public class AnimationParticle : Particle
@@ -42,6 +43,7 @@ namespace EtrianLike.SceneObjects.Particles
             { AnimationType.Shock.ToString(), new Animation(0, 0, 96, 96, 4, 70) },
             { AnimationType.GreenHeal.ToString(), new Animation(0, 0, 16, 48, 13, 30) },
             { AnimationType.BlueHeal.ToString(), new Animation(0, 0, 16, 48, 13, 30) },
+            { AnimationType.Glass.ToString(), new Animation(0, 0, 192, 192, 3, 250) },
         };
 
         private List<Tuple<int, FrameFollowup>> frameEventList = new List<Tuple<int, FrameFollowup>>();

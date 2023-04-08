@@ -368,7 +368,34 @@ namespace EtrianLike.Scenes.MapScene
                     }
                 
             }
+            else if (parentScene.MapName == "School (Night)")
+            {
 
+                int stepsRemaining = GameProfile.GetSaveData<int>("RandomBattle");
+                stepsRemaining--;
+                GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
+
+                if (stepsRemaining < 0)
+                {
+                    stepsRemaining = Rng.RandomInt(8, 14);
+                    GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
+
+                    string encounterName = "";
+                    switch (Rng.RandomInt(0, 4))
+                    {
+                        case 0: encounterName = "Random0"; break;
+                        case 1: encounterName = "Random0"; break;
+                        case 2: encounterName = "Random0"; break;
+                        case 3: encounterName = "Random1"; break;
+                        case 4: encounterName = "Random2"; break;
+                    }
+                    BattleScene.BattleScene battleScene = new BattleScene.BattleScene(encounterName);
+                    CrossPlatformGame.StackScene(battleScene, true);
+
+                    parentScene.ResetPathfinding();
+                }
+
+            }
 
         }
 

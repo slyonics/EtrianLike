@@ -8,7 +8,7 @@
 		<Label Text="Story and Writing by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
 		<Label Text="Potato Mika" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 
-		<Label Text="Character Art by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
+		<Label Text="Character and Enemy Art by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
 		<Label Text="Coconut Ranger" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 		
 		<Label Text="Music and Sounds by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
@@ -21,7 +21,8 @@
 		
 
 		<Label Text="Includes sprite art from" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
-		<Label Text="Ocean's Nostalgia, Omega Modern" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
+		<Label Text="Ocean's Nostalgia by Caz" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
+		<Label Text="Top Down Pixel Art Horror by kamisama887" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>
 
 		<Label Text="Includes particle effects by" Alignment="Vertical" Font="Dialogue" Color="#C7895BFF"/>
 		<Label Text="Ben M. Henry" Alignment="Vertical" Font="Dialogue" Color="#E0BFA2FF"/>

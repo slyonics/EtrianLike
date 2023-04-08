@@ -49,16 +49,29 @@ namespace EtrianLike.Scenes.ConversationScene
                 case "EndConversation": conversationScene.ConversationViewModel.disableEnd = false; conversationScene.ConversationViewModel.Proceed(); break;
                 case "DisableEnd": conversationScene.ConversationViewModel.disableEnd = true; break;
 
+                case "IncreaseStat": BattleScene.BattleController.IncreaseStat(tokens); break;
                 //case "ChangeMap": MapScene.EventController.ChangeMap(tokens, null); break;
                 case "ShowMapView":
                     {
-                        TransitionController transitionController = new TransitionController(TransitionDirection.In, 1000, PriorityLevel.CutsceneLevel);
+                        TransitionController transitionController = new TransitionController(TransitionDirection.In, 1000, PriorityLevel.GameLevel);
                         transitionController.UpdateTransition += new Action<float>(f => MapScene.MapScene.Instance.MapViewModel.MapColor.Value = Color.Lerp(Color.Black, Color.White, f));
                         transitionController.FinishTransition += new Action<TransitionDirection>(d => MapScene.MapScene.Instance.MapViewModel.MapColor.Value = Color.White);
 
                         conversationScene.AddController(transitionController);
 
                         
+
+                        break;
+                    }
+                case "HideMapView":
+                    {
+                        TransitionController transitionController = new TransitionController(TransitionDirection.In, 1000, PriorityLevel.GameLevel);
+                        transitionController.UpdateTransition += new Action<float>(f => MapScene.MapScene.Instance.MapViewModel.MapColor.Value = Color.Lerp(Color.White, Color.Black, f));
+                        transitionController.FinishTransition += new Action<TransitionDirection>(d => MapScene.MapScene.Instance.MapViewModel.MapColor.Value = Color.Black);
+
+                        conversationScene.AddController(transitionController);
+
+
 
                         break;
                     }
@@ -73,8 +86,10 @@ namespace EtrianLike.Scenes.ConversationScene
         {
             switch (parameter)
             {
-                case "$leftPortraitX": return (((int)(CrossPlatformGame.ScreenWidth / 1.6) - 60) / 2).ToString();
-                case "$rightPortraitX": return (CrossPlatformGame.ScreenWidth - ((int)(CrossPlatformGame.ScreenWidth / 1.6) - 60) / 2).ToString();
+                case "$leftPortraitX": return (((int)(CrossPlatformGame.ScreenWidth / 1.6) - 60) / 2 - 40).ToString();
+                case "$leftPortraitX2": return (((int)(CrossPlatformGame.ScreenWidth / 1.6) - 60) / 2 + 80).ToString();
+                case "$rightPortraitX": return (CrossPlatformGame.ScreenWidth - ((int)(CrossPlatformGame.ScreenWidth / 1.6) - 60) / 2 + 40).ToString();
+                case "$birdPortraitX": return (CrossPlatformGame.ScreenWidth - ((int)(CrossPlatformGame.ScreenWidth / 1.6) - 60) / 2 - 100).ToString();
                 case "$portraitY": return ((int)(CrossPlatformGame.ScreenHeight)).ToString();
                 case "$portraitScaleX": return (CrossPlatformGame.ScreenWidth / 1920.0f / 1.6f).ToString();
                 case "$portraitScaleY": return (CrossPlatformGame.ScreenHeight / 1080.0f / 1.6f).ToString();

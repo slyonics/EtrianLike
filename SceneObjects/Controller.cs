@@ -41,9 +41,9 @@ namespace EtrianLike.SceneObjects
 
         public virtual void Terminate()
         {
-            terminated = true;
-
             if (!terminated && OnTerminated != null) OnTerminated();
+
+            terminated = true;
         }
 
         public PriorityLevel PriorityLevel { get => priorityLevel; }

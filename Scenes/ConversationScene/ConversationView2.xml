@@ -4,7 +4,7 @@
 	<Panel Anchor="$CenterX,$CenterY" Bounds="Bind Window" InnerMargin="16,16,16,18">
 		<CrawlText Name="ConversationText" Text="Bind Dialogue" Font="Bind ConversationFont" Alignment="Stretch" Color="#D8D8D8FF"/>
 		<Textplate Name="SpeakerPlate" Style="Nameplate" Alignment="BottomLeft" Bounds="16,-88,-1,-1" InnerMargin="9,4,7,4" Font="Bind ConversationFont" Text="Bind Speaker" Color="#E0BFA2FF"/>
-		<Image Sprite="Enter,0,0,12,12,2,1200,-1" Alignment="BottomRight" Bounds="7,7,36,36" Visible="Bind ReadyToProceed"/>
+		<Image Sprite="Enter,0,0,36,36,2,1200,-1" Alignment="BottomRight" Bounds="2,4,36,36" Visible="Bind ReadyToProceed"/>
 	</Panel>
   
 </View>

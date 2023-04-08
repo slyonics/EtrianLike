@@ -353,7 +353,12 @@ namespace EtrianLike.Scenes.MapScene
 
             if (MapName == "School Foyer") Audio.PlayMusic(GameMusic.SchoolDay);
             else if (MapName == "School (Night)") Audio.PlayMusic(GameMusic.SchoolNight);
-            if (MapName == "Dark Library") Audio.PlayMusic(GameMusic.SchoolNight);
+            else if (MapName == "Dark Library") Audio.PlayMusic(GameMusic.SchoolNight);
+            else
+            {
+                if (!GameProfile.GetSaveData<bool>("GameIntro")) Audio.StopMusic();
+                else Audio.PlayMusic(GameMusic.SchoolDay);
+            }
         }
 
         public void SetWaypoint(int pointX, int pointY)
