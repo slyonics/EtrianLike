@@ -5,7 +5,7 @@
 		"ShadowOffset": 4,
 		"MaxHealth": 40,
 		"Strength": 6,
-		"Defense": 4,
+		"Defense": 5,
 		"Agility": 1,
 		"Mana": 2,
 		"Evasion": 0,
@@ -34,6 +34,17 @@
 					"Attack"
 				],
 				"Weight": 100
+			},
+			{
+				"Script": [
+					"Dialogue $attackerName conjures flames at $targetName with an eldritch incantation!",
+					"Animate Attack",
+					"Sound Fireball",
+					"Effect Flame $targetCenterX $targetCenterY 3",
+					"Flash 255 27 0",
+					"Damage Mana 6 Fire"
+				],
+				"Weight": 50
 			}
 		]
 	},
@@ -52,7 +63,30 @@
 				"Script": [
 					"Attack"
 				],
-				"Weight": 100
+				"Weight": 50
+			},
+			{
+				"PreScript": [ "Dialogue $attackerName attacks the party with fire magic!", "Animate Attack" ],
+				"Script": [
+					"Sound Fireball",
+					"Effect Flame $targetCenterX $targetCenterY 3",
+					"Flash 255 27 0",
+					"Damage Mana 5 Fire"
+				],
+				"Weight": 100,
+				"AttackAll": "true"
+			},
+			{
+				"Script": [
+					"Dialogue $attackerName attacks $targetName with otherwordly energy!",
+					"Animate Attack",
+					"Sound Laser",
+					"Effect Gunshot $targetCenterX $targetCenterY 4",
+					"OnHit 100 Agility",
+					"Flash 255 27 0",
+					"Damage Strength 7 Physical"
+				],
+				"Weight": 50
 			}
 		]
 	},
@@ -60,9 +94,9 @@
 		"Name": "Corrupted Reed",
 		"Sprite": "Boss",
 		"ShadowOffset": 4,
-		"MaxHealth": 300,
-		"Strength": 10,
-		"Defense": 6,
+		"MaxHealth": 50,
+		"Strength": 12,
+		"Defense": 12,
 		"Agility": 10,
 		"Mana": 12,
 		"Evasion": 30,
@@ -70,6 +104,29 @@
 			{
 				"Script": [
 					"Attack"
+				],
+				"Weight": 50
+			},
+			{
+				"PreScript": [ "Dialogue $attackerName attacks the party with flaming books!", "Animate Attack" ],
+				"Script": [
+					"Sound Fireball",
+					"Effect Flame $targetCenterX $targetCenterY 3",
+					"Flash 255 27 0",
+					"Damage Mana 4 Fire"
+				],
+				"Weight": 50,
+				"AttackAll": "true"
+			},
+			{
+				"Script": [
+					"Dialogue $attackerName attacks $targetName with otherwordly energy!",
+					"Animate Attack",
+					"Sound Laser",
+					"Effect Gunshot $targetCenterX $targetCenterY 4",
+					"OnHit 100 Agility",
+					"Flash 255 27 0",
+					"Damage Strength 7 Physical"
 				],
 				"Weight": 100
 			}

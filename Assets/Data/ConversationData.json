@@ -186,7 +186,7 @@
 			{
 				"Speaker": "Ivona",
 				"Text": "HOLD IT THERE YOUNG LADY!",
-				"Script": [ "AddPortrait bird Mascot $rightPortraitX 128 0.25" ]
+				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
 			},
 			{
 				"Text": "[The little magical cockatoo flaps her wings in your face in exasperation.]"
@@ -229,7 +229,7 @@
 			{
 				"Speaker": "Ivona",
 				"Text": "Your algebra classroom will be the #2880E0FF first door on your left. #FFFFFFFF I'll mark it on your map with a star when you get close.",
-				"Script": [ "SetWaypoint 5 9" ]
+				"Script": [ "SetWaypoint Class" ]
 			}
 		],
 		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
@@ -387,7 +387,8 @@
 			},
 			{
 				"Speaker": "Cyra",
-				"Text": "Oh! That's right. You’re still getting used to the classes here. Just continue #2880E0FF further down this hall, then take a left at the intersection."
+				"Text": "Oh! That's right. You’re still getting used to the classes here. Just continue #2880E0FF further down this hall, then take a left at the intersection.",
+				"Script": [ "SetWaypoint Library" ]
 			}
 		],
 		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
@@ -645,7 +646,6 @@
 		"Name": "StartCrawl",
 		"DialogueRecords": [
 			{
-				"Speaker": "Wren",
 				"Text": "[The walls of the labyrinth twist and turn. The girls find themselves feeling as if the halls could go on for eternity if they didn't know better.]",
 				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25", "AddPortrait wren WrenCivilian $leftPortraitX2 204 0.25", "AddPortrait angelia AngeliaCivilian $leftPortraitX 184 0.25" ]
 			},
@@ -656,10 +656,11 @@
 			},
 			{
 				"Speaker": "Angélia, Cyra, and Wren",
-				"Text": "Right!"
+				"Text": "Right!",
+				"Script": [ "SetWaypoint Boss" ]
 			}
 		],
-		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "Wait 250", "EndConversation" ]
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
 	},
 	{
 		"Name": "BossFight",
@@ -709,62 +710,282 @@
 		"Name": "EndGame",
 		"DialogueRecords": [
 			{
+				"Text": "[Principal reed falls to his knees as his corrupted visage melts away. He looks around with a puzzled look on his face.]",
+				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25", "AddPortrait wren WrenCivilian $leftPortraitX2 204 0.25", "AddPortrait angelia AngeliaCivilian $leftPortraitX 184 0.25" ]
+			},
+			{
+				"Speaker": "Principal Reed",
+				"Text": "W-what happened? Where are we?"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "In a labyrinth born from corruption that latches unto people too long."
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Angélia!!",
+				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "What? He's not going to remember any of this when the place closes."
+			},
+			{
+				"Speaker": "Principal Reed",
+				"Text": "W-wait? Oh no. The school. I've made such a mess of the place."
+			},
+			{
+				"Text": "[The man's face falls. Principal Reed's pride and joy is Adriann Lake High School. The thought of ruining things for the school.]"
+			},
+			{
+				"Text": "[The man usually known as imposing now is reduced to an apologetic shell of a man.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Principal Reed... it's alright. Things will be reversed once we leave."
+			},
+			{
+				"Speaker": "Principal Reed",
+				"Text": "R-really?"
+			},
+			{
+				"Text": "[Cyra nods as she grabs the man's hand and helps him up, the best way she can that is.]"
+			},
+			{
+				"Text": "[A door of light opens, an indication their work is done.]"
+			},
+			{
+				"Speaker": "Principal Reed",
+				"Text": "Thank you girls for your help. What do you call yourselves?"
+			},
+			{
+				"Text": "[Cyra turns and smiles at the man.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "We're the Sparkle Tales!"
+			},
+			{
+				"Text": "[Thank you for playing our game!]"
+			}
+		],
+		"EndScript": [ "ChangeScene EtrianLike.Scenes.TitleScene.TitleScene" ]
+	},
+	{
+		"Name": "Skit1",
+		"DialogueRecords": [
+			{
 				"Speaker": "Wren",
-				"Text": "[The walls of the labyrinth twist and turn. The girls find themselves feeling as if the halls could go on for eternity if they didn't know better.]",
+				"Text": "Y' know... it's pretty sad that Principal Reed is the one that got hit with the whole corrupto beam.]",
 				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25", "AddPortrait wren WrenCivilian $leftPortraitX2 204 0.25", "AddPortrait angelia AngeliaCivilian $leftPortraitX 184 0.25" ]
 			},
 			{
 				"Speaker": "Ivona",
-				"Text": "Your principal is in here. Stay close to one another. I cannot aid you in battle but I will be your guide when needed, just as we practiced.",
+				"Text": "It's not 'corrupto beam', it's just corruption.",
 				"Script": [ "AddPortrait bird Mascot $birdPortraitX 128 0.25" ]
 			},
 			{
-				"Speaker": "Angélia, Cyra, and Wren",
-				"Text": "Right!"
+				"Speaker": "Wren",
+				"Text": "Well, corrupto beam sounds cooler."
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "No, it sounds ridiculous!"
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "You're just boring. Cyra, what do you think?",
+				"Script": [
+					"DisableEnd",
+					"WaitForText",
+					"SelectionPrompt",
+					"It's just corruption",
+					"It should be corrupto beam!",
+					"End",
+					"Switch $selection",
+					"Case It's just corruption",
+					"ChangeConversation SupportIvona",
+					"Break",
+					"Case It should be corrupto beam!",
+					"ChangeConversation SupportWren",
+					"Break",
+					"End"
+				]
+			}
+		]
+	},
+	{
+		"Name": "SupportIvona",
+		"DialogueRecords": [
+			{
+				"Speaker": "Cyra",
+				"Text": "Stop mocking Ivona, Wren. It's just corruption."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Hmm..."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "I kinda think corrupto beam is pretty funny."
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "See?!"
+			},
+			{
+				"Text": "[The girls' banter takes the edge off and heals some SP!]",
+				"Script": [ "ShortRest" ]
 			}
 		],
-		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "Wait 250", "EndConversation" ]
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
 	},
 	{
-		"Name": "SoloRevive",
-		"Bounds": "-120,-70,240,54",
+		"Name": "SupportWren",
 		"DialogueRecords": [
 			{
-				"Speaker": "Inventor",
-				"Text": "Your repairs are all finished now. You should construct some companions if you're having trouble in battle."
+				"Speaker": "Ivona",
+				"Text": "Cyra, not you too!"
 			},
 			{
-				"Speaker": "Inventor",
-				"Text": "Be careful out there, and check the scrapyard #F3C14CFF northeast #FFFFFFFF of here if you need more parts to build drone companions."
+				"Speaker": "Cyra",
+				"Text": "I mean, why can't we start naming things?"
+			},
+			{
+				"Text": "[Wren bursts into laughter.]"
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "That's it! Corrupto beam it is!"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "At least I know Angélia has some kind of maturity left!"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "..."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "We have to stop the corrupto beam."
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "ANGÉLIA!?"
+			},
+			{
+				"Text": "[The girls' banter takes the edge off and heals some SP!]",
+				"Script": [ "ShortRest" ]
+			}
+		],
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
+	},
+	{
+		"Name": "Skit2",
+		"DialogueRecords": [
+			{
+				"Text": "The girls stop as they notice a shelf filled with snack bags. They don't seem to have any labels. Cyra picks one up and turns it around in her hand.",
+				"Script": [ "AddPortrait cyra CyraCivilian $rightPortraitX 184 0.25", "AddPortrait bird Mascot $birdPortraitX 128 0.25", "AddPortrait wren WrenCivilian $leftPortraitX2 204 0.25", "AddPortrait angelia AngeliaCivilian $leftPortraitX 184 0.25" ]
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "Is this real?"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Well, it is as real as you would want it to be."
+			},
+			{
+				"Text": "[Cyra opens the bag and finds a ton of cheddar-based fish-shaped crackers.]"
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Oh, I recognize these! They're pretty good. My grandmother calls them 'brain snacks' since she says they're nutritious."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "I don't know how true that is though."
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "Hmm. I think we should leave it alone. Sometimes the labyrinth plays tricks on those who enter. This feels a bit too convenient.",
+				"Script": [
+					"DisableEnd",
+					"WaitForText",
+					"SelectionPrompt",
+					"Eat the crackers",
+					"Leave them alone",
+					"End",
+					"Switch $selection",
+					"Case Eat the crackers",
+					"ChangeConversation EatSnacks",
+					"Break",
+					"Case Leave them alone",
+					"ChangeConversation SkipSnacks",
+					"Break",
+					"End"
+				]
 			}
 		]
 	},
 	{
-		"Name": "WhereMyPartyRevive",
-		"Bounds": "-120,-70,240,54",
+		"Name": "EatSnacks",
 		"DialogueRecords": [
 			{
-				"Speaker": "Inventor",
-				"Text": "Your repairs are all finished now. Take care of yourself out there."
+				"Text": "[Despite Ivona's protest Cyra picks up a cracker and pops one in her mouth. Ivona lets out a scandalized gasp.]"
 			},
 			{
-				"Speaker": "$Party.0",
-				"Text": "Where are my companions? Did you find any of them at the scrapyard?"
+				"Speaker": "Ivona",
+				"Text": "Cyra, dear! Are you alright?"
 			},
 			{
-				"Speaker": "Inventor",
-				"Text": "No, I only found you. Your companions will scatter if you're disabled in battle, but you can recruit or rebuild them again."
+				"Text": "[Cyra chews and swallows her crackers.]"
+			},
+			{
+				"Speaker": "Cyra",
+				"Text": "I didn’t eat dinner. These taste pretty normal."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Good enough for me."
+			},
+			{
+				"Text": "[Cyra shares the crackers with Wren and Angélia as they take a small snack break.]"
+			},
+			{
+				"Text": "[Upon seeing the girls didn't drop dead, Ivona eats a piece.]"
+			},
+			{
+				"Text": "[The party heals all their SP from their snack break!]",
+				"Script": [ "LongRest" ]
 			}
-		]
+		],
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
 	},
 	{
-		"Name": "DefaultRevive",
-		"Bounds": "-120,-70,240,54",
+		"Name": "SkipSnacks",
 		"DialogueRecords": [
 			{
-				"Speaker": "Inventor",
-				"Text": "Your repairs are all finished now. Take care of yourself out there."
+				"Speaker": "Cyra",
+				"Text": "It's better not to test our luck. It could be poisonous for all we know."
+			},
+			{
+				"Speaker": "Angélia",
+				"Text": "Yeah, I guess your right. I'm still pretty hungry though."
+			},
+			{
+				"Speaker": "Wren",
+				"Text": "You'll live!"
+			},
+			{
+				"Speaker": "Ivona",
+				"Text": "It's better to be cautious instead of regretful."
+			},
+			{
+				"Text": "[The group walks away from the conveniently placed snacks, albeit a bit disappointed they could not live relive a beloved childhood snack.]"
 			}
-		]
+		],
+		"EndScript": [ "RemovePortrait cyra 0.25", "RemovePortrait angelia 0.25", "RemovePortrait wren 0.25", "RemovePortrait bird 0.25", "Wait 250", "EndConversation" ]
 	}
 ]

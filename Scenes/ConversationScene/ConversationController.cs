@@ -75,6 +75,17 @@ namespace EtrianLike.Scenes.ConversationScene
 
                         break;
                     }
+                case "SetWaypoint": MapScene.EventController.SetWaypoint(tokens); break;
+
+                case "ShortRest":
+                    foreach (var hero in GameProfile.PlayerProfile.Party)
+                        hero.Value.Magic.Value = Math.Min(hero.Value.Magic.Value + 16, hero.Value.MaxMagic.Value);
+                    break;
+
+                case "LongRest":
+                    foreach (var hero in GameProfile.PlayerProfile.Party)
+                        hero.Value.Magic.Value = hero.Value.MaxMagic.Value;
+                    break;
 
                 default: return false;
             }

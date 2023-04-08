@@ -140,7 +140,7 @@ namespace EtrianLike.Scenes.BattleScene
             {
                 BleedTurns--;
 
-                int bleedDamage = (int)(Stats.MaxHealth.Value * BleedAmount);
+                int bleedDamage = Math.Min(50, (int)(Stats.MaxHealth.Value * BleedAmount));
 
                 BattleController battleController = new BattleController(battleScene, this, this, new string[] { "Damage " + bleedDamage, "Dialogue $attackerName took bleed damage." });
                 ExecuteAction(battleController);

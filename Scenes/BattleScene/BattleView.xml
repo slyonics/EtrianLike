@@ -5,7 +5,7 @@
 		<DataGrid Items="Bind PlayerProfile.Party" Scrolling="False" Alignment="Stretch">
 			<Panel Alignment="Cascading" Bounds="0,0,227,120">
 				
-				<Panel Style="FaceFrame" Alignment="Cascading" Bounds="0,0,102,120">
+				<Panel Style="SkillWindow" Alignment="Cascading" Bounds="0,0,100,100">
 					<Scenes.BattleScene.BattlePlayer HeroModel="Bind DataGrid" Alignment="Center"/>
 				</Panel>
 				

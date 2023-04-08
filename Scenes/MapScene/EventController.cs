@@ -84,9 +84,12 @@ namespace EtrianLike.Scenes.MapScene
             else CrossPlatformGame.Transition(sceneType, tokens[2]);
         }
 
-        private void SetWaypoint(string[] tokens)
+        public static void SetWaypoint(string[] tokens)
         {
-            mapScene.SetWaypoint(int.Parse(tokens[1]), int.Parse(tokens[2]));
+            GameProfile.SetSaveData<string>("Waypoint", tokens[1]);
+
+            MapScene.Instance.ApplyWaypoint(tokens[1]);
+
         }
 
         private void Conversation(string[] tokens)

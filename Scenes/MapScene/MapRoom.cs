@@ -368,7 +368,7 @@ namespace EtrianLike.Scenes.MapScene
                     }
                 
             }
-            else if (parentScene.MapName == "Dark Library B1")
+            else if (parentScene.MapName == "Dark Library B1" || parentScene.MapName == "Dark Library B2")
             {
 
                 int stepsRemaining = GameProfile.GetSaveData<int>("RandomBattle");
@@ -377,7 +377,7 @@ namespace EtrianLike.Scenes.MapScene
 
                 if (stepsRemaining < 0)
                 {
-                    stepsRemaining = Rng.RandomInt(8, 14);
+                    stepsRemaining = Rng.RandomInt(4, 10);
                     GameProfile.SetSaveData<int>("RandomBattle", stepsRemaining);
 
                     string encounterName = "";

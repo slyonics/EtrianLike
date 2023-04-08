@@ -1,10 +1,28 @@
 [
 	{
+		"Name": "Glass Shard",
+		"Animation": "Chanting",
+		"Description": "Light glass damage to a single enemy. May inflict bleed for one turn.",
+		"Icon": "Glass",
+		"Cost": 3,
+		"Targetting": "SingleEnemy",
+		"Script": [
+			"Exercise Mana",
+			"Animate Attack",
+			"Exercise Magic",
+			"Sound Glass",
+			"Effect Glass $targetCenterX $targetCenterY 2",
+			"Flash 255 27 0",
+			"Damage Mana 5 Glass",
+			"Bleed 60 1 0.2"
+		]
+	},
+	{
 		"Name": "Shard Salvo",
 		"Animation": "Chanting",
-		"Description": "Light glass damage to all enemies. Inflict bleed for one turn.",
+		"Description": "Light glass damage to all enemies. Inflicts bleed for two turns.",
 		"Icon": "Glass",
-		"Cost": 7,
+		"Cost": 8,
 		"Targetting": "AllEnemy",
 		"PreScript": [ "Exercise Mana" ],
 		"Script": [
@@ -13,7 +31,7 @@
 			"Sound Glass",
 			"Effect Glass $targetCenterX $targetCenterY 2",
 			"Flash 255 27 0",
-			"Damage Mana 5 Glass",
+			"Damage Mana 7 Glass",
 			"Bleed 100 2 0.2"
 		]
 	},
@@ -40,7 +58,7 @@
 		"Animation": "Chanting",
 		"Description": "Restore health to a single ally.",
 		"Icon": "Heal",
-		"Charges": 5,
+		"Cost": 4,
 		"Targetting": "SingleAlly",
 		"Script": [
 			"Exercise Mana",
@@ -48,7 +66,7 @@
 			"Sound Heal",
 			"Effect GreenHeal $targetCenterX $targetBottom 6",
 			"Flash 27 210 140",
-			"Heal 30"
+			"Heal 60"
 		]
 	}
 ]

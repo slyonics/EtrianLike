@@ -166,26 +166,19 @@ namespace EtrianLike.Scenes.BattleScene
                     //for (int j = 1; j <= 10; j++) GameProfile.SetSaveData<bool>("JunkChest" + j + "Opened", false);
                     foreach (var keyValuePair in GameProfile.SaveData)
                     {
-                        if (keyValuePair.Key.EndsWith("Recruited")) GameProfile.SaveData[keyValuePair.Key] = false;
-                        else if (keyValuePair.Key.EndsWith("Recruitable"))
-                        {
-                            if (Rng.RandomInt(0, 1) == 1) GameProfile.SaveData[keyValuePair.Key] = true;
-                        }
-                        else if (keyValuePair.Key.EndsWith("ChestOpened"))
+                        if (keyValuePair.Key.EndsWith("ChestOpened"))
                         {
                             GameProfile.SaveData[keyValuePair.Key] = false;
                         }
                     }
 
-                    string narration = (PlayerList.Count > 1) ?
-                        "Despite their best efforts, " + PlayerList[0].Stats.Name.Value + "'s party was wiped out..." :
-                        "Despite their best effort, " + PlayerList[0].Stats.Name.Value + " was defeated...";
+                    string narration = "Despite their best effort, the story of the Sparkle Tales ended here...";
 
                     var convoRecord = new ConversationScene.ConversationRecord()
                     {
                         DialogueRecords = new ConversationScene.DialogueRecord[]
                         {
-                            new ConversationScene.DialogueRecord() { Text = narration, Script = new string[] { "StopMusic", "Sound gameover", "Wait 3500", "ChangeMap HomeLab 5 7 Up"} }
+                            new ConversationScene.DialogueRecord() { Text = narration, Script = new string[] { "Wait 2000", "ChangeScene EtrianLike.Scenes.TitleScene.TitleScene" } }
                         }
                     };
                     var convoScene = new ConversationScene.ConversationScene(convoRecord, ConversationScene.ConversationViewModel.CONVO_BOUNDS, 3500);

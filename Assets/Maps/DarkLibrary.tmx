@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="54">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="56">
  <properties>
   <property name="AmbientLight" type="float" value="0.2"/>
   <property name="LocationName" value="Dark Library"/>
@@ -94,6 +94,16 @@ DisableEvent</property>
   <object id="52" name="Door to Classroom1" type="ActivateWest" x="640" y="1280" width="128" height="128">
    <properties>
     <property name="Script" value="ChangeMap DarkLibrary1 DarkLibrary"/>
+   </properties>
+  </object>
+  <object id="55" name="Skit1" type="Enter" x="768" y="1152" width="128" height="128">
+   <properties>
+    <property name="DisableIf" value="Skit1"/>
+    <property name="Script">If !$Flag.Skit1
+Conversation Skit1
+SetFlag Skit1 True
+DisableEvent
+End</property>
    </properties>
   </object>
  </objectgroup>

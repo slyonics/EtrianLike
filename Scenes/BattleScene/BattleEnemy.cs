@@ -50,6 +50,7 @@ namespace EtrianLike.Scenes.BattleScene
 
             bounds = AnimatedSprite.SpriteBounds();
             bounds.Y -= EnemyRecord.ShadowOffset / 2;
+            if (AnimatedSprite.SpriteBounds().Height > 200) bounds.Y -= 30;
 
             battleScene.AddBattler(this);
         }
@@ -134,7 +135,8 @@ namespace EtrianLike.Scenes.BattleScene
 
             if (Confusion)
             {
-                if (Rng.RandomInt(0, 2) == 2)
+                bool resist = stats.MaxHealth.Value >= 300;
+                if (Rng.RandomInt(0, 2) + (resist ? 1 : 0)  >= 2)
                 {
                     Confusion = false;
 

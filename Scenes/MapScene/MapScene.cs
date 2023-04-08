@@ -97,11 +97,13 @@ namespace EtrianLike.Scenes.MapScene
             mapViewModel = AddView<MapViewModel>(new MapViewModel(this, GameView.MapScene_MapView));
             MapPanel = mapViewModel.GetWidget<SceneObjects.Widgets.Panel>("MapPanel");
 
-            LoadMap(MapName);
-
             roomX = spawnX;
             roomY = spawnY;
             direction = iDirection;
+
+            LoadMap(MapName);
+
+            
             cameraX = (float)(Math.PI * (int)direction / 2.0f);
 
             mapRooms[roomX, roomY].EnterRoom();
@@ -317,6 +319,14 @@ namespace EtrianLike.Scenes.MapScene
 
             int fullBrightness = 0;
             int attenuatedBrightness = 4;
+
+
+            if (MapName.Contains("Night") || MapName.Contains("Dark"))
+            {
+                attenuatedBrightness = 2;
+            }
+
+
             MapRoom originRoom = mapRooms[startX + width / 2, startY + height / 2];
             List<MapRoom> visitedRooms = new List<MapRoom>();
             List<MapRoom> roomsToVisit = new List<MapRoom>() { originRoom };
@@ -353,19 +363,43 @@ namespace EtrianLike.Scenes.MapScene
 
             if (MapName == "School Foyer") Audio.PlayMusic(GameMusic.SchoolDay);
             else if (MapName == "School (Night)") Audio.PlayMusic(GameMusic.SchoolNight);
-            else if (MapName == "Dark Library") Audio.PlayMusic(GameMusic.SchoolNight);
+            else if (MapName.Contains("Dark Library")) Audio.PlayMusic(GameMusic.SchoolNight);
             else
             {
                 if (!GameProfile.GetSaveData<bool>("GameIntro")) Audio.StopMusic();
                 else Audio.PlayMusic(GameMusic.SchoolDay);
             }
+
+            string waypoint = GameProfile.GetSaveData<string>("Waypoint");
+            if (waypoint != null)
+            {
+                ApplyWaypoint(waypoint);
+            }
         }
 
-        public void SetWaypoint(int pointX, int pointY)
+        public void ApplyWaypoint(string waypointname)
         {
+            if (MapName.Contains("Library") && waypointname == "Library") return;
+
             ResetWaypoints();
 
-            mapRooms[pointX, pointY].SetAsWaypoint();
+            int x = 0;
+            int y = 0;
+            switch (waypointname)
+            {
+                case "Class": x = 5; y = 9; break;
+                case "Library": x = 1; y = 9; break;
+                case "Boss":
+                    switch (MapName)
+                    {
+                        case "Dark Library": x = 5; y = 10; break;
+                        case "Dark Library B1": x = 10; y = 6; break;
+                        case "Dark Library B2": x = 6; y = 4; break;
+                    }
+                    break;
+            }
+
+            mapRooms[x, y].SetAsWaypoint();
         }
 
         public override void Update(GameTime gameTime)

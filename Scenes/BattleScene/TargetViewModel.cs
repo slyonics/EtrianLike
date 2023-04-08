@@ -52,11 +52,15 @@ namespace EtrianLike.Scenes.BattleScene
                             battleEnemy.Stats.Name.Value.Replace(' ', '\n') :
                             battleEnemy.Stats.Name.Value;
                         int nameLines = name.Count(x => x == '\n');
+
+                        int offset = 0;
+                        if (battleEnemy.AnimatedSprite.SpriteBounds().Height > 200) offset -= 30;
+
                         Targets.Add(new TargetButton()
                         {
                             Name = name,
                             NameVisible = true,
-                            Bounds = new Rectangle(battleEnemy.SpriteBounds.X, battleEnemy.SpriteBounds.Y - battleEnemy.ShadowOffset / 2, battleEnemy.SpriteBounds.Width, battleEnemy.SpriteBounds.Height),
+                            Bounds = new Rectangle(battleEnemy.SpriteBounds.X, battleEnemy.SpriteBounds.Y - battleEnemy.ShadowOffset / 2 + offset, battleEnemy.SpriteBounds.Width, battleEnemy.SpriteBounds.Height),
                             LabelBounds = new Rectangle(0, -battleEnemy.SpriteBounds.Height / 2 - 4 - (nameLines * 8), -1, 20),
                             target = battleEnemy
                         });
@@ -80,7 +84,7 @@ namespace EtrianLike.Scenes.BattleScene
                     {
                         if (battlePlayer.Dead && !Command.TargetDead) continue;
 
-                        Rectangle bounds = battlePlayer.SpriteBounds;
+                        Rectangle bounds = battlePlayer.AnimatedSprite.SpriteBounds();
                         Targets.Add(new TargetButton() { Name = "", NameVisible = false, Bounds = bounds, target = battlePlayer });
                     }
                     break;

@@ -142,8 +142,8 @@ namespace EtrianLike.Scenes.StatusScene
         }
 
         public ModelProperty<GameSprite> Sprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Actors_Base);
-        public ModelProperty<GameSprite> ProfileSprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Portraits_JaneFace);
-        public ModelProperty<GameSprite> PortraitSprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Portraits_Jane);
+        public ModelProperty<GameSprite> ProfileSprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Portraits_CyraFace);
+        public ModelProperty<GameSprite> PortraitSprite { get; set; } = new ModelProperty<GameSprite>(GameSprite.Portraits_CyraFace);
         public ModelProperty<GameSprite> ShadowSprite { get; set; } = new ModelProperty<GameSprite>();
         public ModelProperty<int> FlightHeight { get; set; } = new ModelProperty<int>(0);
 

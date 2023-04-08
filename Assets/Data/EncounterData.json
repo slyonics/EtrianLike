@@ -6,7 +6,7 @@
 			"Book Spook",
 			"Book Spook"
 		],
-		"Challenge": 1,
+		"Challenge": 2,
 		"Script": [],
 		"Intro": "Possessed books rush to defend the library door!"
 	},
@@ -28,7 +28,7 @@
 			"Book Spook",
 			"Haunted Scroll"
 		],
-		"Challenge": 1,
+		"Challenge": 2,
 		"Script": [],
 		"Intro": "Haunted parchment and pages swirl about you!"
 	},
