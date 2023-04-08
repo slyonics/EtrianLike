@@ -80,6 +80,7 @@ namespace EtrianLike.Scenes.BattleScene
                 case "Flee": Flee(tokens); break;
                 case "Punch": Punch(tokens); break;
                 case "Tackle": Tackle(tokens); break;
+                case "Shield": target.Shield = true; break;
                 case "Defend": attacker.Defending = true; StackDialogue(attacker.Stats.Name.Value + " is defending against attacks..."); break;
                 case "Delay": attacker.Delaying = true; StackDialogue(attacker.Stats.Name.Value + " is waiting for the right moment to act..."); break;
                 case "OnHit": if (!CalculateHit(tokens)) scriptParser.EndScript(); break;
@@ -175,6 +176,11 @@ namespace EtrianLike.Scenes.BattleScene
             }
 
             dealDamage:
+
+            if (target.Shield)
+            {
+                damage = (int)(damage * Rng.RandomDouble(0.4, 0.8));
+            }
 
             if (damage < 1) damage = 1;
             target.Damage(damage);

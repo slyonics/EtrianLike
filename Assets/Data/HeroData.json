@@ -78,7 +78,8 @@
 			"Brass Knuckles"
 		],
 		"InitialAbilities": [
-			"Heal"
+			"Heal",
+			"Donkey Cloak"
 		],
 		"Actions": [],
 		"BattlerModel": {

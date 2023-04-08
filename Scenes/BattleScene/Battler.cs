@@ -276,5 +276,7 @@ namespace EtrianLike.Scenes.BattleScene
             currentAction = nextAction;
             battleScene.AddController(nextAction);
         }
+
+        public bool Shield { get; set; }
     }
 }

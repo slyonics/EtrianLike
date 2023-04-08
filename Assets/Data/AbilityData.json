@@ -69,5 +69,23 @@
 			"Flash 27 210 140",
 			"Heal 60"
 		]
+	},
+	{
+		"Name": "Donkey Cloak",
+		"Animation": "Chanting",
+		"Description": "Shield an ally from damage with the donkeyskin cloak.",
+		"Icon": "Shield",
+		"Cost": 8,
+		"Targetting": "SingleAlly",
+		"TargetDead": "True",
+		"Script": [
+			"Exercise Mana",
+			"Animate Attack",
+			"Sound Heal",
+			"Effect BlueHeal $targetCenterX $targetBottom 6",
+			"Flash 27 210 140",
+			"Shield",
+			"Dialogue $targetName was protected by Wren's magic cloak!"
+		]
 	}
 ]
