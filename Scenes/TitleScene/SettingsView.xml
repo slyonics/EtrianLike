@@ -3,12 +3,18 @@
 
 
 
-  <Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-160,-150,320,340" InnerMargin="8,8,8,8" TransitionIn="Expand" TransitionOut="Shrink">
+  <Panel Style="SubBlack" Anchor="$CenterX,$CenterY" Bounds="-160,-180,320,380" InnerMargin="8,8,8,8" TransitionIn="Expand" TransitionOut="Shrink">
 
     <Label Text="Display Mode" Font="Dialogue" Alignment="Vertical" Color="#D6C18BFF"/>
     <Button Style="SubBlack" Bounds="0, 8, 200, 42" Alignment="Vertical" Action="ToggleFullscreen" InnerMargin="0,0,0,4" PushedStyle="Bind PlayerProfile.SelectedStyle">
       <Label Text="Bind DisplayMode" Alignment="Center" Color="#C9BDBDFF" Font="Dialogue"/>
     </Button>
+
+
+	  <Label Text="Antialiasing" Font="Dialogue" Alignment="Vertical" Color="#D6C18BFF"/>
+	  <Button Style="SubBlack" Bounds="0, 8, 200, 42" Alignment="Vertical" Action="ToggleAntialiasing" InnerMargin="0,0,0,4" PushedStyle="Bind PlayerProfile.SelectedStyle">
+		  <Label Text="Bind Antialiasing" Alignment="Center" Color="#C9BDBDFF" Font="Dialogue"/>
+	  </Button>
 
 	  <LineBreak Height="25"/>
 

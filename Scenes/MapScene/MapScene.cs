@@ -531,6 +531,7 @@ namespace EtrianLike.Scenes.MapScene
             DrawMap(graphicsDevice);
 
             graphicsDevice.SetRenderTarget(CrossPlatformGame.GameInstance.minimapRender);
+            CrossPlatformGame.GameInstance.GraphicsDevice.Clear(new Color(0.0f, 0.0f, 0.0f, 1.0f));
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, null);
             DrawMiniMap(spriteBatch);
             spriteBatch.End();
@@ -540,6 +541,8 @@ namespace EtrianLike.Scenes.MapScene
 
         private void DrawMap(GraphicsDevice graphicsDevice)
         {
+            graphicsDevice.Clear(new Color(0.0f, 1.0f, 0.5f, 0.0f));
+
             Panel mapPanel = mapViewModel.GetWidget<Panel>("MapPanel");
             if (!mapPanel.Transitioning)
             {
@@ -547,7 +550,7 @@ namespace EtrianLike.Scenes.MapScene
                 mapBounds.X += (int)mapPanel.Position.X;
                 mapBounds.Y += (int)mapPanel.Position.Y;
 
-                graphicsDevice.Clear(new Color(0.1f, 0.1f, 0.1f));
+                
                 Vector3 cameraUp = new Vector3(0, -1, 0);
                 Vector3 cameraPos = new Vector3(cameraPosX + 10 * roomX, 0, cameraPosZ + 10 * (mapRooms.GetLength(1) - roomY));
                 Matrix viewMatrix = Matrix.CreateLookAt(cameraPos, cameraPos + Vector3.Transform(new Vector3(0, 0, 1), Matrix.CreateRotationY(cameraX)), cameraUp);
@@ -566,6 +569,7 @@ namespace EtrianLike.Scenes.MapScene
         {
             //Panel miniMapPanel = mapViewModel.GetWidget<Panel>("MiniMapPanel");
             //if (!miniMapPanel.Transitioning && miniMapPanel.Visible)
+            CrossPlatformGame.GameInstance.GraphicsDevice.Clear(new Color(0.0f, 0.0f, 0.0f, 1.0f));
             {
                 MinimapStartX = Math.Max(0, roomX - 3);
                 int endX = MinimapStartX + 7;

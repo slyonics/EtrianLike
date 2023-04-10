@@ -17,8 +17,9 @@ namespace EtrianLike.Main
             { "DebugMode", false },
             { "Fullscreen", false },
             { "TargetResolution", "Best Fit" },
-            { "SoundVolume", 1.0f },
-            { "MusicVolume", 0.5f }
+            { "Antialiasing", false },
+            { "SoundVolume", 100 },
+            { "MusicVolume", 50 }
         };
 
         private static Dictionary<Command, Keys> DEFAULT_KEYBOARD_BINDINGS = new Dictionary<Command, Keys>()

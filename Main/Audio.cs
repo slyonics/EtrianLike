@@ -77,8 +77,8 @@ namespace EtrianLike.Main
 
         public static void ApplySettings()
         {
-            SoundVolume = Settings.GetProgramSetting<float>("SoundVolume");
-            MusicVolume = Settings.GetProgramSetting<float>("MusicVolume");
+            SoundVolume = Settings.GetProgramSetting<int>("SoundVolume") / 100.0f;
+            MusicVolume = Settings.GetProgramSetting<int>("MusicVolume") / 100.0f;
         }
 
         public static void PlayMusic(GameMusic musicType, bool loop = true)

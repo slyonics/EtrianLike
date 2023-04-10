@@ -139,7 +139,7 @@ namespace EtrianLike.Scenes.BattleScene
 
         private void CursorUp()
         {
-            if (fightButton.Selected) return;
+            if (fightButton.Selected || fleeButton.Selected) return;
 
             Audio.PlaySound(GameSound.menu_select);
 
@@ -154,7 +154,7 @@ namespace EtrianLike.Scenes.BattleScene
 
         private void CursorDown()
         {
-            if (fightButton.Selected) return;
+            if (fightButton.Selected || fleeButton.Selected) return;
 
             Audio.PlaySound(GameSound.menu_select);
 

@@ -1,6 +1,7 @@
 ﻿global using EtrianLike.Main;
 global using EtrianLike.SceneObjects;
 global using Microsoft.Xna.Framework;
+using EtrianLike.Models;
 using EtrianLike.SceneObjects.Controllers;
 using EtrianLike.SceneObjects.Shaders;
 using EtrianLike.Scenes.SplashScene;
@@ -141,10 +142,13 @@ namespace EtrianLike.Main
             graphicsDeviceManager.ApplyChanges();
 
             gameRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight);
-            compositeRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color, DepthFormat.Depth16, 0, RenderTargetUsage.PreserveContents);
+            compositeRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
 
-            mapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 690 * screenScale, 420 * screenScale, false, SurfaceFormat.Color, DepthFormat.Depth16, 8, RenderTargetUsage.DiscardContents);
-            minimapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 112, 112);
+            int multiSamples = 0;
+            if (Settings.GetProgramSetting<bool>("Antialiasing")) multiSamples = 8;
+
+            mapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 690 * screenScale, 420 * screenScale, false, SurfaceFormat.Color, DepthFormat.Depth16, multiSamples, RenderTargetUsage.PlatformContents);
+            minimapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 112, 112, false, SurfaceFormat.Color, DepthFormat.Depth16, 0, RenderTargetUsage.PlatformContents);
         }
 
         private void CrossPlatformGame_Exiting(object sender, EventArgs e)
