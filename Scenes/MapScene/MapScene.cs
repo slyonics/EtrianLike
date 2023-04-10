@@ -380,6 +380,7 @@ namespace EtrianLike.Scenes.MapScene
         public void ApplyWaypoint(string waypointname)
         {
             if (MapName.Contains("Library") && waypointname == "Library") return;
+            if (MapName.Contains("Classroom")) return;
 
             ResetWaypoints();
 
@@ -531,7 +532,7 @@ namespace EtrianLike.Scenes.MapScene
             DrawMap(graphicsDevice);
 
             graphicsDevice.SetRenderTarget(CrossPlatformGame.GameInstance.minimapRender);
-            CrossPlatformGame.GameInstance.GraphicsDevice.Clear(new Color(0.0f, 0.0f, 0.0f, 1.0f));
+            CrossPlatformGame.GameInstance.GraphicsDevice.Clear(new Color(0.0f, 0.0f, 0.0f, 0.0f));
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, null);
             DrawMiniMap(spriteBatch);
             spriteBatch.End();
@@ -567,44 +568,38 @@ namespace EtrianLike.Scenes.MapScene
 
         private void DrawMiniMap(SpriteBatch spriteBatch)
         {
-            //Panel miniMapPanel = mapViewModel.GetWidget<Panel>("MiniMapPanel");
-            //if (!miniMapPanel.Transitioning && miniMapPanel.Visible)
-            CrossPlatformGame.GameInstance.GraphicsDevice.Clear(new Color(0.0f, 0.0f, 0.0f, 1.0f));
+            MinimapStartX = Math.Max(0, roomX - 3);
+            int endX = MinimapStartX + 7;
+            if (endX > mapRooms.GetLength(0) - 1)
             {
-                MinimapStartX = Math.Max(0, roomX - 3);
-                int endX = MinimapStartX + 7;
-                if (endX > mapRooms.GetLength(0) - 1)
-                {
-                    endX = mapRooms.GetLength(0) - 1;
-                    MinimapStartX = Math.Max(0, endX - 6);
-                }
-
-                MinimapStartY = Math.Max(0, roomY - 3);
-                int endY = MinimapStartY + 7;
-                if (endY > mapRooms.GetLength(1) - 1)
-                {
-                    endY = mapRooms.GetLength(1) - 1;
-                    MinimapStartY = Math.Max(0, endY - 6);
-                }
-
-                Vector2 offset = new Vector2(0, 0);
-                for (int x = MinimapStartX; x <= endX; x++)
-                {
-                    for (int y = MinimapStartY; y <= endY; y++)
-                    {
-                        MapRoom mapRoom = mapRooms[x, y];
-                        mapRoom?.DrawMinimap(spriteBatch, offset);
-
-                        offset.Y += 16;
-                    }
-
-                    offset.Y = 0;
-                    offset.X += 16;
-                }
-
-                spriteBatch.Draw(minimapSprite, new Vector2((roomX - MinimapStartX) * 16, (roomY - MinimapStartY) * 16), minimapSource[(int)direction], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
-
+                endX = mapRooms.GetLength(0) - 1;
+                MinimapStartX = Math.Max(0, endX - 6);
             }
+
+            MinimapStartY = Math.Max(0, roomY - 3);
+            int endY = MinimapStartY + 7;
+            if (endY > mapRooms.GetLength(1) - 1)
+            {
+                endY = mapRooms.GetLength(1) - 1;
+                MinimapStartY = Math.Max(0, endY - 6);
+            }
+
+            Vector2 offset = new Vector2(0, 0);
+            for (int x = MinimapStartX; x <= endX; x++)
+            {
+                for (int y = MinimapStartY; y <= endY; y++)
+                {
+                    MapRoom mapRoom = mapRooms[x, y];
+                    mapRoom?.DrawMinimap(spriteBatch, offset);
+
+                    offset.Y += 16;
+                }
+
+                offset.Y = 0;
+                offset.X += 16;
+            }
+
+            spriteBatch.Draw(minimapSprite, new Vector2((roomX - MinimapStartX) * 16, (roomY - MinimapStartY) * 16), minimapSource[(int)direction], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.9f);
         }
 
         public bool Activate()
