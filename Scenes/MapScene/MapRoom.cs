@@ -269,9 +269,9 @@ namespace EtrianLike.Scenes.MapScene
             }
         }
 
-        public void DrawMinimap(SpriteBatch spriteBatch, Vector2 offset)
+        public void DrawMinimap(SpriteBatch spriteBatch, Vector2 offset, float depth)
         {
-            spriteBatch.Draw(minimapSprite, offset, minimapSource[waypointTile], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+            spriteBatch.Draw(minimapSprite, offset, minimapSource[waypointTile], Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, depth);
         }
 
         public void ResetMinimapIcon()

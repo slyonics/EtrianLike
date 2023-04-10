@@ -30,7 +30,6 @@ namespace EtrianLike.Scenes.MapScene
             mapScene = iScene;
 
             MapRender.Value = CrossPlatformGame.GameInstance.mapRender;
-            MiniMapRender.Value = CrossPlatformGame.GameInstance.minimapRender;
 
             if (!GameProfile.GetSaveData<bool>("GameIntro"))
             {
@@ -91,6 +90,8 @@ namespace EtrianLike.Scenes.MapScene
             MapActor.Value.PlayAnimation(animationName);
         }
 
+        public Image.ImageDrawFunction DrawMiniMap { get => mapScene.DrawMiniMap; }
+
         public ModelProperty<string> MapName { get; set; } = new ModelProperty<string>("");
         public ModelProperty<GameFont> ConversationFont { get; set; } = new ModelProperty<GameFont>(GameFont.Tooltip);
 
@@ -100,7 +101,6 @@ namespace EtrianLike.Scenes.MapScene
         public ModelProperty<float> MaxHealthBar { get; set; } = new ModelProperty<float>(1.0f);
 
         public ModelProperty<RenderTarget2D> MapRender { get; set; } = new ModelProperty<RenderTarget2D>(null);
-        public ModelProperty<RenderTarget2D> MiniMapRender { get; set; } = new ModelProperty<RenderTarget2D>(null);
 
         public ModelProperty<Color> MapColor { get; set; } = new ModelProperty<Color>(Color.White);
 

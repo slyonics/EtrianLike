@@ -36,9 +36,7 @@ namespace EtrianLike.Main
 
         private RenderTarget2D gameRender;
         private RenderTarget2D compositeRender;
-
         public RenderTarget2D mapRender;
-        public RenderTarget2D minimapRender;
 
         private int originalHeight;
 
@@ -151,7 +149,6 @@ namespace EtrianLike.Main
             compositeRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
 
             mapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 690 * screenScale, 420 * screenScale, false, SurfaceFormat.Color, DepthFormat.Depth16, multiSamples, RenderTargetUsage.PlatformContents);
-            minimapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 112, 112, false, SurfaceFormat.Color, DepthFormat.Depth16, 0, RenderTargetUsage.PlatformContents);
         }
 
         private void CrossPlatformGame_Exiting(object sender, EventArgs e)

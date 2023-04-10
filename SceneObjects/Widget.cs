@@ -190,6 +190,11 @@ namespace EtrianLike.SceneObjects
                     animatedSprite.PlayAnimation("loop");
                     propertyInfo.SetValue(this, animatedSprite);
                 }
+                else if (type == typeof(Image.ImageDrawFunction))
+                {
+                    MethodInfo deletageInfo = GetType().GetMethod(attributeValue);
+                    propertyInfo.SetValue(this, (Image.ImageDrawFunction)Delegate.CreateDelegate(typeof(Image.ImageDrawFunction), deletageInfo));
+                }
                 else if (type == typeof(bool)) propertyInfo.SetValue(this, bool.Parse(attributeValue));
                 else if (type == typeof(int)) propertyInfo.SetValue(this, ParseInt(attributeValue));
                 else if (type == typeof(float)) propertyInfo.SetValue(this, float.Parse(attributeValue));
@@ -197,6 +202,7 @@ namespace EtrianLike.SceneObjects
                 else if (type == typeof(Color)) propertyInfo.SetValue(this, Graphics.ParseHexcode(attributeValue));
                 else if (type == typeof(MethodInfo)) propertyInfo.SetValue(this, GetParent<ViewModel>().GetType().GetMethod(attributeValue));
                 else if (type == typeof(Texture2D)) propertyInfo.SetValue(this, AssetCache.SPRITES[(GameSprite)Enum.Parse(typeof(GameSprite), attributeValue)]);
+                
             }
         }
 

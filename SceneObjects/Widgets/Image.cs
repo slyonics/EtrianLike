@@ -13,6 +13,8 @@ namespace EtrianLike.SceneObjects.Widgets
 {
     public class Image : Widget
     {
+        public delegate void ImageDrawFunction(SpriteBatch spriteBatch, Rectangle bounds, Color color, float depth);
+
         private Texture2D icon;
         private string Icon { set { icon = AssetCache.SPRITES[(GameSprite)Enum.Parse(typeof(GameSprite), "Widgets_Icons_" + value)]; } }
 
@@ -21,10 +23,10 @@ namespace EtrianLike.SceneObjects.Widgets
         private Texture2D picture;
         private Texture2D Picture { get => picture; set { picture = value; } }
 
+        public ImageDrawFunction DrawDelegate { get; set; }
+
         private GameSprite GameSprite
         {
-            
-
             set
             {
                 picture = AssetCache.SPRITES[value];
@@ -83,6 +85,10 @@ namespace EtrianLike.SceneObjects.Widgets
                         Sprite?.Draw(spriteBatch, new Vector2(currentWindow.Center.X - (Sprite.SpriteBounds().Width * SpriteScale) / 2, currentWindow.Center.Y - (Sprite.SpriteBounds().Height * SpriteScale) / 2) + Position, null, Depth - 0.0001f);
                         break;
                 }
+            }
+            else if (DrawDelegate != null)
+            {
+                DrawDelegate.Invoke(spriteBatch, currentWindow, Color.White, Depth);
             }
         }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="54">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" infinite="0" nextlayerid="8" nextobjectid="55">
  <properties>
   <property name="AmbientLight" type="float" value="0.2"/>
   <property name="LocationName" value="Dark Library B2"/>
@@ -61,11 +61,6 @@
     <property name="Direction" value="North"/>
    </properties>
   </object>
-  <object id="51" name="Door to Classroom1" type="ActivateSouth" x="768" y="1280" width="128" height="128">
-   <properties>
-    <property name="Script" value="ChangeMap DarkLibrary1 DarkLibrary2"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="5" name="Events">
   <object id="49" name="BossFight" type="Enter" x="768" y="512" width="128" height="128">
@@ -76,6 +71,11 @@ Encounter Boss1
 Conversation EndGame
 SetFlag BossFight True
 DisableEvent</property>
+   </properties>
+  </object>
+  <object id="54" name="Door to Classroom1" type="ActivateSouth" x="768" y="1280" width="128" height="128">
+   <properties>
+    <property name="Script" value="ChangeMap DarkLibrary1 DarkLibrary2"/>
    </properties>
   </object>
  </objectgroup>
