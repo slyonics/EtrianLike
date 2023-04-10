@@ -136,6 +136,12 @@ namespace EtrianLike.Main
 
             IsMouseVisible = true; // !fullscreen;
 
+            int multiSamples = 0;
+            if (Settings.GetProgramSetting<bool>("Antialiasing"))
+            {
+                multiSamples = 16;
+            }
+
             graphicsDeviceManager.IsFullScreen = fullscreen;
             graphicsDeviceManager.PreferredBackBufferWidth = scaledScreenWidth;
             graphicsDeviceManager.PreferredBackBufferHeight = scaledScreenHeight;
@@ -143,9 +149,6 @@ namespace EtrianLike.Main
 
             gameRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight);
             compositeRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, ScreenWidth, ScreenHeight, false, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
-
-            int multiSamples = 0;
-            if (Settings.GetProgramSetting<bool>("Antialiasing")) multiSamples = 8;
 
             mapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 690 * screenScale, 420 * screenScale, false, SurfaceFormat.Color, DepthFormat.Depth16, multiSamples, RenderTargetUsage.PlatformContents);
             minimapRender = new RenderTarget2D(graphicsDeviceManager.GraphicsDevice, 112, 112, false, SurfaceFormat.Color, DepthFormat.Depth16, 0, RenderTargetUsage.PlatformContents);

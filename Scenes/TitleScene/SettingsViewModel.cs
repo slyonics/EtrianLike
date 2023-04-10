@@ -24,7 +24,7 @@ namespace EtrianLike.Scenes.TitleScene
 
         public void ToggleAntialiasing()
         {
-            Antialiasing.Value = (Antialiasing.Value == "Disabled" ? "8x AA" : "Disabled");
+            Antialiasing.Value = (Antialiasing.Value == "Disabled" ? "16x AA" : "Disabled");
         }
 
         public void Apply()
@@ -37,9 +37,9 @@ namespace EtrianLike.Scenes.TitleScene
             bool oldFullscreen = Settings.GetProgramSetting<bool>("Fullscreen");
             Settings.SetProgramSetting<bool>("Fullscreen", DisplayMode.Value == "Fullscreen");
 
-            bool newAntialiasing = Antialiasing.Value == "8x AA";
+            bool newAntialiasing = Antialiasing.Value == "16x AA";
             bool oldAntialiasing = Settings.GetProgramSetting<bool>("Antialiasing");
-            Settings.SetProgramSetting<bool>("Antialiasing", Antialiasing.Value == "8x AA");
+            Settings.SetProgramSetting<bool>("Antialiasing", Antialiasing.Value == "16x AA");
             if (newFullscreen != oldFullscreen || newAntialiasing != oldAntialiasing)
             {
                 CrossPlatformGame.GameInstance.ApplySettings();
@@ -53,7 +53,7 @@ namespace EtrianLike.Scenes.TitleScene
         }
 
         public ModelProperty<string> DisplayMode { get; set; } = new ModelProperty<string>(Settings.GetProgramSetting<bool>("Fullscreen") ? "Fullscreen" : "Windowed");
-        public ModelProperty<string> Antialiasing { get; set; } = new ModelProperty<string>(Settings.GetProgramSetting<bool>("Antialiasing") ? "8x AA" : "Disabled");
+        public ModelProperty<string> Antialiasing { get; set; } = new ModelProperty<string>(Settings.GetProgramSetting<bool>("Antialiasing") ? "16x AA" : "Disabled");
         public ModelProperty<float> SoundVolume { get; set; } = new ModelProperty<float>(Settings.GetProgramSetting<int>("SoundVolume") / 100.0f);
         public ModelProperty<float> MusicVolume { get; set; } = new ModelProperty<float>(Settings.GetProgramSetting<int>("MusicVolume") / 100.0f);
     }
