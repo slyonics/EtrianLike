@@ -290,7 +290,7 @@ namespace EtrianLike.Scenes.BattleScene
             switch (stat)
             {
                 case "Health": heroModel.MaxHealth.Value += increaseAmount; heroModel.NakedHealth.Value += increaseAmount; break;
-                case "Magic": heroModel.MaxMagic.Value += increaseAmount; heroModel.NakedMagic.Value += increaseAmount; break;
+                case "Magic": heroModel.MaxMagic.Value += increaseAmount; heroModel.NakedMagic.Value += increaseAmount; heroModel.Magic.Value += increaseAmount; break;
                 case "Strength": heroModel.Strength.Value += increaseAmount; heroModel.NakedStrength.Value += increaseAmount; break;
                 case "Defense": heroModel.Defense.Value += increaseAmount; heroModel.NakedDefense.Value += increaseAmount; break;
                 case "Agility": heroModel.Agility.Value += increaseAmount; heroModel.NakedAgility.Value += increaseAmount; break;
