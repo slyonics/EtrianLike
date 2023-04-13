@@ -50,6 +50,8 @@ namespace EtrianLike.SceneObjects.Widgets
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            base.Draw(spriteBatch);
+
             Color drawColor = (parent.Enabled) ? Color : new Color(190, 190, 190, 255);
 
             if (icon != null)

@@ -100,17 +100,15 @@ namespace EtrianLike.Main
 
             if (fullscreen)
             {
-                {
-                    DisplayModeCollection displayModes = GraphicsDevice.Adapter.SupportedDisplayModes;
-                    IEnumerable<DisplayMode> bestModes = displayModes.Where(x => x.Width >= TARGET_SCREEN_WIDTH && x.Width <= MAXIMUM_SCREEN_WIDTH &&
-                                                                                 x.Height >= TARGET_SCREEN_HEIGHT && x.Height <= MAXIMUM_SCREEN_HEIGHT);
+                DisplayModeCollection displayModes = GraphicsDevice.Adapter.SupportedDisplayModes;
+                IEnumerable<DisplayMode> bestModes = displayModes.Where(x => x.Width >= TARGET_SCREEN_WIDTH && x.Width <= MAXIMUM_SCREEN_WIDTH &&
+                                                                                x.Height >= TARGET_SCREEN_HEIGHT && x.Height <= MAXIMUM_SCREEN_HEIGHT);
 
-                    DisplayMode targetMode = bestModes.OrderByDescending(x => x.Width).FirstOrDefault();
-                    scaledScreenWidth = targetMode.Width;
-                    scaledScreenHeight = targetMode.Height;
-                    int scale = targetMode.Height / TARGET_SCREEN_HEIGHT;
-                    screenScale = scale;
-                }
+                DisplayMode targetMode = bestModes.OrderByDescending(x => x.Width).FirstOrDefault();
+                scaledScreenWidth = targetMode.Width;
+                scaledScreenHeight = targetMode.Height;
+                int scale = targetMode.Height / TARGET_SCREEN_HEIGHT;
+                screenScale = scale;
             }
             else
             {
@@ -132,7 +130,7 @@ namespace EtrianLike.Main
                 }
             }
 
-            IsMouseVisible = true; // !fullscreen;
+            IsMouseVisible = true;
 
             int multiSamples = 0;
             if (Settings.GetProgramSetting<bool>("Antialiasing"))
