@@ -30,9 +30,12 @@ namespace EtrianLike.SceneObjects.Particles
 
         Color color = Color.White;
 
-        public DamageParticle(Scene iScene, Vector2 iPosition, string digits)
+        List<Particle> particleList;
+
+        public DamageParticle(Scene iScene, Vector2 iPosition, string digits, List<Particle> iParticleList)
             : base(iScene, iPosition, true)
         {
+            particleList = iParticleList;
             DIGIT_SOURCES = new Rectangle[10];
             for (int i = 0; i < DIGIT_SOURCES.Length; i++) DIGIT_SOURCES[i] = new Rectangle(i * DIGIT_WIDTH, 0, DIGIT_WIDTH, DIGIT_HEIGHT);
             digitIndex = digits.First() - '0';
@@ -48,9 +51,10 @@ namespace EtrianLike.SceneObjects.Particles
             gravity *= 3;
         }
 
-        public DamageParticle(Scene iScene, Vector2 iPosition, string digits, Color iColor)
+        public DamageParticle(Scene iScene, Vector2 iPosition, string digits, Color iColor, List<Particle> iParticleList)
             : base(iScene, iPosition, true)
         {
+            particleList = iParticleList;
             DIGIT_SOURCES = new Rectangle[10];
             for (int i = 0; i < DIGIT_SOURCES.Length; i++) DIGIT_SOURCES[i] = new Rectangle(i * DIGIT_WIDTH, 0, DIGIT_WIDTH, DIGIT_HEIGHT);
             digitIndex = digits.First() - '0';
@@ -70,6 +74,8 @@ namespace EtrianLike.SceneObjects.Particles
 
         public override void Update(GameTime gameTime)
         {
+            if (terminated) return;
+
             UpdatePosition(gameTime);
             UpdateElevation(gameTime);
 
@@ -82,8 +88,8 @@ namespace EtrianLike.SceneObjects.Particles
                     if (digitIndex > DIGIT_SOURCES.Length) digitWidth = Text.GetStringLength(GameFont.Battle, "" + nonDigit);
                     else digitWidth = DIGIT_WIDTH;
 
-                    DamageParticle nextParticle = new DamageParticle(parentScene, initialPosition + new Vector2(digitWidth, 0), digitsRemaining, color);
-                    parentScene.AddParticle(nextParticle);
+                    DamageParticle nextParticle = new DamageParticle(parentScene, initialPosition + new Vector2(digitWidth, 0), digitsRemaining, color, particleList);
+                    particleList.Add(parentScene.AddParticle(nextParticle));
                 }
             }
             else if (decayTimer > 0)

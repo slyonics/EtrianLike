@@ -172,14 +172,15 @@ namespace EtrianLike.Scenes.BattleScene
 
             Stats.Health.Value = Math.Max(0, Stats.Health.Value - damage);
 
-            ParticleList.Add(battleScene.AddParticle(new DamageParticle(battleScene, Bottom, damage.ToString())));
+            ParticleList.Add(battleScene.AddParticle(new DamageParticle(battleScene, Bottom, damage.ToString(), ParticleList)));
+            
 
             if (Dead) battleScene.InitiativeList.Remove(this);
         }
 
         public virtual void Miss()
         {
-            ParticleList.Add(battleScene.AddParticle(new DamageParticle(battleScene, Bottom, "MISS")));
+            ParticleList.Add(battleScene.AddParticle(new DamageParticle(battleScene, Bottom, "MISS", ParticleList)));
         }
 
         public virtual void Repair(int healing)
@@ -217,7 +218,7 @@ namespace EtrianLike.Scenes.BattleScene
 
             Stats.Health.Value = Math.Min(Stats.MaxHealth.Value, Stats.Health.Value + healing);
 
-            ParticleList.Add(battleScene.AddParticle(new DamageParticle(battleScene, Bottom, healing.ToString(), new Color(28, 210, 160))));
+            ParticleList.Add(battleScene.AddParticle(new DamageParticle(battleScene, Bottom, healing.ToString(), new Color(28, 210, 160), ParticleList)));
         }
 
         public void FlashColor(Color flashColor, int duration = DAMAGE_FLASH_DURATION)

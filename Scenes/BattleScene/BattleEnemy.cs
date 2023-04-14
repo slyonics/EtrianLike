@@ -111,7 +111,11 @@ namespace EtrianLike.Scenes.BattleScene
             {
                 deathTimeLeft -= gameTime.ElapsedGameTime.Milliseconds;
                 shader.Parameters["destroyInterval"].SetValue((float)deathTimeLeft / DEATH_DURATION);
-                if (deathTimeLeft <= 0) { terminated = true; deathTimeLeft = 0; }
+                if (deathTimeLeft <= 0) { deathTimeLeft = -1; }
+            }
+            else if (deathTimeLeft == -1)
+            {
+                if (!Busy) Terminate();
             }
         }
 
@@ -239,7 +243,7 @@ namespace EtrianLike.Scenes.BattleScene
 
         public Rectangle EnemySize { get => new Rectangle(0, 0, AnimatedSprite.SpriteBounds().Width, AnimatedSprite.SpriteBounds().Height); }
 
-        public override bool Busy { get => base.Busy || deathTimeLeft > 0 || Transitioning || fadeInTime < FADE_IN_DURATION; }
+        public override bool Busy { get => base.Busy || ParticleList.Count > 0 || deathTimeLeft > 0 || Transitioning || fadeInTime < FADE_IN_DURATION; }
 
         public override bool Transitioning { get => GetParent<Panel>().Transitioning; }
 
