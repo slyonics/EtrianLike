@@ -54,9 +54,17 @@ namespace EtrianLike.Scenes.MapScene
             return mapRooms[x, y];
         }
 
-        public MapScene(string iMapName)
+        MiniMap miniMap;
+
+        public MapScene()
         {
             Instance = this;
+
+            miniMap = new MiniMap();
+        }
+
+        public MapScene(string iMapName) : this()
+        {
 
             MapName = iMapName;
 
@@ -70,10 +78,8 @@ namespace EtrianLike.Scenes.MapScene
             movementController = AddController(new MovementController(this));
         }
 
-        public MapScene(string iMapName, string spawnName)
+        public MapScene(string iMapName, string spawnName) : this()
         {
-            Instance = this;
-
             MapName = iMapName;
 
             mapViewModel = AddView(new MapViewModel(this, GameView.MapScene_MapView));
@@ -88,10 +94,8 @@ namespace EtrianLike.Scenes.MapScene
             movementController = AddController(new MovementController(this));
         }
 
-        public MapScene(string iMapName, int spawnX, int spawnY, Direction iDirection)
+        public MapScene(string iMapName, int spawnX, int spawnY, Direction iDirection) : this()
         {
-            Instance = this;
-
             MapName = iMapName;
 
             mapViewModel = AddView<MapViewModel>(new MapViewModel(this, GameView.MapScene_MapView));
@@ -531,7 +535,43 @@ namespace EtrianLike.Scenes.MapScene
             graphicsDevice.SetRenderTarget(CrossPlatformGame.GameInstance.mapRender);
             DrawMap(graphicsDevice);
 
-            base.Draw(graphicsDevice, spriteBatch, pixelRender, compositeRender);
+            graphicsDevice.SetRenderTarget(pixelRender);
+            graphicsDevice.Clear(Color.Transparent);
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, null);
+            DrawBackground(spriteBatch);
+            spriteBatch.End();
+
+            Matrix matrix = (Camera == null) ? Matrix.Identity : Camera.Matrix;
+            Effect shader = (spriteShader == null) ? null : spriteShader.Effect;
+            foreach (Entity entity in entityList) entity.DrawShader(spriteBatch, Camera, matrix);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, shader, matrix);
+            DrawGame(spriteBatch, shader, matrix);
+            spriteBatch.End();
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, null);
+            DrawOverlay(spriteBatch);
+            spriteBatch.End();
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, null);
+            miniMap.Draw(spriteBatch);
+            DrawMiniMap(spriteBatch, new Rectangle(CrossPlatformGame.ScreenWidth - 128, 16, 112, 112), Color.White, 0.6f);
+            spriteBatch.End();
+
+            graphicsDevice.SetRenderTarget(compositeRender);
+
+            if (!CrossPlatformGame.ClearedCompositeRender)
+            {
+                CrossPlatformGame.ClearedCompositeRender = true;
+                graphicsDevice.Clear(Color.Transparent);
+            }
+
+            shader = (SceneShader == null) ? null : SceneShader.Effect;
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, shader, Matrix.Identity);
+            spriteBatch.Draw(pixelRender, Vector2.Zero, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0.0f);
+            spriteBatch.End();
+
+            
         }
 
         public void DrawMiniMap(SpriteBatch spriteBatch, Rectangle bounds, Color color, float depth)

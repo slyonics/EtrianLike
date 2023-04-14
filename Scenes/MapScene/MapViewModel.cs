@@ -37,6 +37,8 @@ namespace EtrianLike.Scenes.MapScene
             }
 
             LoadView(GameView.MapScene_MapView);
+
+            mapScene.AddOverlay(new MiniMap());
         }
 
         public override void Update(GameTime gameTime)
