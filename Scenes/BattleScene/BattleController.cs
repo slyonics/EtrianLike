@@ -72,7 +72,7 @@ namespace EtrianLike.Scenes.BattleScene
                 case "Damage": CalculateDamage(tokens); break;
                 case "Heal": CalculateHealing(tokens); break;
                 case "Repair": target.Repair(int.Parse(tokens[1])); break;
-                case "Bleed": target.Bleed(int.Parse(tokens[1]), int.Parse(tokens[2]), float.Parse(tokens[3])); break;
+                case "Bleed": target.Bleed(int.Parse(tokens[1]), int.Parse(tokens[2]), float.Parse(tokens[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture)); break;
                 case "Confuse": target.Confuse(int.Parse(tokens[1])); break;
                 case "Flash": target.FlashColor(new Color(byte.Parse(tokens[1]), byte.Parse(tokens[2]), byte.Parse(tokens[3]))); break;
                 case "Attack": Attack(tokens); break;

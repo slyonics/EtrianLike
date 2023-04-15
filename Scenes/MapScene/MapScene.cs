@@ -158,7 +158,7 @@ namespace EtrianLike.Scenes.MapScene
             TiledProperty ambientProperty = tiledMap.Properties.FirstOrDefault(x => x.name == "AmbientLight");
             if (ambientProperty != null)
             {
-                AmbientLight = float.Parse(ambientProperty.value);
+                AmbientLight = float.Parse(ambientProperty.value, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
             }
 
             TiledProperty locationNameProperty = tiledMap.Properties.FirstOrDefault(x => x.name == "LocationName");

@@ -118,7 +118,7 @@ namespace EtrianLike.Scenes.ConversationScene
                 int startY = int.Parse(tokens[4]);
                 int endX = int.Parse(tokens[5]);
                 int endY = int.Parse(tokens[6]);
-                float transitionLength = (tokens.Length > 7) ? float.Parse(tokens[7]) : 1.0f;
+                float transitionLength = (tokens.Length > 7) ? float.Parse(tokens[7], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture) : 1.0f;
 
                 Portrait portrait = new Portrait(conversationScene, name, sprite, new Vector2(startX, startY), new Vector2(endX, endY), transitionLength);
                 conversationScene.AddPortrait(portrait);
@@ -129,7 +129,7 @@ namespace EtrianLike.Scenes.ConversationScene
                 string sprite = tokens[2];
                 int positionX = int.Parse(tokens[3]);
                 int positionY = int.Parse(tokens[4]);
-                float transitionLength = (tokens.Length > 5) ? float.Parse(tokens[5]) : 1.0f;
+                float transitionLength = (tokens.Length > 5) ? float.Parse(tokens[5], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture) : 1.0f;
 
                 Portrait portrait = new Portrait(conversationScene, name, sprite, new Vector2(positionX, positionY), transitionLength);
                 conversationScene.AddPortrait(portrait);
@@ -143,7 +143,7 @@ namespace EtrianLike.Scenes.ConversationScene
                 string name = tokens[1];
                 int endX = int.Parse(tokens[2]);
                 int endY = int.Parse(tokens[3]);
-                float transitionLength = (tokens.Length > 4) ? float.Parse(tokens[4]) : 1.0f;
+                float transitionLength = (tokens.Length > 4) ? float.Parse(tokens[4], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture) : 1.0f;
 
                 Portrait portrait = conversationScene.Portraits.Find(x => x.Name == name);
                 portrait.Remove(new Vector2(endX, endY), transitionLength);
@@ -151,7 +151,7 @@ namespace EtrianLike.Scenes.ConversationScene
             else
             {
                 string name = tokens[1];
-                float transitionLength = (tokens.Length > 2) ? float.Parse(tokens[2]) : 1.0f;
+                float transitionLength = (tokens.Length > 2) ? float.Parse(tokens[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture) : 1.0f;
 
                 Portrait portrait = conversationScene.Portraits.Find(x => x.Name == name);
                 portrait?.Remove(transitionLength);
@@ -162,7 +162,7 @@ namespace EtrianLike.Scenes.ConversationScene
         {
             string name = tokens[1];
             string sprite = tokens[2];
-            float transitionLength = (tokens.Length > 3) ? float.Parse(tokens[3]) : 1.0f;
+            float transitionLength = (tokens.Length > 3) ? float.Parse(tokens[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture) : 1.0f;
 
             Portrait portrait = conversationScene.Portraits.Find(x => x.Name == name);
             portrait.SetSprite(sprite, transitionLength);
@@ -173,7 +173,7 @@ namespace EtrianLike.Scenes.ConversationScene
             string name = tokens[1];
             int endX = int.Parse(tokens[2]);
             int endY = int.Parse(tokens[3]);
-            float transitionLength = (tokens.Length > 4) ? float.Parse(tokens[4]) : 1.0f;
+            float transitionLength = (tokens.Length > 4) ? float.Parse(tokens[4], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture) : 1.0f;
 
             Portrait portrait = conversationScene.Portraits.Find(x => x.Name == name);
             portrait.SetPosition(new Vector2(endX, endY), transitionLength);
@@ -186,7 +186,7 @@ namespace EtrianLike.Scenes.ConversationScene
             int colorG = int.Parse(tokens[3]);
             int colorB = int.Parse(tokens[4]);
             int colorA = int.Parse(tokens[5]);
-            float transitionLength = (tokens.Length > 6) ? float.Parse(tokens[6]) : 1.0f;
+            float transitionLength = (tokens.Length > 6) ? float.Parse(tokens[6], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture) : 1.0f;
 
             Portrait portrait = conversationScene.Portraits.Find(x => x.Name == name);
             portrait.SetColor(new Color(colorR, colorG, colorB, colorA), transitionLength);
@@ -195,8 +195,8 @@ namespace EtrianLike.Scenes.ConversationScene
         public void PortraitScale(string[] tokens)
         {
             string name = tokens[1];
-            float scaleX = float.Parse(tokens[2]);
-            float scaleY = float.Parse(tokens[3]);
+            float scaleX = float.Parse(tokens[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
+            float scaleY = float.Parse(tokens[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
 
             Portrait portrait = conversationScene.Portraits.Find(x => x.Name == name);
             portrait.AnimatedSprite.Scale = new Vector2(scaleX, scaleY);

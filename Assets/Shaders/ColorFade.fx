@@ -19,7 +19,7 @@ float4 PixelShaderFunction(float4 position : SV_POSITION, float4 color1 : COLOR0
 {
 	float4 color = tex2D(s0, texCoord) * color1;
 
-	float transition = round(amount * 6) / 6.0f;
+	float transition = amount;
 
 	color.r = lerp(filterRed, color.r, transition);
 	color.g = lerp(filterGreen, color.g, transition);

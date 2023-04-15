@@ -136,9 +136,9 @@ namespace EtrianLike.Main
             float pitch = 0.0f;
             float pan = 0.0f;
 
-            if (scriptTokens.Length > 2) volume = float.Parse(scriptTokens[2]);
-            if (scriptTokens.Length > 3) pan = float.Parse(scriptTokens[3]);
-            if (scriptTokens.Length > 4) pitch = float.Parse(scriptTokens[4]);
+            if (scriptTokens.Length > 2) volume = float.Parse(scriptTokens[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
+            if (scriptTokens.Length > 3) pan = float.Parse(scriptTokens[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
+            if (scriptTokens.Length > 4) pitch = float.Parse(scriptTokens[4], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
             PlaySound((GameSound)Enum.Parse(typeof(GameSound), scriptTokens[1]), volume, pan, pitch);
         }
 

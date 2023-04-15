@@ -99,7 +99,7 @@ namespace EtrianLike.Main
                 {
                     if (programSettings[node.Name] is bool) programSettings[node.Name] = bool.Parse(node.InnerText);
                     else if (programSettings[node.Name] is int) programSettings[node.Name] = int.Parse(node.InnerText);
-                    else if (programSettings[node.Name] is float) programSettings[node.Name] = float.Parse(node.InnerText);
+                    else if (programSettings[node.Name] is float) programSettings[node.Name] = float.Parse(node.InnerText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
                     if (programSettings[node.Name] is string) programSettings[node.Name] = node.InnerText;
                 }
             }

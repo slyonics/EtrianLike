@@ -197,7 +197,7 @@ namespace EtrianLike.SceneObjects
                 }
                 else if (type == typeof(bool)) propertyInfo.SetValue(this, bool.Parse(attributeValue));
                 else if (type == typeof(int)) propertyInfo.SetValue(this, ParseInt(attributeValue));
-                else if (type == typeof(float)) propertyInfo.SetValue(this, float.Parse(attributeValue));
+                else if (type == typeof(float)) propertyInfo.SetValue(this, float.Parse(attributeValue, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture));
                 else if (type == typeof(string)) propertyInfo.SetValue(this, ParseString(attributeValue));
                 else if (type == typeof(Color)) propertyInfo.SetValue(this, Graphics.ParseHexcode(attributeValue));
                 else if (type == typeof(MethodInfo)) propertyInfo.SetValue(this, GetParent<ViewModel>().GetType().GetMethod(attributeValue));
