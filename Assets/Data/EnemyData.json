@@ -94,7 +94,7 @@
 		"Name": "Corrupted Reed",
 		"Sprite": "Boss",
 		"ShadowOffset": 4,
-		"MaxHealth": 500,
+		"MaxHealth": 400,
 		"Strength": 12,
 		"Defense": 12,
 		"Agility": 10,
@@ -105,7 +105,7 @@
 				"Script": [
 					"Attack"
 				],
-				"Weight": 50
+				"Weight": 100
 			},
 			{
 				"PreScript": [ "Dialogue $attackerName attacks the party with flaming books!", "Animate Attack" ],
@@ -128,7 +128,7 @@
 					"Flash 255 27 0",
 					"Damage Strength 7 Physical"
 				],
-				"Weight": 100
+				"Weight": 50
 			}
 		]
 	}
