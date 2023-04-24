@@ -106,8 +106,12 @@ namespace EtrianLike.Models
             Dictionary<int, Dictionary<string, object>> results = new Dictionary<int, Dictionary<string, object>>();
 
             string savePath = CrossPlatformGame.SETTINGS_DIRECTORY + SAVE_FOLDER;
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            if (!Directory.Exists(savePath))
+            {
+                Directory.CreateDirectory(savePath);
+            }
 
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
             foreach (string saveFile in Directory.GetFiles(savePath).Where(x => Path.GetExtension(x) == ".sav"))
             {
                 Dictionary<string, object> saveData;
