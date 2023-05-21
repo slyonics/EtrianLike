@@ -53,10 +53,10 @@
 		"Sprite": "Scholar",
 		"ShadowOffset": 4,
 		"MaxHealth": 140,
-		"Strength": 12,
+		"Strength": 10,
 		"Defense": 8,
 		"Agility": 10,
-		"Mana": 12,
+		"Mana": 10,
 		"Evasion": 30,
 		"Attacks": [
 			{
@@ -94,11 +94,11 @@
 		"Name": "Corrupted Reed",
 		"Sprite": "Boss",
 		"ShadowOffset": 4,
-		"MaxHealth": 400,
-		"Strength": 12,
+		"MaxHealth": 325,
+		"Strength": 10,
 		"Defense": 12,
 		"Agility": 10,
-		"Mana": 12,
+		"Mana": 10,
 		"Evasion": 30,
 		"Attacks": [
 			{
